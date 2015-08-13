@@ -1,0 +1,33 @@
+controller 	studySpeakingCtrl.js
+view 				studySpeaking.html
+
+page load
+
+	- progress bar 4/5
+	- countdown starts
+	- retrieve video scripts
+		original on left, foreign (tabbable directive) on right
+	- display first collocation & notes in original video script in header box
+	- initial 'completed 1/5' shown beside collocation
+	- underline first collocation in origianl video script box
+
+user clicks 'i did it!'
+
+	1) 'completed 1/5' --> 'completed 2/5'
+	2) first collocation fades out and is replaced by second collcoation
+	3) --> same with description
+	4) in original script box, first collocation is no longer underlined
+	5) in original script box, second collocation becomes underlined
+
+user clicks 'skip'
+
+	same as 'i did it!' without step (1)
+
+user completes bonus collocations
+
+	+N is shown next to 5/5 and updated accordingly
+
+time runs out (directive?)
+
+	- transition message appears 'proceeding to next section' 5, 4, 3, 2, 1
+	- after 5 or so second timeout finishes, page redirects to next section

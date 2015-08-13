@@ -1,0 +1,27 @@
+controller 	contactUsCtrl.js
+view 				contactUs.html
+
+page load
+	
+	if (user is logged in) {
+		hide 'email' input
+		add user email to 'email' input
+	}
+
+email, subject, message parameters
+
+user enters email
+	
+	angular validations on email:
+		presence
+		email regex
+
+user types message
+
+	angular validations on message:
+		presence
+
+user presses 'send message'
+	
+	server side validations on email / message
+	format message and send to henry.ehly@gmail.com

@@ -1,0 +1,11 @@
+controller 	userAccountCtrl.js
+view 				userAccount.html
+
+user enters email, password, password-confirmation, new password
+	angular validations
+user clicks 'update'
+	server-side validations
+	user password / email is updated in DB
+
+(future) user clicks 'my interests'
+	page redirects to 'my interest'

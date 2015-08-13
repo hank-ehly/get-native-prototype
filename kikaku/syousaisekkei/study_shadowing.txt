@@ -1,0 +1,19 @@
+controller 	studyShadowing.js
+view 				studyShadowing.html
+
+page load
+
+	- progress bar display 3/5
+	- relay video code to iframe
+	- countdown time begins
+	- video play/loop automagically
+	
+user presses 'pause'
+
+	- countdown timer stops with video and starts blinking
+		(when user presses play, blinking ceases)
+
+time runs out (directive?)
+
+	- transition message appears 'proceeding to next section' 5, 4, 3, 2, 1
+	- after 5 or so second timeout finishes, page redirects to next section

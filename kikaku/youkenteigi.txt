@@ -1,0 +1,283 @@
+• You log in and study from this website. 
+	# Login functionality
+
+• Register
+	# Registration functionality
+
+• choose from a big list of videos
+	# Video player functionality
+	# DB table for videos
+	# Need video storage / retrevial capability
+
+• when a user studies, they can see their progress in their profile
+	# Way of collecting / displaying user-action-based data
+
+• pick and choose videos to make your study list
+	# Videos must be a 'pickable' resource to users
+	# User has a list of 'videos'
+
+• show scripts and translations for each video
+	# Each video may have multiple scripts associated with it
+
+• show recommended collocations for each video
+	# Each video script contains phrases (collocations)
+		Q: Do video scripts contain collocations in their original language alone, 
+			or all translated languages as well?
+
+• allow users to add their own collocations to their video 
+	# User can select and mark a section of a video script,
+		and group it as a member of that script's collocations
+			Q: How will you separate the user's collocations
+				 from the recommended collocations?
+
+• tutorial
+	# A separate section of the website, 
+		which exists to introduce the different 
+		features of the website
+	# User interaction is guided (the user doesn't have full control)
+	# Progresses in chapters, so you can freely jump around
+
+• quick study button (auto-select playlist video based on srs calculation)
+	# Need a way to store user's previous activity information,
+		and a way to access it
+	# Need a function that processes user activity data,
+		decide what contents to use in the study session,
+		and redirect accordingly.. all on a click event
+
+• 'recommend me a video' form where you can fill out information
+	 like your interests, age group, gender to select videos for you 
+	 # Need a way of picking out DB resources based on user form input
+	 # Need a way and place to store data selected as a result of the users' form input
+	 # Video resources must be classifiable by interests/age-group/gender
+
+• native fill in the blank activities 
+	(graded based on whether a native speaker would actually say that)
+	# Need 'fill-in-the-blank-activity' resource
+	# Need pre-graded answers
+		Q: Will there be only 1 answer per blank?
+			A: Probably not
+		Q: Would it be possible for users to come up with an acceptable
+			 answer not provided in the pre-defined answers?
+			A: Yes
+		Q: How will you decide whether or not a users' answer is acceptable?
+
+• users can request a video to be made 
+	in a certain language about a certain topic
+	# Need a way to get user input about video topic suggestions
+
+• conversation practice like Skype, you talk to the person in front
+	of you while shadowing the responses, essentially ‘pretending’ 
+	to be the person having the conversation..
+	# You need a front-facing video of a person speaking half of a pre-recorded conversation
+	# You need the audio of BOTH SIDES of the pre-recorded conversation
+	# You need to sync the video with half of the pre-recorded conversation,
+		while only playing the audio of the other half of the conversation
+
+• select site language
+	# You need translations of all static website content
+	# You need to decide when to translate the site into a certain language (ip address?)
+	# You need to allow users to set their language preferance, 
+		and save that preference for their next visit
+
+• if user is studying multiple languages, they can switch 
+	between the languages they’re studying
+	# Users can have muliple language 'modules'
+	# Users can add, delete, switch between their 'modules'
+	# There is 1 module per language
+
+• 'login and go' feeling
+	# If the 'study' feature is the main-attraction of the website,
+		you need a way to quickly allow users to use the study feature.
+			# See 'quick study button'
+
+• guests can only see some videos
+	# Need a way to distinguish between different types of users,
+		including users who haven't even created an account yet
+
+• search all videos for specific collocations **
+	# Need a way to search for VIDEOS by the words in each video SCRIPT
+		Q: That's a lot of words, bro..
+
+• search videos by difficulty level (?)
+	# Need to categorize videos based on easiness to understand
+
+• you can slow down the video
+	# Need a way to manipulate the video speed during playback
+
+• place to download video / mp3
+	# Video resources are downloadable
+		Q: Who can download videos / audio?
+			A: Non-guests
+		Q: If you can download the videos, then you'll have to store the files privately, right?
+
+• place to add your own collocations, then shows up in ‘your collocations’ section
+	# User-created 'collocations' can be viewed in their own section of the website
+	# The 'collocation' must be its own entity
+
+• place to add this video to your list
+	# User can group videos into their own 'list'
+		Q: What if the user is studying multiple languages?
+			A: Maybe, 1 list per language module?
+
+• for recommended collocations, there is a brief description 
+	# Each NON-user-created collocation entity has an associated description
+		Q: What language will this description be written in?
+			A: It would be nice to have the description written in all site-languages..
+		Q: That's a lot of writing!
+
+• Study --> progress through listening (warmup), shadowing, speaking, writing
+	# There exists a separate section of the website for the 'study' feature
+	# This section has a beginning and end
+	# It is guided
+		Q: Can you skip through, like the tutorial?
+			A: 	1) Yes, but it affects your progress results
+					2) No
+		Q: If you can't skip around, and there's a bug that won't let the user finish,
+			 are their progress statistics all lost?
+			A: I would like to save them if possible, so it might be a better idea to update
+				 progress results throughout the study exercise
+
+• Study --> uninhibited by popups
+	Q: What if a user doesn't know what to do?
+		A: There should be some button they can click to be redirected to
+			 the tutorial page or other page with helpful information..
+
+• Study --> select language
+	Q: Should users be able to decide the language they want to study after selecting 'study' exercise?
+		A: To simplify it, the user should be in the module of the language they want to study 
+			 BEFORE clicking on the 'study' button. They should also have to opportunity to SWITCH LANGUAGE MODULES
+			 from the 'study' exercise page, rather than selecting the 'study' exercise language
+
+• Study options --> use recommended video selection 
+	# You need to keep track of how many times a user has studied a particular video,
+		probably along with other statistics
+		Q: What other statistics?
+	# You need a function that takes a user's information / activity data, 
+		performs an SRS (Spaced-Repetition-Learning-System) calculation,
+		and returns a reference to a video resource, which will be the 'recommendation'
+
+• Study options --> choose your own video (not recommended)
+	# Bypass the SRS functionality and let the user pick a video
+		themselves to study.
+
+• min study time is based on video length. 
+	Choose between min and max. 
+	Recommended setting is 15~20 minutes
+	# You need to read the length of the video after selection,
+		and designate 1 play-through as the minimum length for each section of the studying.
+			# ex. A video is 2 minutes in length.
+						The minimum length for the study session will be 8 minutes.
+						Speaking, listening, shadowing, writing are each 2 minutes.
+	# Take the length of a video and find a study-time between 15-20 minutes.
+		# ex. A video is 2 minutes in length.
+					The recommended study time will be 16 minutes.
+					2 minutes * 4 sections = 8 minutes of study
+					To fit inside the 15 ~ 20 minute recommendation period,
+					multiply 8 by 2 to get 16 minutes.
+	# Show the user the recommended study time, 
+		and allow them to click a button like 'use recommended study time'
+
+• STUDY modules --> common footer / header
+	# During the 'study' feature, the current study-session 
+		information must be shown in the same place on each screen
+
+• listening -> script auto highlights location 
+	# You need to match the speech in a video to a highlighting (selecting?) animation in the displayed text
+		Q: What about when you're looking at another language?
+			A: Hilighting should be disabled on translated scripts
+
+• listening -> can optionally disable highlighting
+	# You need to connect a click event the toggling on / off of the text-hilighting feature
+
+• speaking section
+	-> show 1 collocation in header panel
+	-> show full script below it in panel
+		• highlight collocation
+	-> button check mark
+	# You need an ARRAY of collocations for a video
+	# You need to search for and hilight the collocation within the video script
+	# On a click event, you need to create a statistic (record) of that user's study progress
+
+• speaking section
+	-> when they complete 1 lap through the collocations, they’ve passed
+		• this helps them stay aware of their progress throughout the speaking portion
+	# If a video has 5 recommended collocations, have a 0/5, 1/5, 2/5, etc.. progress indicator
+		to show the user if they've gone through all the collocations in a script
+
+• speaking section -> If the user has completed all the collocations, 
+											they can get plus points for continuing the collocations
+	# There should be no upward limit to 'completed collocations' statistic records.. 
+		It should just continue to increment as the user completes the task
+
+• writing -> you have to answer a question about the video.
+	# For each video, there must exist designated question prompts
+
+• find a conversation partner
+	# You need functionality that loops through ALL users and finds users:
+			->(who allow their profile to be searched)
+			->(who have similar ASL & Interests)
+			->(who are studying YOUR native language)
+			->(whose NATIVE LANG is the lang you're studying)
+
+• Progress Snapshot 
+	-> can see number of study sessions you’ve completed
+		# After a user completes a study session, 
+			you must increment the 'number of completed sessions,'
+			which you must be able to fetch and display elsewhere
+	-> can see amount of time you’ve spent studying
+		# You must save a record of how much time the user has spent
+			performing study-sessions.
+		# You can update the 'total time' after each study-unit is completed
+			(because the user might not complete the full study session, 
+			and you wouldn't want them to have completed SOME and still have '0')
+	-> number of collocations you’ve studied
+		# For each video studied AT LEAST ONCE,
+			combine pre-written collocations + user-added collocations
+			to create a 'total collocations studied' value
+	-> number of collocations you’ve added
+		# There must be a record of 'user-added collocations' per video in user-Q
+	-> level (you can have a level)
+		# If the user reaches X number of sessions completed, and Y number of time spent studying,
+			their 'badge' is increased
+		# You need badge graphics
+		# You need functionality to automatically CHECK and SET user level
+	-> pie chart
+		• display % of time spent studying topics in A category
+		# You need a PIE chart API
+		# You need a function that compares total amount of study time vs
+		 	amount of time studying videos in 'A' category, 'B' category, etc..
+
+• Account 
+	# user has update & delete privileges about their account information
+	-> your profile (with your login info [able to change])
+		# You need 'reset password' capability
+	-> what you’re interested in (to give recs)
+		# You need a list of possible interests (ex. 0 => music, 1 => sports, 2 => culture, etc..)
+		# You need a form full of checkboxes with predefined 'interests' / topics
+			where the user can add a check to show their interest
+		# Based on the user's credentials, you'll need to be able to fetch their interests and fetch 
+			(1) video resources whose topics are found within the users' interest array
+			(2) other user profile resources with (? 2 or more ?) matching interest to the current user
+
+• Static content
+	-> contact us
+		# registered users AND guests can send a post request by entering a valid email and a message
+		# if a registered user is logged in, hide them email input box
+		# You'll need to send the message via email to a specified email address
+
+
+• how to determine what language a person is studying
+	-> Active language
+		• allow user to select different language at top
+		• once they select a lang, it adds that lang to their ‘active languages’ list
+		• in their profile, they can remove a lang from their list
+
+• Cookies
+	-> if a guest views a video, plant a cookie 
+		 with the video info in their browser and 
+		 if they come back, show that video in the main menu
+		 # You'll need GET cookie and SET cookie functionality
+
+• Users can 'follow' a speaker and get updates when that speaker has a new video
+	# You need to store a users' 'follow' information,
+		and send them a message when their target 'follow' creates a new video

@@ -1,0 +1,276 @@
+*
+* 開発工程
+*
+
+• システム企画
+	-> システムに関する要望
+• 要件定義
+	-> システム方式設計
+	-> 要求は、曖昧だったり、矛盾していたりしますー実現可能な要件を定義する工程
+• 概要設計（UI設計）
+	-> 入出力に関する機能設計 (forms)
+	-> 画面設計
+	-> データベース設計
+• 詳細設計・プログラム設計
+	-> 概要設計で決まった機能を、プログラムレベルに分割し、それぞれのプログラムで実現する機能を定義
+	-> 機能ごとに分割したプログラム1本1本の構造や処理手順
+	-> その内容を記述する
+• コーディング
+
+-----------------------------------
+
+*
+* システム企画
+*
+
+-> Main Ideas
+• Website to make studying easier, more efficient & more effective
+• You log in and study from this website. 
+• choose from a big list of videos
+• there are different topics for videos
+• videos are in different languages 
+• when a user studies, they can see their progress in their profile
+• shows the number of days in-a-row that the user has studied in profile
+• shows full length of study time in profile
+• user can study multiple languages
+• put in time you want to study
+• pick and choose videos to make your study list
+• show scripts and translations for each video
+• show recommended collocations for each video
+• allow users to add their own collocations to their video 
+	but those collocations aren't reflected on other users videos 
+• tutorial for beginners
+• quick study button to automatically select a video from your playlist based on srs calculation
+• recommend me a video form where you can fill out information like your interests, age group, gender to select videos for you 
+• native fill in the blank activities (graded based on whether a native speaker would actually say that)
+• users can request a video to be made in a certain language about a certain topic
+• conversation practice like Skype, you talk to the person in front of you while shadowing the responses, 
+	essentially ‘pretending’ to be the person having the conversation
+• select site language
+• incorporate Jokes / Humor 
+• geared toward intermediate / advanced learners who want to become BETTER speakers
+• if user is studying multiple languages, they can switch between the languages they’re studying on their profiles
+• 'login and go' feeling
+
+
+• Topic structure
+	-> Category -> topic
+	-> Business -> separation between work and pleasure
+
+
+-> Top page
+• login
+• newest videos (like lynda.com)
+	-> topics tabs
+		• video icon (date and title)
+• quick tips section / useful resources?
+• browse videos
+	-> can see some videos
+	-> can only see a couple videos
+	-> can only see 
+• footer
+	-> about us / support / connect / etc..
+
+
+-> FAQ page
+• study methods
+• reason for choosing study methods
+• backup research
+• how to use the site
+
+
+-> Create Account
+• Setup Questions
+	-> what language you wanna study?
+	-> what interests
+• Tutorial Info
+
+
+-> Tutorial
+• instructions alongside view of study session ( like code academy, etc.. )
+• progress through the 4 modules, pausing at each to give explanation 
+• tutorial available for anyone, 
+• you can see most ( attractive ) features of the website
+• interactive tour
+• available from sign up menu
+• pick language, find a video
+• study
+	-> each area
+		• ex. speaking
+				-> show area for people to go to to learn about how to speak effectively
+• link to sign up page
+• tutorial is broken up into sections (i.e. shadowing, speaking) 
+	so that you don’t have to do the whole thing when you only wanna look at 1 part
+
+
+-> Video Search
+• can 絞り込む on speaker gender, age, topic, number of collocations, release date, etc.. (defaults are ‘all’)
+• browse videos by:
+	-> language
+	-> speaker
+	-> topic
+	-> release date
+• list by language
+• order by different topics / date added / speaker
+• topics about things generally interesting to japanese / english speakers
+• search all videos for specific collocations **
+	-> i.e., search collocation and list videos with that collocation
+• show context next to video (in list) with highlighted search term
+• find videos where the speaker uses the phrase XXX
+• search videos by difficulty level (?)
+• Users can 'follow' a speaker and get updates when that speaker has a new video
+
+
+-> Show Single Video
+• you can slow down the video
+• script
+	-> always show original language script
+	-> able to select translation to view on opposite side
+	-> see https://www.lingq.com/learn/sv/workdesk/item/10451511/reader/
+• video
+• collocations
+• place to download video / mp3
+• place to add your own collocations
+	-> then shows up in ‘your collocations’ section
+• place to add this video to your list
+• for recommended collocations, there is a brief description 
+	(with thesaurus-like description, i.e. ‘pretty’ is like ‘beautiful’) 
+	and similar collocations listed beneath 
+
+
+-> Study
+• progress through listening (warmup), shadowing, speaking, writing
+• add button somewhere to guide people to go through tutorial or see FAQs if they don’t know what to do
+• uninhibited by popups
+• before beginning listening, user presses a button to signal they’re ready
+• select language
+• options
+	-> Use ANKI-like SRS to construct daily pattern of study videos
+	-> use recommended video selection 
+	-> choose your own video (not recommended)
+• min study time is based on video length
+	-> choose between min and max
+	-> recommended setting is 15~20 minutes
+• STUDY modules
+	-> common footer / header
+		• always show ‘times viewed’ and (1:12) <- how long you’ve listened
+• speaking section
+	-> show 1 collocation in header panel
+	-> show full script below it in panel
+		• highlight collocation
+	-> button check mark
+	-> button to skip
+	-> after 5 minutes, you’re prompted to move to the next module
+	-> speaking portion of study
+	-> highlight each collocation and progress through collocations by having the user create and sentence, say it, and click ‘i did it’ to proceed to next collocation
+	-> can skip
+	-> when they complete 1 lap through the collocations, they’ve passed
+		• this helps them stay aware of their progress throughout the speaking portion
+	-> probably gotta limit # of collocations on each video
+	-> If the user has completed all the collocations, they can get plus points for continuing the collocations
+• listening
+	-> video + script
+	-> script auto highlights location 
+		• can optionally disable highlighting
+• shadowing
+	-> super simple, just video
+• writing
+	-> you have to answer a question about the video. Be as verbose as possible.
+• later, paid members can have their writing analyzed and graded for CHEAP
+
+
+-> Main Options
+• STUDY
+• EXCHANGE
+	-> chat now function (?)
+	-> find a conversation partner
+		• based on your profile information,
+			find matching conversation partner examples..
+				-> you need Age, Sex, Location, Preferred method(s) of study, Interests (as tags)
+					• "Don't show my profile as possible conversation partner" <-- to TRUE as default
+						-> To allow yourself to be searched, change to FALSE
+	-> FUTURE: timed conversation exchanges..
+		• eliminates the need to 'fight for speaking time'
+	-> challenges
+		• goals within a language
+			-> example: Business Challenge
+			-> increase you business ability in Japanese
+			-> Study this amount of material in this much time
+	-> Forum
+		• different topics
+		• anyone can create / post
+
+
+-> Learning center
+• https://www.lingq.com/academy/
+• lean about how to learn
+• hank’s tips
+• how to videos
+
+
+Playlist
+-> you can create multiple playlists
+- you populate your Q
+	- website recommends when to study what based on your Q
+	- all you need to do is click GO
+
+
+-> Find a conversation partner (the idea of allowing your profile to be searched is better I think)
+• if you have an account, fill out a form and post your thing
+• like conversationexchange.com
+
+
+-> Progress Snapshot
+• just a little section rather than a complete module
+• can see number of study sessions you’ve completed
+• can see amount of time you’ve spent studying
+• number of collocations you’ve studied
+• number of collocations you’ve added
+• your last study session
+• level (you can have a level)
+	-> study sessions that must be completed to make it to the next level?
+	-> your level badge
+• pie chart with select box above to change language of displayed pie chart
+	-> i.e. select spanish -> % of time spent studying topics in A category
+	-> select japanese -> % of time spent studying topics in B category
+
+
+Account
+• profile
+	-> your profile (with your login info [ able to change ])
+	-> contact info (?)
+• what you’re interested in (to give recs)
+	-> topic list
+		• not interested / no opinion / interested
+	-> speaker gender / age
+	-> lang (obviously)
+• email preferences (what to send you .. )
+• (later) payment options
+• Invite someone link
+
+
+-> Static content
+• contact us page
+• FAQs
+• system requirements (for videos)
+• mimic lynda.com
+
+
+-> Challenges
+• native fill in the blank activities (graded based on whether a native speaker would actually say that)
+
+
+-> Users Contributions
+• contribute videos
+• they must provide a script in the original language
+• we review it and post it online
+
+
+LINGQ (how to determine what language a person is studying)
+• Active language
+	-> allow user to select different language at top
+	-> once they select a lang, it adds that lang to their ‘active languages’ list
+	-> in their profile, they can remove a lang from their list
+
+-> Cookies
+• if a guest views a video, plant a cookie with the video info in their browser and if they come back, show that video in the main menu

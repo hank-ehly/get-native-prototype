@@ -1,0 +1,25 @@
+controller 	studyWritingCtrl.js
+view 				studyWriting.html
+
+page load
+
+	- progress bar is shown to be on 5/5
+	- countdown begins
+	- retrieve and display video writing prompt
+	- example answer to video prompt is shown beneath <textarea>
+
+user types in <textarea>
+
+	- with each keydown event, 'word count' is updated with textarea.length
+	- future: (if user has 'last time' stats, 'last time: ...' word count is shown beneath 'word count')
+
+user clicks 'finish'
+
+	- user answer is saved to their 'writing_answers'
+	- page is redirected to the user's home screen
+	- success message 'you finished your study session!'
+
+time runs out (directive?)
+
+	- transition message appears 'finishing' 5, 4, 3, 2, 1
+	- after 5 or so second timeout finishes, page redirects to home

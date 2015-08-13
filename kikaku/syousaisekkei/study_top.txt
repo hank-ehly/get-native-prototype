@@ -1,0 +1,39 @@
+controller 	studyTopCtrl.js
+view 				studyTop.html
+
+page load
+
+	- progress meter is displayed at 1/5
+
+user selects integer value to user as total study time
+
+	- click event to raise / lower integer value
+
+user checks radio button 'use recommended video'
+
+	- set video preference to 0
+	- begin glowing animation on start button
+
+user clicks 'select video from playlist'
+
+	- display cue video list appears below (directive?)
+	
+	user clicks a video
+		- set video preference to 1
+		- selected video box is hilighted
+		- begin glowing animation on start button
+
+user clicks 'start'
+
+	if video preference is 0
+	- SRS calculation is performed and cue video is selected
+
+	else
+	- selected video is 'video to be used'
+	- time is calculated
+	- page redirects to 'listening'
+
+	
+	user time is calculated for each section study time
+	page is redirected to listening
+	progress meter is moved to 2/5

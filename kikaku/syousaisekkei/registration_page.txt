@@ -1,0 +1,53 @@
+controller 	userRegistrationCtrl.js
+view 				userRegistration.html
+
+user enters following info
+
+	email
+		- angular validation for email:
+			email regex
+			must be present
+	password
+		- apply password strength meter
+		- angular validation for password:
+			must be present
+			at least 8 characters
+			include 1 number
+			include 1 lowercase letter
+	password conf
+		- angular validation:
+			must be present
+			must match password
+	either checks 'remember me' or not
+		- check whether present or not
+
+user presses 'register' button
+
+	- server-side validations for email:
+		overlapping emails
+			change to lowercase
+			check against other emails
+		presence
+		same regex as javascript
+		presence
+
+	- server-side validations for password:
+		presence
+		length
+		contains 1 lowercase letter
+		contains 1 number
+
+	- server-side validations for password_confirmation:
+		presence
+		matches password
+
+	- create new user
+
+	- login user and redirect them to their homepage
+
+user presses 'sign up with facebook'
+
+	- look this up
+	account creation takes place
+	
+	- login user and redirect them to their homepage
