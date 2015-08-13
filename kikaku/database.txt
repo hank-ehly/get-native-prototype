@@ -1,0 +1,323 @@
+database design
+
+A good database design starts with a list of the data that you want to include in your database and what you want to be able to do with the database later on. 
+This can all be written in your own language, without any SQL. 
+In this stage you must try not to think in tables or columns, but just think: "What do I need to know?" 
+Don't take this too lightly, because if you find out later that you forgot something, usually you need to start all over. 
+Adding things to your database is mostly a lot of work. 
+
+"What do I need to know?"
+
+Number of videos a speaker speaks in
+List of all speaker's collocations
+list of all speaker's scripts
+topics that a speak has videos in
+Number of users who have added this video to their cue
+What languages a user is studying
+Number of videos in user cue
+video topics in user cue
+video speakers in user cue
+Number of collocations in original video script
+collocations in a particular video script
+Original collocations in a video script
+User-added collocations in a video script
+Study methods
+Description of each study method
+Number of study sessions a user has completed
+User active language_modules
+User progress stats
+users who have multiple common insterests / age / sex / location / language-match as other users
+Backup research of each study method
+FAQ docs
+study method
+
+
+---------------------
+
+The types of information that are saved in the database are called 'entities'. 
+These entities exist in four kinds --> people, things, events, and locations. 
+Everything you could want to put in a database fits into one of these categories. 
+If the information you want to include doesn't fit into these categories, 
+than it is probably not an entity but a property of an entity, an attribute.
+
+People
+	User
+	Speaker
+
+Things
+	videos
+	Topic (specific)
+	Cue
+	Category ("broad" // parent of topic)
+	Writing prompts
+	Writing answer
+	Language module
+	Collocation
+	video_scripts
+	Language
+	Progress Snapshot
+	
+Events
+
+Location
+
+------------------------
+
+Identifying Relationships
+
+The next step is to determine the relationships between the entities and to determine the cardinality of each relationship. The relationship is the connection between the entities, just like in the real world: what does one entity do with the other, how do they relate to each other? For example, customers buy products, products are sold to customers, a sale comprises products, a sale happens in a shop.
+The cardinality shows how much of one side of the relationship belongs to how much of the other side of the relationship. First, you need to state for each relationship, how much of one side belongs to exactly 1 of the other side. For example: How many customers belong to 1 sale?; How many sales belong to 1 customer?; How many sales take place in 1 shop?
+
+----------
+| example
+| --------
+| Customers --> Sales; 			1 customer can buy something several times
+| Sales 		--> Customers; 	1 sale is always made by 1 customer at the time
+| Customers --> Products; 	1 customer can buy multiple products
+| Products 	--> Customers; 	1 product can be purchased by multiple customers
+
+Customers --> Sales; 1 customer can buy something several times; 1:N.
+Customers <-- Sales; 1 sale is always made by 1 customer at the time; 1:1.
+becomes..
+Customers --> Sales; --> 1:N
+
+Shops --> Products; in 1 shop there are multiple products
+Products --> Shops; 1 product (type) can be sold in multiple shops
+becomes..
+Shops --> Products; --> M:N
+
+
+
+users 							--> speakers 						M:N 	--> 	speakers_users
+users 							--> categories 					M:N 	--> 	categories_users
+collocations 				--> video_scripts 			M:N 	--> 	collocations_video_scripts
+progress_snapshots 	--> collocations 				M:N 	--> 	collocations_progress_snapshots
+videos 							--> cues 								M:N 	--> 	cues_videos
+users 							--> language_modules 		1:N
+speakers 						--> videos 							1:N
+videos 							--> video_scripts 			1:N
+videos 							--> writing_prompts 		1:N
+topics 							--> videos 							1:N
+categories 					--> topics 							1:N
+progress_snapshots 	--> writing_answers 		1:N
+languages 					--> video_scripts 			1:N
+languages 					--> speakers 						1:N
+languages 					--> videos 							1:N
+languages 					--> language_modules 		1:N
+cues 								--> language_modules 		1:1
+language_modules 		--> progress_snapshots 	1:1
+
+
+
+
+
+
+----------------------------
+
+Identifying Attributes
+
+users
+	email string
+	hashed_password string
+	searchable tinyint
+	level tinyint
+	group (admin / user) tinyint
+	age_group tinyint
+	gender tinyint
+	location string
+	interests (JSON?) ** ??
+	site_language_preference tinyint
+	total_study_time mediumint
+
+languages
+	name string
+	code string
+
+categories
+	name string
+
+topics
+	name string
+
+writing_prompts
+	prompt text
+	example text
+
+writing_answers (?)
+
+language_modules
+
+cues
+
+progress_snapshots (?)
+
+videos
+	length mediumint
+	view_count int
+
+speakers
+	age_group tinyint
+	nickname string
+	description text
+	gender tinyint
+	location string
+
+video_scripts
+	content text
+	original (?) tinyint
+
+collocation
+	description text
+	quote string
+
+Number of collocations a user has studied
+
+
+---------------------
+
+db copy
+
+
+
+
+
+# SQLEditor export: Rails Migration
+# id columns are removed
+class NativeSchema < ActiveRecord::Migration 
+  def change
+    create_table :users do |t|
+      t.string :email
+      t.string :hashed_password
+      t.boolean :searchable
+      t.integer :level
+      t.integer :group
+      t.integer :age_group
+      t.boolean :gender
+      t.string :location
+      t.integer :site_language_preference
+      t.integer :total_study_time
+    end
+
+    create_table :collocations do |t|
+      t.text :description
+      t.string :quote
+    end
+
+    create_table :cues do |t|
+      t.references :language_modules
+    end
+    add_index(:cues, [:language_module_id], :name => :language_module_id_idx)
+
+    create_table :speakers do |t|
+      t.references :languages
+      t.integer :age_group
+      t.string :nickname
+      t.string :description
+      t.boolean :gender
+      t.string :location
+    end
+    add_index(:speakers, [:language_id], :name => :language_id_idx)
+
+    create_table :progress_snapshots do |t|
+      t.references :language_modules
+    end
+    add_index(:progress_snapshots, [:language_module_id], :name => :language_module_id_idx)
+
+    create_table :collocations_video_scripts do |t|
+      t.references :video_scripts
+      t.references :collocations
+    end
+    add_index(:collocations_video_scripts, [:video_script_id], :name => :video_script_id_idx)
+    add_index(:collocations_video_scripts, [:collocation_id], :name => :collocation_id_idx)
+
+    create_table :writing_answers do |t|
+      t.references :progress_snapshots
+    end
+    add_index(:writing_answers, [:progress_snapshot_id], :name => :progress_snapshot_id_idx)
+
+    create_table :videos do |t|
+      t.references :speakers
+      t.references :topics
+      t.references :languages
+      t.integer :length
+      t.integer :view_count
+      t.string :code
+    end
+    add_index(:videos, [:speaker_id], :name => :speaker_id_idx)
+    add_index(:videos, [:topic_id], :name => :topic_id_idx)
+    add_index(:videos, [:language_id], :name => :language_id_idx)
+
+    create_table :categories do |t|
+      t.string :name
+    end
+
+    create_table :languages do |t|
+      t.string :name
+      t.string :code
+    end
+
+    // 省いてもいいかも
+    create_table :speakers_users do |t|
+      t.references :users
+      t.references :speakers
+    end
+    add_index(:speakers_users, [:user_id], :name => :user_id_idx)
+    add_index(:speakers_users, [:speaker_id], :name => :speaker_id_idx)
+
+    create_table :topics do |t|
+      t.references :categories
+      t.string :name
+    end
+    add_index(:topics, [:category_id], :name => :category_id_idx)
+
+    create_table :writing_prompts do |t|
+      t.references :videos
+      t.text :prompt
+      t.string :example
+    end
+    add_index(:writing_prompts, [:video_id], :name => :video_id_idx)
+
+    create_table :video_scripts do |t|
+      t.references :videos
+      t.references :languages
+      t.string :content
+      t.boolean :original
+    end
+    add_index(:video_scripts, [:video_id], :name => :video_id_idx)
+    add_index(:video_scripts, [:language_id], :name => :language_id_idx)
+
+    create_table :language_modules do |t|
+      t.references :progress_snapshots
+      t.references :users
+      t.references :cues
+      t.references :languages
+    end
+    add_index(:language_modules, [:progress_snapshot_id], :name => :progress_snapshot_id_idx)
+    add_index(:language_modules, [:user_id], :name => :user_id_idx)
+    add_index(:language_modules, [:cue_id], :name => :cue_id_idx)
+    add_index(:language_modules, [:language_id], :name => :language_id_idx)
+
+    create_table :cues_videos do |t|
+      t.references :cues
+      t.references :videos
+    end
+    add_index(:cues_videos, [:cue_id], :name => :cue_id_idx)
+    add_index(:cues_videos, [:video_id], :name => :video_id_idx)
+
+    create_table :categories_users do |t|
+      t.references :categories
+      t.references :users
+    end
+    add_index(:categories_users, [:category_id], :name => :category_id_idx)
+    add_index(:categories_users, [:user_id], :name => :user_id_idx)
+
+    create_table :collocations_progress_snapshots do |t|
+      t.references :collocations
+      t.references :progress_snapshots
+    end
+    add_index(:collocations_progress_snapshots, [:collocation_id], :name => :collocation_id_idx)
+    add_index(:collocations_progress_snapshots, [:progress_snapshot_id], :name => :progress_snapshot_id_idx)
+
+  end
+
+end

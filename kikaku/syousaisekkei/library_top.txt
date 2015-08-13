@@ -1,0 +1,83 @@
+controller 	libraryTopCtrl.js
+view 				libraryTop.html
+
+page load
+	- determine language module, and send GET request for static JSON file with search data:
+		videos
+		video scripts (unless collocation search turns out to be too slow)
+		topics
+		categories
+		speakers
+
+user enters text into search input field
+
+	- apply angular filter to search input field,
+		connect with received JSON data for automatic view updates
+	- ng-repeat element for each returned video
+
+user selects category from dropdown searchfield
+
+	- append category filter to ng-repeat
+
+user clicks 'topic'
+
+	- add alphabetically-by-topic-ascending filter to ng-repeat
+
+	user clicks 'topic' again
+
+		- alphabetically-by-topic-ascending --> alphabetically-by-topic-descending
+
+user clicks 'created'
+	
+	- add created_at-ascending filter to ng-repeat
+
+	user clicks 'created' again
+
+		- created_at-ascending --> created_at-descending
+
+user clicks 'speaker'
+
+	- add alphabetically-by-speaker-ascending filter to ng-repeat
+
+	user clicks 'speaker' again
+
+		- alphabetically-by-speaker-ascending --> alphabetically-by-speaker-descending
+
+user clicks 'length'
+
+	- add length-ascending filter to ng-repeat
+
+		user clicks 'created' again
+
+			- length-ascending --> length-descending
+
+user clicks video item
+
+	- redirect to library_detail
+
+based on number of search results, pagination dots are added / subtracted
+
+	- number of search results (divided by) number of videos per page (equals) number of dots
+
+user clicks (>) or (<)
+
+	next / previous set of videos are shown
+	next / previous pagination dot hilights
+
+	----- notes -----
+
+	- need static JSON file for search data
+		like: 
+
+		{
+			speakers: {
+			...
+			...
+			}
+			videos: {
+			...
+			...
+			}
+		}
+
+		by making it 1 file, you only need to do 1 GET request

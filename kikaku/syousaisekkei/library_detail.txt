@@ -1,0 +1,28 @@
+controller 	libraryDetailCtrl.js
+view 				libraryDetail.html
+
+video is shown
+
+	- retrieve video_id
+
+user clicks 'add to cue'
+
+	- currentUser.cue.cue_videos << current_video_id
+	- display success message on success / error message on error
+
+video scripts are shown in selectable tab sections
+
+	- retrieve current video video scripts
+	- display tababble video scripts module (good place to try using a directive)..
+		(selected video script tab is highlighted)
+		(a little orange circle on a tab denotes that video script as the same language as the video)
+
+collocations only in original video script are underlined
+
+	- retrieve collocations for current original video script
+		find the instance of the collocation in the video script and underline it
+
+user clicks on a collocation
+
+	- determine the clicked collocation and set footer title to it.
+	- retrieve the clicked collocation's description and set footer body to it

@@ -1,0 +1,25 @@
+controller 	studyListeningCtrl.js
+view 				studyListening.html
+
+page load 
+
+	- populate page fields (video / scripts) with received study-video data
+	- progress bar is display at 2/5
+	- countdown time is shown next to the 2/5 on the progress bar
+	- countdown time begins countdown
+	- video autoplays
+	- video autoloops
+
+user presses 'pause'
+
+	- video stops
+	- pause countdown timer and make countdown time 'blink'
+
+native-video script for current video is shown on right
+
+	- display native-only video script on right
+
+time runs out
+
+	- transition message appears 'proceeding to next section' 5, 4, 3, 2, 1
+	- after 5 or so second timeout finishes, page redirects to next section

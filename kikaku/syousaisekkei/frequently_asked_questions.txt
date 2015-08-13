@@ -1,0 +1,6 @@
+controller 	faqsCtrl.js
+view 				faqs.html
+
+faqs are grouped by section with h3	title and expandable FAQs below
+
+	display static faqs

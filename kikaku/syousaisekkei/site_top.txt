@@ -1,0 +1,9 @@
+controller 	siteTopCtrl.js
+view 				siteTop.html
+
+(for time being)
+user enters email / password
+	user presses 'login'
+		user credentials validated server-side
+		user redirected to home page
+	most recent videos are displayed

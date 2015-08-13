@@ -1,0 +1,408 @@
+• identification of ways of the product’s application (?)
+	-> use to study
+	-> able to quickly log in and study
+	-> able to sort through lots of video information
+		• able to quickly find videos in big library
+
+• identification of the general target audience’s (TA) attributes
+	-> learning a language
+	-> want to focus on high-level learning
+	-> probably 20s ~ 30s
+	-> women > men
+
+• identification of usability goals of the TA
+	-> use to study
+	-> able to quickly log in and study
+	-> able to sort through lots of video information
+		• able to quickly find videos in big library
+
+• identification of users’ roles vs. goals, ranking of goals’ importance for users
+	Goals:
+
+
+fumie
+	- 20s
+	- girl
+	- studying english
+	- teacher
+	- 'hip'
+	- wants 'near native' like ability
+
+anthony
+	- 40s
+	- man
+	- studying japanese
+	- public relations guy
+	- 'cool'
+	- wants that 'final push'
+
+
+--------------
+
+Then, you will need to make a list of goals your product users are 
+interested in and to describe the environment they find themselves in. 
+
+	- get 'native-like' proficiency in a language
+	- beef up your speaking skills
+	- beef up your pronunciation
+	- seem 'native' & 'natural'
+	- a place to study
+	- a place to study and just 'get it done'
+	- a place that takes care of the back-end and gives you recommended study material & a way of quickly studying it
+
+-----------------
+
+As soon as the target audience profile has been built and user goals
+has been defined, you are to draw a list of usage scenarios, 
+where each scenario is a sequence of actions (tasks) performed 
+by users to achieve their specified objectives.
+
+
+
+study
+add video to your cue
+change your password
+send an inquiry
+search the FAQs
+find videos
+search for a video
+register
+fill out a registration form
+fill out the beginning questionairre
+switch languages
+
+add video to your cue
+	login
+	top > 
+
+
+study
+	login
+	top > click 'study'
+	choose your preferences
+	click 'ok go'
+
+find a video
+	top > click 'library'
+	pageinate || fill out 'keyword' search box
+	'google' feeling (MAYBE TOP SHOULD BE THIS SEARCH AREA)
+		1 place to search for fucking everything
+			'im feeling lucky' video search
+
+
+
+
+
+--------------------------
+
+list all necessary pages
+
+- login
+- registration
+- search videos
+- show video
+- study begin page
+- listening
+- shadowing
+- speaking
+- writing
+- home (includes below)
+	- cue tab
+	- collocations tab
+	- progress tab
+- account (module)
+	- view / edit personal info page
+	- interests page
+- faqs
+- contact us
+
+
+
+-------------
+
+go back through the two pages and see if there's anything needed *fundamentally*
+
+-------------
+
+
+design the top page ( the page unregistered users see first )
+
+- start with あるある
+	- i spent all that time learning japanese and now I have no one to talk to
+	- Im so tired of studying flashcards
+	- i don't just want to learn, i want to 'sound native'
+	- i want to be mistaken for a native speaker
+	- i want to become as proficient at japanese as a japanese person
+	- i can speak japanese pretty well, but i dont know a good way to continue progressing
+	- i wanna make my speech similar to a native speaker, NOT like a foreiger 
+	- I'm super motivated to learn, but I don't know where or how to continue learning
+	- I want to start using native-like speech instinctively / i wanna develop a 'sense' for native-like speech
+	- i want to get native-like pronunciation
+	- i don't have time to 'sit down and study'
+	- I wanna analyze the words and phrases native speaker use, but i can't just ask people to repeat things all the time
+	- I want to see how native speakers actually use certain words and phrases
+	- I want to be able to understand everything a native speaker can understand
+
+- solve problem in front of people
+
+-----------------------
+
+write what each page should do
+think model/controller relations
+
+	-> user switches languages
+	check if user already has language_module of language-to-be-switched-to
+	if not, language module gets added to user's language modules
+	contents are switched, but the site language stays the same
+
+• site top
+	
+	user enters email / password
+	user presses 'login'
+		user credentials validated server-side
+		user redirected to home page
+	most recent videos are displayed
+
+• registration page
+
+	user enters following info
+		email
+		password
+		password conf
+		either checks 'remember me' or not
+	angular validates the form data quickly
+	angular shows password strength meter upon entering password
+	user presses 'register' button
+		server validates user data (ex. no overlapping emails)
+		user is saved to database
+		page redirects to user home
+	user presses 'sign up with facebook'
+		account creation takes place
+		page redirects to user home
+
+• library top
+
+	user enters text into search input field
+		program scans full list of (current lang) videos matching text
+		results are displayed in the below table section
+	user selects category from dropdown searchfield
+		program scans full list of (current lang) videos matching category
+		results are displayed in the below table section
+	user clicks 'topic'
+		videos currently being showed are ordered alphabetically by topic
+		user clicks 'topic' again
+			topics currently being showed are ordered reverse-alphabetically
+	user clicks 'created'
+		videos currently being showed are ordered by date (newest first)
+		user clicks 'created' again
+			videos currently being showed are ordered by date (oldest first)
+	user clicks 'speaker'
+		videos currently being showed are ordered alphabetically by speaker name
+		user clicks 'speaker' again
+			videos currently being showed are ordered reverse-alphabetically by speaker name
+	user clicks 'length'
+		videos currently being showed are ordered by length (longest first)
+		user clicks 'length' again
+			videos currently being showed are ordered by length (shortest first)
+	user clicks video item
+		page redirects to selected video detail page
+	based on number of search results, pagination dots are added / subtracted
+	user clicks (>) or (<)
+		next / previous set of videos are shown
+		next / previous pagination dot hilights
+
+• library detail
+
+	video is shown
+	user plays the video / stops the video / changes the volume of the video / skips position in the video
+	user clicks 'add to cue'
+		current video is added to user cue
+	video scripts are shown in selectable tab sections
+	current video script tab is highlighted
+	collocations only in original video script are underlined
+	a little orange circle on a tab denotes that video script as the same language as the video
+	user clicks on a collocation
+		the collocation footer title becomes the collocation clicked
+		the collocation footer body becomes the description / notes of the collocation clicked
+
+• study top
+
+	user selects integer value to user as total study time
+	user selects 'use recommended video' 
+		start button glows (signaling you can press it now)
+	user clicks 'select video from playlist'
+		a library-like list of videos is displayed
+		user clicks a video (and it gets highlighted)
+		the start button glows (signaling you can press it now)
+	user clicks 'start'
+		video is picked from playlist based on SRS
+		user time is calculated for each section study time
+		page is redirected to listening
+		progress meter is moved to 2/5
+
+• study listening
+	
+	video is shown with controls
+	progress bar is shown to be on 2/5
+	countdown time is shown next to the 2/5 on the progress bar
+	video plays automatically
+	video loops automatically
+	user presses 'pause'
+		video stops
+		countdown timer stops and starts flashing
+	native-video script for current video is shown on right
+	time runs out
+		5, 4, 3, 2, 1 countdown shows 'proceeding to @next section@'
+		after countdown finishes, page redirects to next section
+
+• study shadowing
+
+	video is shown with controls
+	progress bar is shown to be on 3/5
+	countdown time is shown next to the 3/5 on the progress bar
+	video plays automatically
+	video loops automatically
+	user presses 'pause'
+		video stops
+		countdown timer stops and starts flashing
+	time runs out
+		5, 4, 3, 2, 1 countdown shows 'proceeding to @next section@'
+		after countdown finishes, page redirects to next section
+
+• study speaking
+
+	progress bar is shown to be on 4/5
+	countdown time is shown next to the 4/5 on the progress bar
+	original video script is show on left
+	foreign tabbable video scripts are shown on right
+	first current video collocation shown in header box
+	first currnet video collocation description / notes shown in header box
+	initial 'complete 1/5' shown beside collocation
+	first current video collocation is underlined in origianl video script box
+	user clicks 'i did it!'
+		1) 'completed 1/5' --> 'completed 2/5'
+		2) first collocation fades out and is replaced by second collcoation
+		3) --> same with descriptino
+		4) in original script box, first collocation is no longer underlined
+		5) in original script box, second collocation becomes underlined
+	user clicks 'skip'
+		same as 'i did it!' without step (1)
+	user completes bonus collocations
+		+N is shown next to 5/5 and updated accordingly
+	time runs out
+		5, 4, 3, 2, 1 countdown shows 'proceeding to @next section@'
+		after countdown finishes, page redirects to next section
+
+• study writing
+
+	progress bar is shown to be on 5/5
+	countdown time is shown next to the 5/5 on the progress bar
+	video writing prompt is shown above a <textarea>
+	user types in <textarea>
+		with each keydown event, 'word count' is updated
+	if user has 'last time' stats, 'last time: ...' word count is shown beneath 'word count'
+	example answer is shown beneath <textarea>
+	user clicks 'finish'
+		user answer is saved to their 'writing_answers'
+	page is redirected to the user's home screen
+	time runs out
+		screen darkens
+		'wrap it up' option sends user to home screen
+
+• home
+
+	user cue videos are shown in left column
+	user types in search field
+		keywords in user cue video (topic / speaker / etc..) filter applied and results displayed in same column
+	selected video shown in right column
+	video scripts are shown in selectable tab sections
+	current video script tab is highlighted
+	collocations only in original video script are underlined
+	a little orange circle on a tab denotes that video script as the same language as the video
+	user clicks on a collocation
+		the collocation footer title becomes the collocation clicked
+		the collocation footer body becomes the description / notes of the collocation clicked
+
+• contact us
+
+	user selects a subject
+	if user not logged in, prompted to type email address
+	user types message
+	angular validation applied to input fields
+	user presses 'send message'
+		mail sent to me
+
+• frequently asked questions
+
+	faqs are grouped by section with h3	title and expandable FAQs below
+
+• user account
+
+	user enters email, password, password-confirmation, new password
+		angular validations
+	user clicks 'update'
+		server-side validations
+		user password / email is updated in DB
+	user clicks 'my interests'
+		page redirects to 'my interest'
+
+
+-------------------
+still gotta consider {
+	where to use directives / services / etc..
+	site language
+	language module situation
+}
+
+
+-------------------
+project file structure
+
+
+
+app/
+----- shared/   // acts as reusable components or partials of our site
+---------- sidebar/
+--------------- sidebarDirective.js
+--------------- sidebarView.html
+---------- article/
+--------------- articleDirective.js
+--------------- articleView.html
+----- components/   // each component is treated as a mini Angular app
+---------- home/
+--------------- homeController.js
+--------------- homeService.js
+--------------- homeView.html
+---------- blog/
+--------------- blogController.js
+--------------- blogService.js
+--------------- blogView.html
+----- app.module.js
+----- app.routes.js
+assets/
+----- img/      // Images and icons for your app
+----- css/      // All styles and style related files (SCSS or LESS files)
+----- js/       // JavaScript files written for your app that are not for angular
+----- libs/     // Third-party libraries such as jQuery, Moment, Underscore, etc.
+index.html
+
+
+-----------------
+
+when to use...
+
+
+
+Service
+--
+Whenever we want to share data across domains.
+
+
+Controller
+--
+Controllers should be used purely to wire up services, dependencies and other objects, and assign them to the view via scope. They’re also an excellent choice when needing to handle complex business logic in your views. 
+
+Directive
+--
+They are a powerful tool for working with and modifying the DOM.
+Angular defines directives as chunks of code you use for DOM manipulation.
