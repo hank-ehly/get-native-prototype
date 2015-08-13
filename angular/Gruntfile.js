@@ -34,7 +34,10 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/components/{,*/}*.js','<%= yeoman.app %>/shared/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/*.js',
+                '<%= yeoman.app %>/components/{,*/}*.js',
+                '<%= yeoman.app %>/shared/{,*/}*.js',
+                '<%= yeoman.app %>/config/*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -57,6 +60,7 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.app %>/**/*.html',
           '.tmp/styles/{,*/}*.css',
           'assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -237,7 +241,7 @@ module.exports = function (grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
+          '<%= yeoman.dist %>/js/{,*/}*.js',
           '<%= yeoman.dist %>/styles/{,*/}*.css',
           '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*'
