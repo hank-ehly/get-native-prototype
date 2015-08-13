@@ -67,3 +67,4 @@ Temporary Items
 angular/bower_components
 angular/node_modules
 angular/test
+angular/.tmp/
