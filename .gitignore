@@ -64,3 +64,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+angular/bower_components
+angular/node_modules
+angular/test
