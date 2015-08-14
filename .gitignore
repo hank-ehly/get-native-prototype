@@ -68,3 +68,4 @@ angular/bower_components
 angular/node_modules
 angular/test
 angular/.tmp/
+angular/.sass-cache/
