@@ -60,6 +60,7 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
+        '<%= yeoman.app %>/shared/{,*/}*.html',
           '<%= yeoman.app %>/**/*.html',
           '.tmp/styles/{,*/}*.css',
           'assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -203,7 +204,8 @@ module.exports = function (grunt) {
           }
       },
       sass: {
-        src: ['assets/styles/{,*/}*.{scss,sass}'],
+        // src: ['assets/styles/{,*/}*.{scss,sass}'],
+        src: ['assets/styles/style.scss'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },

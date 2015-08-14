@@ -1,3 +1,5 @@
-body {
-	background: green;
-}
+@import "compass";
+
+@import "variables";
+@import "base";
+@import "gnpNavbarTemplateStyle";

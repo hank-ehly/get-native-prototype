@@ -8,7 +8,10 @@
       'ngResource',
       'ngRoute',
       'ngSanitize',
-      'ngTouch'
+      'ngTouch',
+      'ui.router',
+      'ng-token-auth',
+      'flash'
     ]);
 
 })();
