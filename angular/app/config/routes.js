@@ -31,7 +31,8 @@
                     'studyTop',
                     'studyWriting',
                     'userAccount',
-                    'userHome'
+                    'userHome',
+                    'userInterests'
                   ];
 
   for (var i = 0; i < components.length; i++) {
@@ -115,6 +116,11 @@
           url: '/userHome',
           templateUrl: routes.userHome[0],
           controller: routes.userHome[1]
+        })
+        .state('userInterests', {
+          url: '/userInterests',
+          templateUrl: routes.userInterests[0],
+          controller: routes.userInterests[1]
         })
 
       // .state('comments', {
