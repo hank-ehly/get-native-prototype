@@ -1,1 +1,100 @@
-{{ test }}
+<!-- search bar -->
+<div class="row">
+	<div class="input-group">
+	
+		<!-- search input -->
+	  <input 	type="text" 
+	  				class="form-control"
+	  				placeholder="Search.."
+	  				ng-model="search"
+	  				>
+	
+		<!-- category button group -->
+	  <div class="input-group-btn">
+	
+			<!-- category button -->
+	    <button type="button" 
+	    				class="btn btn-default dropdown-toggle" 
+	    				data-toggle="dropdown" 
+	    				aria-haspopup="true" 
+	    				aria-expanded="false">Category <span class="caret"></span>
+	    				</button>
+	
+			<!-- category dropdown options -->
+	    <ul class="dropdown-menu dropdown-menu-right">
+	      <li ng-repeat="category in categories"><a href="">{{ category }}</a></li>
+	    </ul>
+	
+	  </div> <!-- div.input-group-btn" -->
+	</div> <!-- div.input-group -->
+</div> <!-- div.row -->
+
+<!-- search results -->
+<div class="row">
+	<table class="table">
+	
+		<!-- 
+		clickable table headers
+		by clicking a header, 
+		you reorder the search results
+		-->
+		<thead>
+
+			<th ng-click="order('isPlaylistVideo')">
+				Playlist
+				<span ng-show="predicate === 'isPlaylistVideo'">
+					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === false"></span>
+					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === true"></span>
+				</span>
+			</th>
+
+			<th>Preview</th>
+
+			<th ng-click="order('topic')">
+				Topic
+				<span ng-show="predicate === 'topic'">
+					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
+					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
+				</span>
+			</th>
+
+			<th ng-click="order('created')">
+				Created
+				<span ng-show="predicate === 'created'">
+					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
+					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
+				</span>
+			</th>
+
+			<th ng-click="order('speaker')">
+				Speaker
+				<span ng-show="predicate === 'speaker'">
+					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
+					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
+				</span>
+			</th>
+
+			<th ng-click="order('length')">
+				Length
+				<span ng-show="predicate === 'length'">
+					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
+					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
+				</span>
+			</th>
+
+		</thead>
+	
+		<tr ng-repeat="video in searchResults | filter:search | orderBy:predicate:reverse">
+
+			<td><span class="glyphicon glyphicon-ok" ng-show="video.isPlaylistVideo"></span></td>
+			<td><img ng-src="components/libraryTop/{{ video.preview }}" alt="{{ video.preview }}"></td>
+			<td>{{ video.topic }}</td>
+			<td>{{ video.created | date }}</td>
+			<td>{{ video.speaker }}</td>
+			<td>{{ video.length | inMinutes }}</td>
+
+		</tr>
+	
+	</table>
+
+</div> <!-- div.row -->

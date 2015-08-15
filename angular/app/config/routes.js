@@ -11,9 +11,9 @@
   */
   
 
-  var components    = new Array(),
-      routes        = new Object(),
-      componentsDir = new String();
+  var components    = [],
+      routes        = {},
+      componentsDir = '';
 
   componentsDir = '../components/';
 
@@ -42,7 +42,7 @@
         componentsDir + components[i] + '/' + components[i] + '.html',
         components[i] + 'Ctrl'
       ]
-    })
+    });
 
   };
 
