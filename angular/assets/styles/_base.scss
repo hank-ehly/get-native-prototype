@@ -1,14 +1,22 @@
+// default bg-color
 body {
   background: $offWhite;
 }
 
+// default container bg-color
 div.container {
   background: #ffffff;
 }
 
+// angular-bootstrap required styles
 .nav,
 .pagination,
 .carousel,
 .panel-title a {
   cursor: pointer;
+}
+
+// remove border-radius on globalNavbar
+nav.navbar {
+  border-radius: 0;
 }
