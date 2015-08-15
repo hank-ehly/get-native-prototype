@@ -1,0 +1,16 @@
+global-footer {
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  padding-top: 3px;
+  background: $darkBlue;
+
+  div.container 								{ background: transparent; }
+  span#globalFooterCopyright, a { color: #fff; }
+  a#contactUsLink 							{ padding-right: 1em; }
+	span#globalFooterCopyright 		{ float: left; }
+  ul#globalFooterNavigation 		{ @include horizontal-list; float: right; }
+
+}

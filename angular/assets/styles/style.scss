@@ -1,5 +1,10 @@
+// libraries
 @import "compass";
 
+// base styles
 @import "variables";
 @import "base";
-@import "sharedNavbarTemplateStyle";
+
+// shared
+@import "globalNavbarTemplateStyle";
+@import "globalFooterTemplateStyle";
