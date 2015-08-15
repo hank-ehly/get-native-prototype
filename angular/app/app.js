@@ -11,7 +11,8 @@
       'ngTouch',
       'ui.router',
       'ng-token-auth',
-      'flash'
+      'flash',
+      'ui.bootstrap'
     ]);
 
 })();

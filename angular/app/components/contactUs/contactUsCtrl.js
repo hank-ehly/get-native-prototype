@@ -3,7 +3,10 @@
 
   var contactUsCtrl = function($scope) {
 
-  	$scope.test = 'foocontactUs';
+  	$scope.emails = {
+  		press: 'press.inquiries@getnative.com',
+  		business: 'business.inquiries@getnative.com'
+  	}
 
   };
 

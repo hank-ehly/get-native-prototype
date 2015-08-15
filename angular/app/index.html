@@ -20,8 +20,8 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-  <shared-navbar></shared-navbar>
-  <div ui-view></div>
+  <global-navbar></global-navbar>
+  <div ui-view class="container"></div>
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
   <script>
   ! function(A, n, g, u, l, a, r) {
@@ -49,13 +49,16 @@
   <script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-flash-alert/dist/angular-flash.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="app.js"></script>
   <script src="config/routes.js"></script>
-  <script src="shared/sharedNavbarDirective.js"></script>
+  <script src="shared/globalNavbar/globalNavbarDirective.js"></script>
+  <script src="shared/staticContentNavigationPanel/staticContentNavigationPanelDirective.js"></script>
   <script src="components/contactUs/contactUsCtrl.js"></script>
+  <script src="components/contactUs/contactUsFormDirective.js"></script>
   <script src="components/faqs/faqsCtrl.js"></script>
   <script src="components/libraryDetail/libraryDetailCtrl.js"></script>
   <script src="components/libraryTop/libraryTopCtrl.js"></script>
