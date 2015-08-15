@@ -1,13 +1,35 @@
 (function() {
   'use strict';
 
-  var faqsCtrl = function($scope) {
+  var faqsCtrl = function($scope, $http) {
 
-  	$scope.test = 'foofaqs';
+    /*
+     *
+     * retrieve faqs.json and send to DOM
+     *
+     */
 
+    function getFaqsJsonSuccess(res) {
+      $scope.faqData = res.data;
+    }
+
+    function getFaqsJsonFailure(res) {
+      console.log('getFaqsJsonFailure', res);
+    }
+
+    $http.get('components/faqs/faqs.json').then(getFaqsJsonSuccess, getFaqsJsonFailure);
+
+    /*
+    *
+    * bootstrap
+    *
+    */
+
+    $scope.isCollapsed = true;
+    
   };
 
-  faqsCtrl.$inject = ['$scope'];
+  faqsCtrl.$inject = ['$scope', '$http'];
 
   angular
     .module('angularApp')

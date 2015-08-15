@@ -1,0 +1,80 @@
+{
+  "section1": {
+    "title": "Section 1",
+    "faqs": {
+      "faq1": {
+        "question": "faq 1 question 1",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      },
+      "faq2": {
+        "question": "faq 2 question 2",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      },
+      "faq3": {
+        "question": "faq 3 question 3",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      }
+    }
+  },
+  "section2": {
+    "title": "Section 2",
+    "faqs": {
+      "faq1": {
+        "question": "faq 1 question 1",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      }
+    }
+  },
+  "section3": {
+    "title": "Section 3",
+    "faqs": {
+      "faq1": {
+        "question": "faq 1 question 1",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      },
+      "faq2": {
+        "question": "faq 2 question 2",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      }
+    }
+  },
+  "section4": {
+    "title": "Section 4",
+    "faqs": {
+      "faq1": {
+        "question": "faq 1 question 1",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      },
+      "faq2": {
+        "question": "faq 2 question 2",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      }
+    }
+  },
+  "section5": {
+    "title": "Section 5",
+    "faqs": {
+      "faq1": {
+        "question": "faq 1 question 1",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      }
+    }
+  },
+  "section6": {
+    "title": "Section 6",
+    "faqs": {
+      "faq1": {
+        "question": "faq 1 question 1",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      },
+      "faq2": {
+        "question": "faq 2 question 2",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      },
+      "faq3": {
+        "question": "faq 3 question 3",
+        "answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, nobis, repellat ab nemo suscipit quibusdam fuga adipisci veritatis vero soluta hic omnis unde ipsa eius iure, delectus animi ratione, at!"
+      }
+    }
+  }
+}
