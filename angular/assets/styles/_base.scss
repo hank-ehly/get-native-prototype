@@ -5,3 +5,10 @@ body {
 div.container {
   background: #ffffff;
 }
+
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
+}
