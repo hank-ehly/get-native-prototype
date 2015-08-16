@@ -8,7 +8,7 @@
   	// retrieve JSON search data
   	function getFakeSearchResultsSuccess(res) { $scope.searchResults = res.data; }
   	function getFakeSearchResultsFailure(res) { console.log('Error', res); }
-  	$http.get('components/libraryTop/fakeSearchResults.json').then(getFakeSearchResultsSuccess, getFakeSearchResultsFailure);
+  	$http.get('shared/fakeVideoData.json').then(getFakeSearchResultsSuccess, getFakeSearchResultsFailure);
 
 
   	// ordering search results on <th ng-click>
@@ -18,6 +18,8 @@
         $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
         $scope.predicate = predicate;
     };
+
+    // show more pagination
 
   };
 
