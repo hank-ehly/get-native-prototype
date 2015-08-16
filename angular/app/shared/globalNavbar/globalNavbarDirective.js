@@ -16,9 +16,25 @@
       // replace: true,
       // transclude: true,
       // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-      // link: function($scope, iElm, iAttrs, controller) {
+      link: function($scope) {
 
-      // }
+        // select current language
+        $scope.languages        = ['Japanese', 'English'];
+        $scope.selectedLanguage = 'Japanese';
+        $scope.selectLanguage   = function(language) { $scope.selectedLanguage = language; };
+
+        // define main bar items
+        $scope.barItems = [
+          { title: 'Home',    state: 'userHome' },
+          { title: 'Library', state: 'libraryTop' },
+          { title: 'Study',   state: 'studyTop' }
+        ];
+
+        // set active bar item on ng-click
+        $scope.isActive = function(i) { return $scope.active === i; };
+        $scope.selectBarItem = function(i) { $scope.active = i; };
+
+      }
     };
   };
 

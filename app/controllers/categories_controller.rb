@@ -5,6 +5,11 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+
+    render json: {
+      categories: @categories.to_json
+    }
+
   end
 
   # GET /categories/1

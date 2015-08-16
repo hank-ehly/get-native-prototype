@@ -5,11 +5,22 @@ class VideosController < ApplicationController
   # GET /videos.json
   def index
     @videos = Video.all
+
+    render json: {
+      videos: @videos.to_json(include: [:category, :topic, :speaker])
+    }
+
   end
 
   # GET /videos/1
   # GET /videos/1.json
   def show
+
+    render json: {
+      video: @video.to_json(include: [:topic, :speaker]),
+      video_scripts: VideoScript.where(video_id: @video.id).to_json(include: [:language])
+    }
+
   end
 
   # GET /videos/new
@@ -69,6 +80,6 @@ class VideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def video_params
-      params.require(:video).permit(:speaker_id, :topic_id, :language_id, :code)
+      params.require(:video).permit(:speaker_id, :topic_id, :language_id, :category_id, :code)
     end
 end

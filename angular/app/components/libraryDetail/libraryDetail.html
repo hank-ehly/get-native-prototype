@@ -1,4 +1,4 @@
-<h1>{{ video.speaker }} <small>{{ video.topic }}</small></h1>
+<h1>{{ video.speaker.name }} <small>{{ video.topic.name }}</small></h1>
 
 <div class="col-sm-6">
 
@@ -19,7 +19,7 @@
     <tab 	ng-repeat="tab in tabs" 
     			heading="{{ tab.title }}" 
     			active="tab.active">
-    			{{tab.content}}
+    			<span ng-bind-html="tab.content"></span>
     			</tab>
 
     <tab heading="N/A"></tab>

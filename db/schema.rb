@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150816024500) do
+ActiveRecord::Schema.define(version: 20150816102402) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -22,17 +22,12 @@ ActiveRecord::Schema.define(version: 20150816024500) do
   create_table "collocations", force: :cascade do |t|
     t.text     "description"
     t.string   "quote"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "video_script_id"
   end
 
-  create_table "collocations_video_scripts", id: false, force: :cascade do |t|
-    t.integer "collocation_id",  null: false
-    t.integer "video_script_id", null: false
-  end
-
-  add_index "collocations_video_scripts", ["collocation_id", "video_script_id"], name: "idx_collocation_video_script"
-  add_index "collocations_video_scripts", ["video_script_id", "collocation_id"], name: "idx_video_script_collocation"
+  add_index "collocations", ["video_script_id"], name: "index_collocations_on_video_script_id"
 
   create_table "cues", force: :cascade do |t|
     t.integer  "language_module_id"
@@ -121,8 +116,11 @@ ActiveRecord::Schema.define(version: 20150816024500) do
     t.string   "code"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "length"
+    t.integer  "category_id"
   end
 
+  add_index "videos", ["category_id"], name: "index_videos_on_category_id"
   add_index "videos", ["language_id"], name: "index_videos_on_language_id"
   add_index "videos", ["speaker_id"], name: "index_videos_on_speaker_id"
   add_index "videos", ["topic_id"], name: "index_videos_on_topic_id"
