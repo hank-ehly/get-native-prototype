@@ -13,6 +13,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'annotate'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'devise_token_auth'
+gem 'devise'
+gem 'omniauth', '~> 1.2.2'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
