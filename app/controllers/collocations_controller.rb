@@ -4,7 +4,12 @@ class CollocationsController < ApplicationController
   # GET /collocations
   # GET /collocations.json
   def index
-    @collocations = Collocation.all
+    @collocations = Collocation.where(video_script_id: params[:video_script_id])
+
+    render json: {
+      collocations: @collocations.to_json
+    }
+
   end
 
   # GET /collocations/1
@@ -69,6 +74,6 @@ class CollocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collocation_params
-      params.require(:collocation).permit(:description, :quote)
+      params.require(:collocation).permit(:description, :quote, :video_script_id)
     end
 end

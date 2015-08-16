@@ -5,7 +5,7 @@
 		<!-- search input -->
 	  <input 	type="text" 
 	  				class="form-control"
-	  				placeholder="Search.."
+	  				placeholder="Search Categories, Topics, Speakers.."
 	  				ng-model="search"
 	  				>
 	
@@ -17,14 +17,23 @@
 	    				class="btn btn-default dropdown-toggle" 
 	    				data-toggle="dropdown" 
 	    				aria-haspopup="true" 
-	    				aria-expanded="false">Category <span class="caret"></span>
+	    				aria-expanded="false">{{ selectedCategory || "All Categories" }} <span class="caret"></span>
 	    				</button>
 	
 			<!-- category dropdown options -->
 	    <ul class="dropdown-menu dropdown-menu-right">
-	      <li ng-repeat="category in categories"><a href="">{{ category }}</a></li>
+
+	    	<!-- reset all categories -->
+				<li><a href="" ng-click="selectedCategory = ''">All Categories</a></li>
+
+				<li role="separator" class="divider"></li>
+
+				<!-- click to add category filter -->
+	      <li ng-repeat="category in categories"><a href="" ng-click="selectCategory($index)">{{ category.name }}</a></li>
+
 	    </ul>
 	
+
 	  </div> <!-- div.input-group-btn" -->
 	</div> <!-- div.input-group -->
 </div> <!-- div.row -->
@@ -84,15 +93,17 @@
 
 		</thead>
 	
-		<tr ng-repeat="video in searchResults | filter:search | orderBy:predicate:reverse"
+		<tr ng-repeat="video in filteredResults = (searchResults | filter:search | filter:selectedCategory | orderBy:predicate:reverse)"
 				ui-sref="libraryDetail({videoId: video.id})"
 				>
 
+			<div ng-show="!filteredResults.length">no results</div>
+
 			<td><span class="glyphicon glyphicon-ok" ng-show="video.isPlaylistVideo"></span></td>
-			<td><img ng-src="components/libraryTop/{{ video.preview }}" alt="{{ video.preview }}"></td>
-			<td>{{ video.topic }}</td>
-			<td>{{ video.created | date }}</td>
-			<td>{{ video.speaker }}</td>
+			<td><img ng-src="components/libraryTop/previewImage.png" alt="{{ video.preview }}"></td>
+			<td>{{ video.topic.name }}</td>
+			<td>{{ video.created_at | date }}</td>
+			<td>{{ video.speaker.name }}</td>
 			<td>{{ video.length | inMinutes }}</td>
 
 		</tr>
