@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :language_modules
+  resources :video_scripts
+  resources :writing_prompts
+  resources :topics
+  resources :languages
+  resources :categories
+  resources :videos
+  resources :writing_answers
+  resources :speakers
+  resources :cues
+  resources :collocations
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
