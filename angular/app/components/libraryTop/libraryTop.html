@@ -31,7 +31,7 @@
 
 <!-- search results -->
 <div class="row">
-	<table class="table">
+	<table class="table table-hover">
 	
 		<!-- 
 		clickable table headers
@@ -84,7 +84,9 @@
 
 		</thead>
 	
-		<tr ng-repeat="video in searchResults | filter:search | orderBy:predicate:reverse">
+		<tr ng-repeat="video in searchResults | filter:search | orderBy:predicate:reverse"
+				ui-sref="libraryDetail({videoId: video.id})"
+				>
 
 			<td><span class="glyphicon glyphicon-ok" ng-show="video.isPlaylistVideo"></span></td>
 			<td><img ng-src="components/libraryTop/{{ video.preview }}" alt="{{ video.preview }}"></td>
@@ -96,5 +98,9 @@
 		</tr>
 	
 	</table>
+
+	<hr>
+
+	<button class="btn btn-primary">Show more +</button>
 
 </div> <!-- div.row -->

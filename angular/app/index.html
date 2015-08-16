@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js">
 
+
 <head>
   <meta charset="utf-8">
   <title>getNativePrototype</title>
@@ -17,15 +18,16 @@
 </head>
 
 
+
 <body ng-app="angularApp" ng-strict-di>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+
+
   <global-navbar></global-navbar>
-
   <div ui-view class="container"></div>
-
   <global-footer></global-footer>
 
 
@@ -41,6 +43,7 @@
   ga('create', 'UA-XXXXX-X');
   ga('send', 'pageview');
   </script>
+
 
 
 
@@ -60,8 +63,10 @@
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-flash-alert/dist/angular-flash.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-youtube-mb/src/angular-youtube-embed.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
+
 
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -70,6 +75,7 @@
   <script src="shared/globalNavbar/globalNavbarDirective.js"></script>
   <script src="shared/staticContentNavigationPanel/staticContentNavigationPanelDirective.js"></script>
   <script src="shared/userContentNavigationPanel/userContentNavigationPanelDirective.js"></script>
+  <script src="shared/youtubeApi/iframeApi.js"></script>
   <script src="shared/filters/inMinutesFilter.js"></script>
   <script src="shared/globalFooter/globalFooterDirective.js"></script>
   <script src="components/contactUs/contactUsCtrl.js"></script>
@@ -90,6 +96,7 @@
   <script src="components/userInterests/userInterestsCtrl.js"></script>
   <script src="components/userHome/userHomeCtrl.js"></script>
   <!-- endbuild -->
+
 
 
 </body>

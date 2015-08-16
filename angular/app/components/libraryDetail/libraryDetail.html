@@ -1,1 +1,31 @@
-{{ test }}
+<h1>{{ video.speaker }} <small>{{ video.topic }}</small></h1>
+
+<div class="col-sm-6">
+
+	<!-- youtube video player -->
+	<youtube-video 	video-id="video.code" 
+									player-vars="playerVars"
+									player-width="'100%'" 
+									player-height="'300px'"
+									></youtube-video>
+
+</div>
+
+<div class="col-sm-6">
+
+	<!-- video script tabs -->
+	<tabset>
+
+    <tab 	ng-repeat="tab in tabs" 
+    			heading="{{ tab.title }}" 
+    			active="tab.active">
+    			{{tab.content}}
+    			</tab>
+
+    <tab heading="N/A"></tab>
+
+  </tabset>
+	
+</div>
+
+<!-- embed-responsive embed-responsive-16by9 -->

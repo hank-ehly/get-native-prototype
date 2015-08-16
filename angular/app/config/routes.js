@@ -44,11 +44,11 @@
       ]
     });
 
-  };
+  }
 
   angular
     .module('angularApp')
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
       // add state for defined component
       $stateProvider
@@ -68,7 +68,7 @@
           controller: routes.faqs[1]
         })
         .state('libraryDetail', {
-          url: '/libraryDetail',
+          url: '/libraryDetail/:videoId',
           templateUrl: routes.libraryDetail[0],
           controller: routes.libraryDetail[1]
         })
@@ -121,7 +121,7 @@
           url: '/userInterests',
           templateUrl: routes.userInterests[0],
           controller: routes.userInterests[1]
-        })
+        });
 
       // .state('comments', {
       //   url: '/tasks/:task_id/comments',
@@ -134,6 +134,6 @@
 
       $urlRouterProvider.otherwise('/');
 
-    })
+    }]);
 
 })();

@@ -60,7 +60,7 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
-        '<%= yeoman.app %>/shared/{,*/}*.html',
+          '<%= yeoman.app %>/shared/{,*/}*.html',
           '<%= yeoman.app %>/**/*.html',
           '.tmp/styles/{,*/}*.css',
           'assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -129,7 +129,9 @@ module.exports = function (grunt) {
         src: [
           'Gruntfile.js',
           '<%= yeoman.app %>/components/{,*/}*.js',
-          '<%= yeoman.app %>/shared/{,*/}*.js'
+          '<%= yeoman.app %>/shared/{,*/}*.js',
+          '<%= yeoman.app %>/config/{,*/}*.js',
+          '<%= yeoman.app %>/*.js'
         ]
       },
       test: {

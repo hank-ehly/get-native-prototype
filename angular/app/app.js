@@ -12,7 +12,8 @@
       'ui.router',
       'ng-token-auth',
       'flash',
-      'ui.bootstrap'
+      'ui.bootstrap',
+      'youtube-embed'
     ]);
 
 })();
