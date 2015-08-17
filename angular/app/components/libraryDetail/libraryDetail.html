@@ -19,13 +19,20 @@
     <tab 	ng-repeat="tab in tabs" 
     			heading="{{ tab.title }}" 
     			active="tab.active">
-    			<span ng-bind-html="tab.content"></span>
+    			<span ng-bind-html="tab.content" 
+    						class="videoScriptContent"
+    						ng-click="videoScriptClickHandler($event)"
+    						></span>
     			</tab>
 
     <tab heading="N/A"></tab>
 
   </tabset>
 	
+</div>
+
+<div class="col-sm-6">
+	<collocation-panel></collocation-panel>
 </div>
 
 <!-- embed-responsive embed-responsive-16by9 -->

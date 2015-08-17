@@ -1,0 +1,13 @@
+.videoScriptContent {
+  line-height: 2.1em;
+  font-size: 1.1em;
+}
+
+.collocation {
+  border-bottom: 1px dotted darken(#eee, 30);
+  padding-bottom: 3px;
+  cursor: pointer;
+  &:hover {
+    border-bottom: 1px dotted #000;
+  }
+}
