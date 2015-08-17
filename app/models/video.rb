@@ -9,6 +9,8 @@
 #  code        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  length      :integer
+#  category_id :integer
 #
 
 class Video < ActiveRecord::Base

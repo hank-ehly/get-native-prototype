@@ -5,7 +5,9 @@
 
     // query DB for videos and categories
     Category.get(function(res) { $scope.categories = angular.fromJson(res.categories); });
-    Video.get(function(res) { $scope.searchResults = angular.fromJson(res.videos); });
+    Video.get(function(res) { 
+      $scope.searchResults = angular.fromJson(res.videos); 
+    });
 
   	// ordering search results on <th ng-click>
   	$scope.predicate = 'created';
@@ -21,6 +23,18 @@
     };
 
     // show more pagination
+    // this needs work
+    $scope.allowedNumberOfResults = 5;
+    $scope.showMore = function() {
+      var totalNumberOfResults = $scope.searchResults.length;
+
+      if ($scope.allowedNumberOfResults < totalNumberOfResults) {
+        $scope.allowedNumberOfResults += 5;
+      } else if ($scope.allowedNumberOfResults >= totalNumberOfResults) {
+        $scope.cantShowMore = true;
+      }
+
+    };
 
   };
 

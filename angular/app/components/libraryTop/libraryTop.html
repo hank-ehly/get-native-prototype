@@ -59,25 +59,25 @@
 
 			<th>Preview</th>
 
-			<th ng-click="order('topic')">
+			<th ng-click="order('topic.name')">
 				Topic
-				<span ng-show="predicate === 'topic'">
+				<span ng-show="predicate === 'topic.name'">
 					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
 					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
 				</span>
 			</th>
 
-			<th ng-click="order('created')">
+			<th ng-click="order('created_at')">
 				Created
-				<span ng-show="predicate === 'created'">
+				<span ng-show="predicate === 'created_at'">
 					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
 					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
 				</span>
 			</th>
 
-			<th ng-click="order('speaker')">
+			<th ng-click="order('speaker.name')">
 				Speaker
-				<span ng-show="predicate === 'speaker'">
+				<span ng-show="predicate === 'speaker.name'">
 					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
 					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
 				</span>
@@ -93,9 +93,13 @@
 
 		</thead>
 	
-		<tr ng-repeat="video in filteredResults = (searchResults | filter:search | filter:selectedCategory | orderBy:predicate:reverse)"
-				ui-sref="libraryDetail({videoId: video.id})"
-				>
+		<tr ui-sref="libraryDetail({videoId: video.id})"
+				ng-repeat="video in filteredResults = (	searchResults | 
+																								filter:search | 
+																								filter:selectedCategory | 
+																								orderBy:predicate:reverse | 
+																								limitTo: allowedNumberOfResults 
+																							)">
 
 			<div ng-show="!filteredResults.length">no results</div>
 
@@ -112,6 +116,8 @@
 
 	<hr>
 
-	<button class="btn btn-primary">Show more +</button>
+	<p ng-show="cantShowMore">No more videos are available to be shown.</p>
+
+	<button class="btn btn-primary" ng-click="showMore()" ng-hide="!filteredResults.length">Show more +</button>
 
 </div> <!-- div.row -->

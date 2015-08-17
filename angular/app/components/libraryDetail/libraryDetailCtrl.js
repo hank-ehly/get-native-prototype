@@ -43,8 +43,15 @@
           // query for collocations from this videoScript
           Collocation.get({ video_script_id: vs.id }, function(res) { // jshint ignore:line
 
+            // collocations object
+            $scope.collocations = angular.fromJson(res.collocations);
+
             // wrap the collocation
-            videoScript.content = wrapCollocations(vs.content, angular.fromJson(res.collocations), 'span', 'highlight');
+            videoScript.content = wrapCollocations(vs.content, $scope.collocations, 'span', 'collocation');
+
+            // initialize collocation panel
+            $scope.selectedCollocationQuote = '...';
+            $scope.selectedCollocationDescription = 'Select a collocation from the above script!';
 
           });
 
@@ -55,6 +62,27 @@
       });
 
     }); // Video.get()
+
+    
+    // click handler for video script collocations
+    $scope.videoScriptClickHandler = function(e) {
+
+      var isCollocation = e.target.className === 'collocation' ? true : false;
+      var collocationText = e.target.textContent;
+      
+      if (isCollocation) {
+
+        $scope.selectedCollocationQuote = collocationText;
+
+        angular.forEach($scope.collocations, function(c) {
+          if (c.quote === collocationText) {
+            $scope.selectedCollocationDescription = c.description;
+          }
+        });
+
+      }
+
+    };
 
 
     // this is a boss function
@@ -77,7 +105,7 @@
         end     = start + quote.length;
         substr  = result.substring(start, end);
 
-        // assemble replacement string
+        // assemble replacement element
         newSub  = '<' + tag;
         newSub += ' class="' + className + '"';
         newSub += '>';
@@ -92,7 +120,6 @@
       return result;
 
     } // wrapCollocations
-
 
     // video player settings
     $scope.playerVars = {
