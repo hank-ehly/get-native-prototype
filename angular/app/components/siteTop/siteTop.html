@@ -1,7 +1,8 @@
 <h1>Site top!</h1>
 
 <h1>Login</h1>
-<form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}">
+
+<form role="form" ng-init="loginForm = {}">
   <div class="form-group">
     <label>email</label>
     <input type="email" name="email" ng-model="loginForm.email" required="required" class="form-control" />
@@ -10,5 +11,5 @@
     <label>password</label>
     <input type="password" name="password" ng-model="loginForm.password" required="required" class="form-control" />
   </div>
-  <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+  <button type="submit" class="btn btn-primary btn-lg" ng-click="login()">Sign in</button>
 </form>
