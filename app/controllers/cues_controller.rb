@@ -5,6 +5,14 @@ class CuesController < ApplicationController
   # GET /cues.json
   def index
     @cues = Cue.all
+    if params[:language_module_id]
+      @cues = Cue.where(language_module_id: params[:language_module_id]).limit(1)
+      videos = @cues.take.videos
+    end
+    render json: {
+      cues: @cues.to_json,
+      videos: videos.to_json(include: [:topic, :category, :speaker])
+    }
   end
 
   # GET /cues/1
@@ -37,6 +45,24 @@ class CuesController < ApplicationController
         status: :unprocessable_entity
       }
     end
+  end
+
+  def add_video_to_cue
+    cue = Cue.find(params[:cue_id])
+    video = Video.find(params[:video_id])
+    if cue.videos << video
+      render json: {
+        status: 'success',
+        cue: cue,
+        video: video,
+        message: 'You successfully added a cue video.'
+      }  
+    else
+      render json: {
+        status: :unprocessable_entity
+      }
+    end
+    
   end
 
   # PATCH/PUT /cues/1
