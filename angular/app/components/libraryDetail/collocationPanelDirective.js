@@ -16,9 +16,31 @@
       // replace: true,
       // transclude: true,
       // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-      // link: function($scope) {
-        
-      // }
+      link: function($scope) {
+
+
+
+        // click handler for video script collocations
+        $scope.videoScriptClickHandler = function(e) {
+
+          var isCollocation = e.target.className === 'collocation' ? true : false;
+          var collocationText = e.target.textContent;
+
+          if (isCollocation) {
+
+            $scope.selectedCollocationQuote = collocationText;
+
+            angular.forEach($scope.collocations, function(c) {
+              if (c.quote === collocationText) {
+                $scope.selectedCollocationDescription = c.description;
+              }
+            });
+          }
+        };
+
+
+
+      }
     };
   };
 

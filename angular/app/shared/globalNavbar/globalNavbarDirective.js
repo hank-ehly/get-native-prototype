@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var globalNavbar = function(authService) {
+  var globalNavbar = function(authService, $modal) {
     // Runs during compile
     return {
       // name: '',
@@ -21,7 +21,43 @@
         // select current language
         $scope.languages        = ['Japanese', 'English'];
         $scope.selectedLanguage = 'Japanese';
-        $scope.selectLanguage   = function(language) { $scope.selectedLanguage = language; };
+
+        $scope.langClickHandler = function(language) {
+
+           // show language in upper-left box
+          $scope.selectedLanguage = language;
+
+        };
+
+
+
+        $scope.open = function(size) {
+
+          var modalInstance = $modal.open({
+            animation: true,
+            templateUrl: 'shared/globalNavbar/languageModuleModalTemplate.html',
+            controller: 'languageModuleModalCtrl',
+            size: size,
+            resolve: {
+              language: function() { return $scope.selectedLanguage; }
+            }
+          });
+
+          console.log('opened at ' + new Date());
+
+          modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+          }, function() {
+            console.log('closed at ' + new Date());
+          });
+
+        };
+
+
+
+        
+
+
 
         // define main bar items
         $scope.barItems = [
@@ -45,6 +81,6 @@
     .module('angularApp')
     .directive('globalNavbar', globalNavbar);
 
-  globalNavbar.$inject = ['authService'];
+  globalNavbar.$inject = ['authService', '$modal'];
 
 })();

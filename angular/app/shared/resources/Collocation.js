@@ -3,24 +3,57 @@
 
   var Collocation = function($resource) {
 
+    // resource related
   	var apiUrl,
   			paramDefaults,
   			actions;
 
-    apiUrl = 'http://localhost:3000/collocations/:id.json';
+    apiUrl        = 'http://localhost:3000/collocations/:id.json';
+    paramDefaults = { id: '@id' };
+    actions       = {
+                      save: { method: 'POST' },
+                      update: { method: 'PUT' }
+                    };
 
-    paramDefaults = {
-      id: '@id'
+    function wrapCollocations(script, collocations, tag, className) {
+
+      var result = script;
+
+        angular.forEach(collocations, function(c) {
+
+          var quote,
+            start,
+            end,
+            substr,
+            newSub;
+
+          // initialize variables
+          quote = c.quote;
+          start = result.indexOf(quote);
+          end = start + quote.length;
+          substr = result.substring(start, end);
+
+          // assemble replacement element
+          newSub = '<' + tag;
+          newSub += ' class="' + className + '"';
+          newSub += '>';
+          newSub += substr;
+          newSub += '</' + tag + '>';
+
+          // do the replacement
+          result = result.replace(substr, newSub);
+
+        });
+
+        return result;
     }
 
-    actions = {
-      save: { method: 'POST' },
-      update: { method: 'PUT' }
-    }
+    return {
+      resource: $resource(apiUrl, paramDefaults, actions),
+      wrap: function(s, c, t, cl) { return wrapCollocations(s, c, t, cl); },
+    };
 
-    return $resource(apiUrl, paramDefaults, actions);
-
-  }
+  }; // Collocation
 
   angular
     .module('angularApp')

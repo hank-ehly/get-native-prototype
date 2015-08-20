@@ -18,7 +18,7 @@
     *
     */
     
-    Video.get({ id: parseInt($stateParams.videoId) }, function(res) {
+    function getVideoSuccess(res) {
 
       // initialization
       $scope.video      = angular.fromJson(res.video);
@@ -40,14 +40,14 @@
           // set initially active tab
           videoScript.active = true;
 
-          // query for collocations from this videoScript
-          Collocation.get({ video_script_id: vs.id }, function(res) { // jshint ignore:line
+          // get collocations for this videoScript
+          Collocation.resource.get({ video_script_id: vs.id }, function(res) { // jshint ignore:line
 
-            // collocations object
+            // group the collocations so that you can wrap them
             $scope.collocations = angular.fromJson(res.collocations);
 
-            // wrap the collocation
-            videoScript.content = wrapCollocations(vs.content, $scope.collocations, 'span', 'collocation');
+            // wrap in <span> tags
+            videoScript.content = Collocation.wrap(vs.content, $scope.collocations, 'span', 'collocation');
 
             // initialize collocation panel
             $scope.selectedCollocationQuote = '...';
@@ -55,71 +55,19 @@
 
           });
 
-        }
+        } // if video script is original
 
         $scope.tabs.push(videoScript);
 
-      });
+      }); // forEach
 
-    }); // Video.get()
+    } // getVideoSuccess
 
-    
-    // click handler for video script collocations
-    $scope.videoScriptClickHandler = function(e) {
+    function getVideoError(res) {
+      console.log(res);
+    }
 
-      var isCollocation = e.target.className === 'collocation' ? true : false;
-      var collocationText = e.target.textContent;
-      
-      if (isCollocation) {
-
-        $scope.selectedCollocationQuote = collocationText;
-
-        angular.forEach($scope.collocations, function(c) {
-          if (c.quote === collocationText) {
-            $scope.selectedCollocationDescription = c.description;
-          }
-        });
-
-      }
-
-    };
-
-
-    // this is a boss function
-    // (and it shouldn't be in this controller!)
-    function wrapCollocations(script, collocations, tag, className) {
-
-      var result = script;
-
-      angular.forEach(collocations, function(c) {
-
-        var quote,
-            start,
-            end,
-            substr,
-            newSub;
-
-        // initialize variables
-        quote   = c.quote;
-        start   = result.indexOf(quote);
-        end     = start + quote.length;
-        substr  = result.substring(start, end);
-
-        // assemble replacement element
-        newSub  = '<' + tag;
-        newSub += ' class="' + className + '"';
-        newSub += '>';
-        newSub +=  substr;
-        newSub += '</' + tag + '>';
-
-        // do the replacement
-        result  = result.replace(substr, newSub);
-        
-      });
-
-      return result;
-
-    } // wrapCollocations
+    Video.get({ id: parseInt($stateParams.videoId) }, getVideoSuccess, getVideoError);
 
     // video player settings
     $scope.playerVars = {
