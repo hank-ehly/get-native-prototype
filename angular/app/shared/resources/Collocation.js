@@ -10,8 +10,7 @@
 
     apiUrl        = 'http://localhost:3000/collocations/:id.json';
     paramDefaults = { id: '@id' };
-    actions       = {
-                      save: { method: 'POST' },
+    actions       = { save: { method: 'POST' },
                       update: { method: 'PUT' }
                     };
 

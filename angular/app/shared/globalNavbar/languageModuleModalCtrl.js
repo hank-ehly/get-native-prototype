@@ -1,31 +1,31 @@
-(function() {
-  'use strict';
+// (function() {
+//   'use strict';
 
-  var languageModuleModalCtrl = function($scope, $modalInstance, language) {
+//   var languageModuleModalCtrl = function($scope, $modalInstance, language) {
 
-    $scope.language = language;
+//     $scope.language = language;
 
-    $scope.addHandler = function() {
-      console.log('add');
-      $modalInstance.close();
-    };
+//     $scope.addHandler = function() {
+//       console.log('add');
+//       $modalInstance.close();
+//     };
 
-    $scope.justBrowseHandler = function() {
-      console.log('just browse');
-      $modalInstance.dismiss();
-    };
+//     $scope.justBrowseHandler = function() {
+//       console.log('just browse');
+//       $modalInstance.dismiss();
+//     };
 
-    $scope.cancel = function() {
-      console.log('cancelled');
-      $modalInstance.dismiss('cancel');
-    };
+//     $scope.cancel = function() {
+//       console.log('cancelled');
+//       $modalInstance.dismiss('cancel');
+//     };
 
-  };
+//   };
 
-  angular
-    .module('angularApp')
-    .controller('languageModuleModalCtrl', languageModuleModalCtrl);
+//   angular
+//     .module('angularApp')
+//     .controller('languageModuleModalCtrl', languageModuleModalCtrl);
 
-  languageModuleModalCtrl.$inject = ['$scope', '$modalInstance', 'language'];
+//   languageModuleModalCtrl.$inject = ['$scope', '$modalInstance', 'language'];
 
-})();
+// })();

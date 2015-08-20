@@ -25,30 +25,39 @@ class LanguageModulesController < ApplicationController
   # POST /language_modules.json
   def create
     @language_module = LanguageModule.new(language_module_params)
-
-    respond_to do |format|
-      if @language_module.save
-        format.html { redirect_to @language_module, notice: 'Language module was successfully created.' }
-        format.json { render :show, status: :created, location: @language_module }
-      else
-        format.html { render :new }
-        format.json { render json: @language_module.errors, status: :unprocessable_entity }
-      end
+    if @language_module.save
+      render json: {
+        status: :created,
+        location: @language_module,
+        language_module: @language_module,
+        notice: 'Language module was successfully created.'
+      }
+    else
+      render json: {
+        errors: @language_module.errors,
+        status: :unprocessable_entity
+      }
     end
   end
 
   # PATCH/PUT /language_modules/1
   # PATCH/PUT /language_modules/1.json
   def update
-    respond_to do |format|
+    
       if @language_module.update(language_module_params)
-        format.html { redirect_to @language_module, notice: 'Language module was successfully updated.' }
-        format.json { render :show, status: :ok, location: @language_module }
+        render json: {
+          status: :ok,
+          location: @language_module,
+          language_module: @language_module,
+          notice: 'Language module was successfully updated.'
+        }
       else
-        format.html { render :edit }
-        format.json { render json: @language_module.errors, status: :unprocessable_entity }
+        render json: {
+          errors: @language_module.errors,
+          status: :unprocessable_entity
+        }
       end
-    end
+    
   end
 
   # DELETE /language_modules/1
