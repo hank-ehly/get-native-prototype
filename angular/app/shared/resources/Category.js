@@ -11,16 +11,16 @@
 
     paramDefaults = {
       id: '@id'
-    }
+    };
 
     actions = {
       save: { method: 'POST' },
       update: { method: 'PUT' }
-    }
+    };
 
     return $resource(apiUrl, paramDefaults, actions);
 
-  }
+  };
 
   angular
     .module('angularApp')

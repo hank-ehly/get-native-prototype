@@ -1,1 +1,43 @@
-{{ test }}
+<h1>User home</h1>
+
+
+<div class="col-sm-6">
+	<input type="text">
+	<ul>
+		<!-- <li ng-repeat="video in videos">foo</li> -->
+	</ul>
+</div>
+
+
+
+<!-- right side -->
+<div class="col-sm-6">
+
+	<!-- youtube video player -->
+	<youtube-video 	video-id="video.code" 
+									player-vars="playerVars"
+									player-width="'100%'" 
+									player-height="'300px'"
+									></youtube-video>
+
+	<!-- video script tabs -->
+	<tabset>
+
+    <tab 	ng-repeat="tab in tabs" 
+    			heading="{{ tab.title }}" 
+    			active="tab.active">
+    			<span ng-bind-html="tab.content" 
+    						class="videoScriptContent"
+    						ng-click="videoScriptClickHandler($event)"
+    						></span>
+    			</tab>
+
+    <tab heading="N/A"></tab>
+
+  </tabset>
+	
+	<collocation-panel></collocation-panel>
+
+</div>
+
+<!-- embed-responsive embed-responsive-16by9 -->

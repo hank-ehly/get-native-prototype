@@ -38,7 +38,7 @@
           <!-- language dropdown choices -->
           <ul class="dropdown-menu">
             <li ng-repeat="language in languages">
-              <a href="" ng-click="selectLanguage(language)">{{ language }}</a>
+              <a href="" ng-click="langClickHandler(language); open()">{{ language }}</a>
             </li>
           </ul>
 
