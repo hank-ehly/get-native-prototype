@@ -25,15 +25,17 @@ class CuesController < ApplicationController
   # POST /cues.json
   def create
     @cue = Cue.new(cue_params)
-
-    respond_to do |format|
-      if @cue.save
-        format.html { redirect_to @cue, notice: 'Cue was successfully created.' }
-        format.json { render :show, status: :created, location: @cue }
-      else
-        format.html { render :new }
-        format.json { render json: @cue.errors, status: :unprocessable_entity }
-      end
+    if @cue.save
+      render json: {
+        status: :created,
+        location: @cue,
+        cue: @cue
+      }
+    else
+      render json: {
+        errors: @cue.errors,
+        status: :unprocessable_entity
+      }
     end
   end
 
