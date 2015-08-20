@@ -25,9 +25,9 @@
 
         // define main bar items
         $scope.barItems = [
-          { title: 'Home',    state: 'userHome' },
-          { title: 'Library', state: 'libraryTop' },
-          { title: 'Study',   state: 'studyTop' }
+          { title: 'Home',    state: 'userHome',    restricted: true },
+          { title: 'Library', state: 'libraryTop',  restricted: false },
+          { title: 'Study',   state: 'studyTop',    restricted: true }
         ];
 
         // set active bar item on ng-click

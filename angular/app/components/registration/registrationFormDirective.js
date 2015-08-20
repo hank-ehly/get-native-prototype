@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var registrationForm = function() {
+  var registrationForm = function(authService) {
 
     // Runs during compile
     return {
@@ -10,16 +10,16 @@
       // terminal: true,
       // scope: {}, // {} = isolate, true = child, false/undefined = no change
       // controller: function($scope, $element, $attrs, $transclude) {},
-      require: '^registrationCtrl', // Array = multiple requires, ? = optional, ^ = check parent elements
+      // require: '^registrationCtrl', // Array = multiple requires, ? = optional, ^ = check parent elements
       restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
       // template: '',
       templateUrl: 'components/registration/registrationFormTemplate.html',
       // replace: true,
       // transclude: true,
       // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-      // link: function($scope) {
-
-      // }
+      link: function($scope) {
+        $scope.submit = function(registrationForm) { authService.submitRegistration(registrationForm); };
+      }
 
     };
   };
@@ -28,7 +28,7 @@
     .module('angularApp')
     .directive('registrationForm', registrationForm);
 
-  registrationForm.$inject = [];
+  registrationForm.$inject = ['authService'];
 
 })();
 
