@@ -26,23 +26,18 @@
 
 
 
-  <global-navbar></global-navbar>
-  <div ui-view class="container"></div>
-  <global-footer></global-footer>
+    <global-navbar></global-navbar>
+
+    <div flash-message="5000" class="container" id="flashContainer"></div>
+
+    <div ui-view class="container"></div>
+    
+    <global-footer></global-footer>
 
 
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-  <script>
-  ! function(A, n, g, u, l, a, r) {
-    A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
-        (A[l].q = A[l].q || []).push(arguments)
-      }, A[l].l = +new Date, a = n.createElement(g),
-      r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
-  }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-  ga('create', 'UA-XXXXX-X');
-  ga('send', 'pageview');
-  </script>
+  <ng-include src="'config/googleAnalytics.html'"></ng-include>
 
 
 
@@ -72,6 +67,9 @@
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="app.js"></script>
   <script src="config/routes.js"></script>
+  <script src="config/auth.js"></script>
+  <script src="config/Announce.js"></script>
+  <script src="shared/authService.js"></script>
   <script src="shared/globalNavbar/globalNavbarDirective.js"></script>
   <script src="shared/staticContentNavigationPanel/staticContentNavigationPanelDirective.js"></script>
   <script src="shared/userContentNavigationPanel/userContentNavigationPanelDirective.js"></script>

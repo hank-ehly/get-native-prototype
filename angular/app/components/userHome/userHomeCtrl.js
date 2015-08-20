@@ -3,7 +3,7 @@
 
   var userHomeCtrl = function($scope) {
 
-  	$scope.test = 'foouserHome';
+    $scope.test = 'foouserHome';
 
   };
 
