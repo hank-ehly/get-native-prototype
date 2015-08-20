@@ -111,20 +111,12 @@
 #                          PATCH  /collocations/:id(.:format)            collocations#update
 #                          PUT    /collocations/:id(.:format)            collocations#update
 #                          DELETE /collocations/:id(.:format)            collocations#destroy
-#                    users GET    /users(.:format)                       users#index
-#                          POST   /users(.:format)                       users#create
-#                 new_user GET    /users/new(.:format)                   users#new
-#                edit_user GET    /users/:id/edit(.:format)              users#edit
-#                     user GET    /users/:id(.:format)                   users#show
-#                          PATCH  /users/:id(.:format)                   users#update
-#                          PUT    /users/:id(.:format)                   users#update
-#                          DELETE /users/:id(.:format)                   users#destroy
 #                          GET    /omniauth/:provider/callback(.:format) devise_token_auth/omniauth_callbacks#redirect_callbacks
 #         omniauth_failure GET    /omniauth/failure(.:format)            devise_token_auth/omniauth_callbacks#omniauth_failure
 #
 
 Rails.application.routes.draw do
-  
+
   mount_devise_token_auth_for 'User', at: 'auth'
   resources :language_modules
   resources :video_scripts
@@ -137,6 +129,9 @@ Rails.application.routes.draw do
   resources :speakers
   resources :cues
   resources :collocations
+
+  post 'add_video_to_cue/:cue_id/:video_id' => 'cues#add_video_to_cue'
+
   # resources :users <- this was generated as a result of 'rails scaffold user'
 
   # The priority is based upon order of creation: first created -> highest priority.

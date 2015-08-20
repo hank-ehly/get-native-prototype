@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var libraryDetailCtrl = function($scope, $http, $stateParams, Video, Collocation) {
+  var libraryDetailCtrl = function($scope, $http, $stateParams, Video, Collocation, Cue) {
 
     /*
     *
@@ -77,9 +77,32 @@
     };
 
 
+    // add to cue
+    $scope.addToCue = function(user, video) {
+
+      Cue.resource.get({user_id: user.id}, function(res) {
+        console.log('success', res);
+
+        var c = angular.fromJson(res.cues);
+        var cue = c[0];
+        // console.log(video);
+        Cue.resource.addVideoToCue({cue_id: cue.id, video_id: video.id}, function(res) {
+          console.log('success', res);
+        }, function(res) {
+          console.log('error', res);
+        });
+
+      }, function(res) {
+        console.log('error', res);
+      });
+
+      
+    }
+
+
   }; // end of libraryDetailCtrl
 
-  libraryDetailCtrl.$inject = ['$scope', '$http', '$stateParams', 'Video', 'Collocation'];
+  libraryDetailCtrl.$inject = ['$scope', '$http', '$stateParams', 'Video', 'Collocation', 'Cue'];
 
   angular
     .module('angularApp')

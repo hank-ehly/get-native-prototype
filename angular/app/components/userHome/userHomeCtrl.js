@@ -1,16 +1,40 @@
 (function() {
   'use strict';
 
-  var userHomeCtrl = function($scope, Video, Collocation) {
+  var userHomeCtrl = function($scope, Video, Collocation, Cue) {
 
     
 
 
+    Cue.resource.get({user_id: 41, language_module_id: 21}, function(res) {
+      console.log('success', res);
+      $scope.cueVideos = angular.fromJson(res.videos);
+      console.log($scope.cueVideos);
+
+      $scope.selectedCueVideo = $scope.cueVideos[0].id;
+
+      Video.get({ id: parseInt($scope.selectedCueVideo) }, getVideoSuccess, getVideoError);
+
+      // angular.forEach($scope.cueVideos, function(cv) {
+      //   cv.topic = Topic.
+      // });
+
+    }, function(res) {
+      console.log('fail', res);
+    });
+    // $scope.cueVideos;
 
 
 
+$scope.selectCueVideo = function(cv) {
+  // $scope.selectedCueVideo = cv.
+  // console.log(cv);
 
+  $scope.selectedCueVideo = cv.id;
 
+  Video.get({ id: parseInt($scope.selectedCueVideo) }, getVideoSuccess, getVideoError);
+
+}
 
 
 
@@ -63,7 +87,7 @@ function getVideoSuccess(res) {
       console.log(res);
     }
 
-    Video.get({ id: parseInt(1) }, getVideoSuccess, getVideoError);
+    
 
 
 
@@ -76,7 +100,7 @@ function getVideoSuccess(res) {
 
   };
 
-  userHomeCtrl.$inject = ['$scope', 'Video', 'Collocation'];
+  userHomeCtrl.$inject = ['$scope', 'Video', 'Collocation', 'Cue'];
 
   angular
     .module('angularApp')

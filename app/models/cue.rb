@@ -10,4 +10,5 @@
 
 class Cue < ActiveRecord::Base
   belongs_to :language_module
+  has_and_belongs_to_many :videos
 end

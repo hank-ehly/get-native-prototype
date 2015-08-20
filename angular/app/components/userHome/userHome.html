@@ -4,7 +4,12 @@
 <div class="col-sm-6">
 	<input type="text">
 	<ul>
-		<!-- <li ng-repeat="video in videos">foo</li> -->
+		<li ng-repeat="cv in cueVideos">
+			<div style="width:50px;height:40px;background:grey;" ng-click="selectCueVideo(cv)"></div>
+			<h4>Topic: {{ cv.topic.name }}</h4>
+			<h4>Category: {{ cv.category.name }}</h4>
+			<h4>Speaker: {{ cv.speaker.name }}</h4>
+		</li>
 	</ul>
 </div>
 
