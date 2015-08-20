@@ -1,35 +1,47 @@
-<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-		Distinctio nihil nostrum sint assumenda numquam, voluptates inventore atque.
-		</p>
+<form ng-submit="submitRegistration(registrationForm)"
+				role="form" 
+				ng-init="registrationForm = {}"
+				>
 
-<form name="registrationForm">
+		<!-- email -->
+		<div class="form-group">
+		  <label 	for					=	"registrationEmail">Email</label>
+		  <input 	type				=	"email" 
+		  				name				=	"email" 
+		  				ng-model		=	"registrationForm.email" 
+		  				required		=	"required" 
+		  				class				=	"form-control" 
+		  				id					=	"registrationEmail"
+		  				placeholder	=	"your.name@email.com" 
+		  				/></div>
 
-	<div class="form-group">
-	  <label for="registrationEmail">Email</label>
-	  <input type="email" class="form-control" id="registrationEmail" placeholder="your.name@email.com">
-	</div>
+		
+		<!-- password -->
+		<div class="form-group">
+			<label 	for				=	"registrationPassword">Password</label>
+			<input 	type			=	"password" 
+							name			=	"password" 
+							ng-model	=	"registrationForm.password" 
+							required	=	"required" 
+							class			=	"form-control" 
+							id				=	"registrationPassword" 
+							/></div>
 
-	<div class="form-group">
-		<label for="registrationPassword">Password</label>
-		<input type="password" class="form-control" id="registrationPassword">
-	</div>
 
-	<div class="form-group">
-		<label for="registrationPasswordConfirmation">Re-type password</label>
-		<input type="password" class="form-control" id="registrationPasswordConfirmation">
-	</div>
+		<!-- password confirmation -->
+		<div class="form-group">
+			<label 	for				=	"registrationPasswordConfirmation">Re-type password</label>
+			<input 	type			=	"password" 
+							name			=	"password_confirmation" 
+							ng-model	=	"registrationForm.password_confirmation" 
+							required	=	"required" 
+							class			=	"form-control" 
+							id				=	"registrationPasswordConfirmation" 
+							/></div>
 
-	<div class="form-group">
-		<label for="registrationRememberMe">Keep me logged in</label>
-		<input type="checkbox" id="registrationRememberMe">
-	</div>
+		<!-- submit button -->
+		<div class="form-group">
+			<button type="submit" class="btn btn-danger">Register</button>
+		</div>
 
-	<div class="form-group">
-		<button type="submit" class="btn btn-danger">Register</button>
-	</div>
-
-	<hr>
-
-	<button class="btn btn-info">Register with Facebook</button>
-
-</form>
+	</form>

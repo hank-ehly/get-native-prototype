@@ -10,7 +10,6 @@
   * 
   */
   
-
   var components    = [],
       routes        = {},
       componentsDir = '';
@@ -85,52 +84,83 @@
         .state('studyListening', {
           url: '/studyListening',
           templateUrl: routes.studyListening[0],
-          controller: routes.studyListening[1]
+          controller: routes.studyListening[1],
+          resolve: {
+            auth: ['$auth', function($auth) {
+              return $auth.validateUser();
+            }]
+          }
         })
         .state('studyShadowing', {
           url: '/studyShadowing',
           templateUrl: routes.studyShadowing[0],
-          controller: routes.studyShadowing[1]
+          controller: routes.studyShadowing[1],
+          resolve: {
+            auth: ['$auth', function($auth) {
+              return $auth.validateUser();
+            }]
+          }
         })
         .state('studySpeaking', {
           url: '/studySpeaking',
           templateUrl: routes.studySpeaking[0],
-          controller: routes.studySpeaking[1]
+          controller: routes.studySpeaking[1],
+          resolve: {
+            auth: ['$auth', function($auth) {
+              return $auth.validateUser();
+            }]
+          }
         })
         .state('studyTop', {
           url: '/studyTop',
           templateUrl: routes.studyTop[0],
-          controller: routes.studyTop[1]
+          controller: routes.studyTop[1],
+          resolve: {
+            auth: ['$auth', function($auth) {
+              return $auth.validateUser();
+            }]
+          }
         })
         .state('studyWriting', {
           url: '/studyWriting',
           templateUrl: routes.studyWriting[0],
-          controller: routes.studyWriting[1]
+          controller: routes.studyWriting[1],
+          resolve: {
+            auth: ['$auth', function($auth) {
+              return $auth.validateUser();
+            }]
+          }
         })
         .state('userAccount', {
           url: '/userAccount',
           templateUrl: routes.userAccount[0],
-          controller: routes.userAccount[1]
+          controller: routes.userAccount[1],
+          resolve: {
+            auth: ['$auth', function($auth) {
+              return $auth.validateUser();
+            }]
+          }
         })
         .state('userHome', {
           url: '/userHome',
           templateUrl: routes.userHome[0],
-          controller: routes.userHome[1]
+          controller: routes.userHome[1],
+          resolve: {
+            auth: ['$auth', function($auth) {
+              return $auth.validateUser();
+            }]
+          }
         })
         .state('userInterests', {
           url: '/userInterests',
           templateUrl: routes.userInterests[0],
-          controller: routes.userInterests[1]
+          controller: routes.userInterests[1],
+          resolve: {
+            auth: ['$auth', function($auth) {
+              return $auth.validateUser();
+            }]
+          }
         });
-
-      // .state('comments', {
-      //   url: '/tasks/:task_id/comments',
-      //   templateUrl: 'components/detail/detail.html',
-      //   controller: 'detailCtrl',
-      //   resolve: {
-      //     auth: confirmLoggedIn
-      //   }
-      // })
 
       $urlRouterProvider.otherwise('/');
 

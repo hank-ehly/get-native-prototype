@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var globalNavbar = function() {
+  var globalNavbar = function(authService) {
     // Runs during compile
     return {
       // name: '',
@@ -9,7 +9,7 @@
       // terminal: true,
       // scope: {}, // {} = isolate, true = child, false/undefined = no change
       // controller: function($scope, $element, $attrs, $transclude) {},
-      // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+      // require: '^globalCtrl', // Array = multiple requires, ? = optional, ^ = check parent elements
       restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
       // template: '',
       templateUrl: 'shared/globalNavbar/globalNavbarTemplate.html',
@@ -31,8 +31,11 @@
         ];
 
         // set active bar item on ng-click
-        $scope.isActive = function(i) { return $scope.active === i; };
-        $scope.selectBarItem = function(i) { $scope.active = i; };
+        $scope.isActive       = function(i) { return $scope.active === i; };
+        $scope.selectBarItem  = function(i) { $scope.active = i; };
+
+        // logout on btn click
+        $scope.logout = function() { authService.logout(); };
 
       }
     };
@@ -42,6 +45,6 @@
     .module('angularApp')
     .directive('globalNavbar', globalNavbar);
 
-  globalNavbar.$inject = [];
+  globalNavbar.$inject = ['authService'];
 
 })();
