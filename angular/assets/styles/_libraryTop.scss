@@ -1,0 +1,35 @@
+div#libraryTopSearchBarContainer {
+  background: transparent;
+  margin-bottom: 20px;
+  input {
+    height: 2.5em;
+    font-size: 1.7em;
+    border: none;
+  }
+  button {
+    height: 4em;
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+  div.input-group {
+    // overflow: hidden;
+  }
+  #libraryTopSearchGlass {
+    transform: translate(2%, -1.6%);
+    vertical-align: middle;
+    border-radius: 7px 0 0 7px;
+  }
+}
+
+tr.libraryTopTableRow {
+  cursor: pointer;
+}
+
+span#libraryTopSearchGlass {
+  background: #fff;
+  border: none;
+}
+
+#libraryTopSearchResultsTableContainer {
+  border-radius: 7px;
+}

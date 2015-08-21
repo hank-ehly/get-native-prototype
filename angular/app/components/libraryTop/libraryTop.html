@@ -1,123 +1,124 @@
-<!-- search bar -->
-<div class="row">
-	<div class="input-group">
-	
-		<!-- search input -->
-	  <input 	type="text" 
-	  				class="form-control"
-	  				placeholder="Search Categories, Topics, Speakers.."
-	  				ng-model="search"
-	  				>
-	
-		<!-- category button group -->
-	  <div class="input-group-btn">
-	
-			<!-- category button -->
-	    <button type="button" 
-	    				class="btn btn-default dropdown-toggle" 
-	    				data-toggle="dropdown" 
-	    				aria-haspopup="true" 
-	    				aria-expanded="false">{{ selectedCategory || "All Categories" }} <span class="caret"></span>
-	    				</button>
-	
-			<!-- category dropdown options -->
-	    <ul class="dropdown-menu dropdown-menu-right">
+<div 	class="container"
+			id="libraryTopSearchBarContainer">
+		<!-- search bar -->
+	<div class="row">
+		<div class="input-group">
+		
+			<!-- search input -->
+			<!-- <span class="glyphicon glyphicon-search"></span> -->
+			<span class="input-group-addon glyphicon glyphicon-search" id="libraryTopSearchGlass"></span>
+		  <input 	type="text" 
+		  				class="form-control"
+		  				placeholder="Search Categories, Topics, Speakers.."
+		  				ng-model="search"
+		  				>
+		
+			<!-- category button group -->
+		  <div class="input-group-btn">
+		
+				<!-- category button -->
+		    <button type="button" 
+		    				class="btn btn-default dropdown-toggle" 
+		    				data-toggle="dropdown" 
+		    				aria-haspopup="true" 
+		    				aria-expanded="false">{{ selectedCategory || "All Categories" }} <span class="caret"></span>
+		    				</button>
+		
+				<!-- category dropdown options -->
+		    <ul class="dropdown-menu dropdown-menu-right">
 
-	    	<!-- reset all categories -->
-				<li><a href="" ng-click="selectedCategory = ''">All Categories</a></li>
+		    	<!-- reset all categories -->
+					<li><a href="" ng-click="selectedCategory = ''">All Categories</a></li>
 
-				<li role="separator" class="divider"></li>
+					<li role="separator" class="divider"></li>
 
-				<!-- click to add category filter -->
-	      <li ng-repeat="category in categories"><a href="" ng-click="selectCategory($index)">{{ category.name }}</a></li>
+					<!-- click to add category filter -->
+		      <li ng-repeat="category in categories"><a href="" ng-click="selectCategory($index)">{{ category.name }}</a></li>
 
-	    </ul>
-	
+		    </ul>
+		
 
-	  </div> <!-- div.input-group-btn" -->
-	</div> <!-- div.input-group -->
-</div> <!-- div.row -->
+		  </div> <!-- div.input-group-btn" -->
+		</div> <!-- div.input-group -->
 
-<!-- search results -->
-<div class="row">
-	<table class="table table-hover">
-	
-		<!-- 
-		clickable table headers
-		by clicking a header, 
-		you reorder the search results
-		-->
-		<thead>
+	</div> <!-- div.row -->
+</div>
+<div class="container" id="libraryTopSearchResultsTableContainer">
 
-			<th ng-click="order('isPlaylistVideo')">
-				Playlist
-				<span ng-show="predicate === 'isPlaylistVideo'">
-					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === false"></span>
-					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === true"></span>
-				</span>
-			</th>
 
-			<th>Preview</th>
+	<!-- search results -->
+	<div class="row">
+		<table class="table table-hover" id="libraryTopSearchResultsTable">
+		
+			<!-- 
+			clickable table headers
+			by clicking a header, 
+			you reorder the search results
+			-->
+			<thead>
 
-			<th ng-click="order('topic.name')">
-				Topic
-				<span ng-show="predicate === 'topic.name'">
-					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
-					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
-				</span>
-			</th>
+				<th>Preview</th>
 
-			<th ng-click="order('created_at')">
-				Created
-				<span ng-show="predicate === 'created_at'">
-					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
-					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
-				</span>
-			</th>
+				<th ng-click="order('topic.name')">
+					Topic
+					<span ng-show="predicate === 'topic.name'">
+						<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
+						<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
+					</span>
+				</th>
 
-			<th ng-click="order('speaker.name')">
-				Speaker
-				<span ng-show="predicate === 'speaker.name'">
-					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
-					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
-				</span>
-			</th>
+				<th ng-click="order('created_at')">
+					Created
+					<span ng-show="predicate === 'created_at'">
+						<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
+						<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
+					</span>
+				</th>
 
-			<th ng-click="order('length')">
-				Length
-				<span ng-show="predicate === 'length'">
-					<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
-					<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
-				</span>
-			</th>
+				<th ng-click="order('speaker.name')">
+					Speaker
+					<span ng-show="predicate === 'speaker.name'">
+						<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
+						<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
+					</span>
+				</th>
 
-		</thead>
-	
-		<tr ui-sref="libraryDetail({videoId: video.id})"
-				ng-repeat="video in filteredResults = (	searchResults | 
-																								filter:search | 
-																								filter:selectedCategory | 
-																								orderBy:predicate:reverse | 
-																								limitTo: allowedNumberOfResults 
-																							)">
+				<th ng-click="order('length')">
+					Length
+					<span ng-show="predicate === 'length'">
+						<span class="glyphicon glyphicon-chevron-down" ng-show="reverse === true"></span>
+						<span class="glyphicon glyphicon-chevron-up" ng-show="reverse === false"></span>
+					</span>
+				</th>
 
-			<div ng-show="!filteredResults.length">no results</div>
+			</thead>
+		
+			<tr ui-sref="libraryDetail({videoId: video.id})"
+					class="libraryTopTableRow" 
+					ng-repeat="video in filteredResults = (	searchResults | 
+																									filter:search | 
+																									filter:selectedCategory | 
+																									orderBy:predicate:reverse | 
+																									limitTo: allowedNumberOfResults 
+																								)">
 
-			<td><span class="glyphicon glyphicon-ok" ng-show="video.isPlaylistVideo"></span></td>
-			<td><img ng-src="components/libraryTop/previewImage.png" alt="{{ video.preview }}"></td>
-			<td>{{ video.topic.name }}</td>
-			<td>{{ video.created_at | date }}</td>
-			<td>{{ video.speaker.name }}</td>
-			<td>{{ video.length | inMinutes }}</td>
+				<div ng-show="!filteredResults.length">no results</div>
 
-		</tr>
-	
-	</table>
+				<td><img ng-src="components/libraryTop/previewImage.png" alt="{{ video.preview }}"></td>
+				<td>{{ video.topic.name }}</td>
+				<td>{{ video.created_at | date }}</td>
+				<td>{{ video.speaker.name }}</td>
+				<td>{{ video.length | inMinutes }}</td>
 
-	<hr>
+			</tr>
+		
+		</table>
 
-	<p ng-show="cantShowMore">No more videos are available to be shown.</p>
+		<hr>
 
-	<button class="btn btn-primary" ng-click="showMore()" ng-hide="!filteredResults.length">Show more +</button>
+		<p ng-show="cantShowMore">No more videos are available to be shown.</p>
 
-</div> <!-- div.row -->
+		<button class="btn btn-primary" ng-click="showMore()" ng-hide="!filteredResults.length">Show more +</button>
+
+	</div> <!-- div.row -->
+</div>

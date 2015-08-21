@@ -1,0 +1,38 @@
+.cueVideo {
+  background: lighten($darkBlue, 3);
+  color: $offWhite;
+  cursor: pointer;
+  &:hover {
+    background: $darkBlue;
+  }
+}
+
+#userHomeSearch {
+  height: 2.2em;
+  font-size: 2.0em;
+  border-radius: 7px 7px 0px 0px;
+  border-bottom: 0;
+}
+
+td.removeFromCueButton a {
+  font-size: 2em;
+  margin-top: 60%;
+}
+
+td.removeFromCueButton {
+  text-align: center;
+}
+
+.addBottomRightRadius {
+  border-radius: 0 0 7px 0;
+}
+
+/*
+ * careful, this triggers ALL tabs. 
+ * You're only trying to affect collocation-pane tabs
+ */
+
+div.tab-pane {
+  max-height: 260px;
+  overflow: scroll;
+}
