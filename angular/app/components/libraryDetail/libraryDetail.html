@@ -1,5 +1,16 @@
-<h1><button ng-click="addToCue(user, video)" ng-disabled="alreadyInCue">Add to cue</button></h1>
 
+
+<button ng-click="addToCue(user, video)" 
+				ng-show="!alreadyInCue" 
+				class="btn btn-primary">
+				Add to cue
+				</button>
+
+<button ng-click="removeFromCue(user, video)" 
+				ng-show="alreadyInCue" 
+				class="btn btn-primary">
+				Remove from cue
+				</button>
 
 <h1>{{ video.speaker.name }} <small>{{ video.topic.name }}</small></h1>
 

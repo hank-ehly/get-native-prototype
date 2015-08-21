@@ -3,11 +3,12 @@
 
   var data = {
 
-    authInvalid:   'Please login first.',
-  	loginSuccess:  'You have successfully logged in.',
-  	loginFailure:  'Whoops! Failed to login.',
-    logoutSuccess: 'You have successfully logged out.',
-    logoutFailure: 'Whoops! Failed to logout.',
+    authInvalid:     'Please login first.',
+  	loginSuccess:    'You have successfully logged in.',
+  	loginFailure:    'Whoops! Failed to login.',
+    logoutSuccess:   'You have successfully logged out.',
+    logoutFailure:   'Whoops! Failed to logout.',
+    addToCueSuccess: 'Successfully added video to cue.',
 
     authEmailConfirmationSuccess: function(email)   { return 'Welcome, ' + email + '. Your account has been verified.'; },
     registrationSuccess:          function(email)   { return 'A registration email was sent to ' + email + '.'; },

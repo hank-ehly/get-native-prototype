@@ -89,6 +89,28 @@ class CuesController < ApplicationController
     end
   end
 
+  def remove_video_from_cue
+    u = User.find(params[:user_id])
+    v = Video.find(params[:video_id])
+    l = v.language
+    lmod = u.language_modules.where(user_id: u.id, language_id: l.id).take
+    cue = lmod.cue
+
+    cue.videos.each do |cv|
+      if cv.id === v.id
+
+        # you use delete to get rid of join table records
+        # using delete doesn't destroy the actual record
+        cue.videos.delete(cv)
+        render json: {
+          notice: 'Cue video was successfully destroyed.',
+          destroyed_cue_video: cv
+        }
+      end
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cue

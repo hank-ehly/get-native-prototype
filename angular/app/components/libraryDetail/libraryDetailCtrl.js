@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var libraryDetailCtrl = function($scope, $rootScope, $http, $stateParams, Video, Collocation, Cue, User) {
+  var libraryDetailCtrl = function($scope, $rootScope, $http, $stateParams, Video, Collocation, Cue, User, Flash, Announce) {
 
     /*
     *
@@ -91,14 +91,17 @@
     // add to cue
     $scope.addToCue = function(user, video) {
 
-      Cue.resource.get({user_id: user.id}, function(res) { // jshint ignore:line
-        console.log('success', res);
+      Cue.resource.get({user_id: user.id}, function(res) {
 
-        var c = angular.fromJson(res.cues);
+        var c   = angular.fromJson(res.cues);
         var cue = c[0];
-        // console.log(video);
-        Cue.resource.addVideoToCue({cue_id: cue.id, video_id: video.id}, function(res) { // jshint ignore:line
-          console.log('success', res);
+        
+
+        Cue.resource.addVideoToCue({cue_id: cue.id, video_id: video.id}, function() {
+
+          Flash.create('success', Announce.addToCueSuccess);
+          $scope.alreadyInCue = true;
+
         }, function(res) {
           console.log('error', res);
         });
@@ -106,14 +109,24 @@
       }, function(res) {
         console.log('error', res);
       });
-
       
+    };
+
+    $scope.removeFromCue = function(user, video) {
+
+      Cue.resource.removeFromCue({user_id: user.id, video_id: video.id}, function(res) {
+        Flash.create('success', res.notice);
+        $scope.alreadyInCue = false;
+      }, function(res) {
+        console.log('error not removed', res);
+      });
+
     };
 
 
   }; // end of libraryDetailCtrl
 
-  libraryDetailCtrl.$inject = ['$scope', '$rootScope', '$http', '$stateParams', 'Video', 'Collocation', 'Cue', 'User'];
+  libraryDetailCtrl.$inject = ['$scope', '$rootScope', '$http', '$stateParams', 'Video', 'Collocation', 'Cue', 'User', 'Flash', 'Announce'];
 
   angular
     .module('angularApp')

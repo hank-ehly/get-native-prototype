@@ -133,6 +133,7 @@ Rails.application.routes.draw do
   resources :collocations
 
   post 'add_video_to_cue/:cue_id/:video_id' => 'cues#add_video_to_cue'
+  delete 'remove_video_from_cue/:user_id/:video_id.json' => 'cues#remove_video_from_cue'
   
 
   # resources :users <- this was generated as a result of 'rails scaffold user'

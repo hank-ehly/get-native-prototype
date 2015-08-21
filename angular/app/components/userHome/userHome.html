@@ -9,6 +9,7 @@
 			<h4>Topic: {{ cv.topic.name }}</h4>
 			<h4>Category: {{ cv.category.name }}</h4>
 			<h4>Speaker: {{ cv.speaker.name }}</h4>
+			<button class="btn btn-danger" ng-click="removeFromCue(cv, user, $index)">remove</button>
 		</li>
 	</ul>
 </div>
