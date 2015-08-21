@@ -1,49 +1,79 @@
-<h1>User home</h1>
+<div class="container">
+<div class="row">
 
-<!-- left side -->
-<div class="col-sm-6">
-	<input type="text" ng-model="search">
-	<ul>
-		<li ng-repeat="cv in cueVideos | filter:search">
-			<div style="width:50px;height:40px;background:grey;" ng-click="selectCueVideo(cv)"></div>
-			<h4>Topic: {{ cv.topic.name }}</h4>
-			<h4>Category: {{ cv.category.name }}</h4>
-			<h4>Speaker: {{ cv.speaker.name }}</h4>
-			<button class="btn btn-danger" ng-click="removeFromCue(cv, user, $index)">remove</button>
-		</li>
-	</ul>
-</div>
-
-
-
-<!-- right side -->
-<div class="col-sm-6">
-
-	<!-- youtube video player -->
-	<youtube-video 	video-id="video.code" 
-									player-vars="playerVars"
-									player-width="'100%'" 
-									player-height="'300px'"
-									></youtube-video>
-
-	<!-- video script tabs -->
-	<tabset>
-
-    <tab 	ng-repeat="tab in tabs" 
-    			heading="{{ tab.title }}" 
-    			active="tab.active">
-    			<span ng-bind-html="tab.content" 
-    						class="videoScriptContent"
-    						ng-click="videoScriptClickHandler($event)"
-    						></span>
-    			</tab>
-
-    <tab heading="N/A"></tab>
-
-  </tabset>
+	<!-- row 1 left -->
+	<div class="col-sm-6">
 	
-	<collocation-panel></collocation-panel>
+		<input 	type="text" 
+						ng-model="search"
+						class="form-control"
+						placeholder="Search"
+						id="userHomeSearch" 
+						>
 
-</div>
+		<table 	class="table"
+						id="cueVideosTable">
+
+			<tr ng-repeat="cv in cueVideos | filter:search"
+					class="cueVideo"
+					ng-click="selectCueVideo(cv)">
+
+				<td class="col-sm-2"><img src="http://placehold.it/120x90" alt=""></td>
+
+				<td>
+					<ul>
+						<li>{{ cv.category.name }}</li>
+						<li>{{ cv.topic.name }}</li>
+						<li>{{ cv.speaker.name }}</li>
+						<li>{{ cv.length | inMinutes }}</li>
+					</ul>
+				</td>
+
+				<td class="removeFromCueButton">
+					<a 	href="" 
+							class="glyphicon glyphicon-remove-circle" 
+							ng-click="removeFromCue(cv, user, $index)"
+					></a>
+				</td>
+
+			</tr>
+		</table>
+
+
+	</div> <!-- end row -->
+	
+	
+	<!-- row 1 right -->
+	<div class="col-sm-6">
+	
+		<!-- youtube video player -->
+		<youtube-video 	video-id="video.code" 
+										player-vars="playerVars"
+										player-width="'100%'" 
+										player-height="'300px'"
+										></youtube-video>
+	
+		<!-- video script tabs -->
+		<tabset>
+	
+	    <tab 	ng-repeat="tab in tabs" 
+	    			heading="{{ tab.title }}" 
+	    			active="tab.active">
+	    			<span ng-bind-html="tab.content" 
+	    						class="videoScriptContent"
+	    						ng-click="videoScriptClickHandler($event)"
+	    						></span>
+	    			</tab>
+	
+	    <tab heading="N/A"></tab>
+	
+	  </tabset>
+		
+		<collocation-panel></collocation-panel>
+	
+	</div>
+
+</div> <!-- .row -->
 
 <!-- embed-responsive embed-responsive-16by9 -->
+</div>

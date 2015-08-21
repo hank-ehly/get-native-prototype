@@ -4,9 +4,6 @@
   var userHomeCtrl = function($scope, $rootScope, Video, Collocation, Cue, Flash) {
 
     // fix this 
-    Cue.resource.get({user_id: $rootScope.user.id, language_module_id: 21}, getCueSuccess, getCueFailure);
-
-
     function getCueSuccess(res) {
 
       // unpack cue.videos object
@@ -22,10 +19,20 @@
         Video.resource.get({ id: parseInt($scope.selectedCueVideo.id) }, getVideoSuccess, getVideoError);
 
       }
-    } // getCueSuccess
+    }
+
+    function getCueFailure (res) { console.log('Error', res); }
+
+    Cue.resource.get({user_id: $rootScope.user.id, language_module_id: 21}, getCueSuccess, getCueFailure);
 
     
-    
+
+    /*
+     * This function is called when a user clicks on a new video.
+     * Its' main purpose is to execute 'getVideoSuccess,' but it
+     * also serves to set the next video in the panel
+     */
+
     function selectCueVideo(cv) {
 
       $scope.selectedCueVideo = cv;
@@ -39,7 +46,10 @@
     }
 
 
-
+    /*
+     * This function is called when a Video record has been successfully
+     * retrieved from the DB. It finds all the related content (collocations, video script)
+     */
 
     function getVideoSuccess(res) {
 
@@ -85,14 +95,18 @@
 
     } // getVideoSuccess
 
-    function getVideoError(res) {
-      console.log(res);
-    }
+    function getVideoError(res) { console.log('Error', res); }
 
     
-
-
+    /*
+     * This function is called when the user clicks the 'remove' button next to a cue video.
+     */
+    
     function removeFromCue(video, user, index) {
+
+      if (!confirm('Delete this video from your playlist?')) {
+        return false;
+      }
 
       // This is triggered when the video you removed
       // is the same one that is currently selected
@@ -130,10 +144,7 @@
       });
 
     } // end removeFromCue
-
-    // handle errors
-    function getCueFailure (res) { console.log('Error', res); }
-
+    
     $scope.selectCueVideo = selectCueVideo;
     $scope.removeFromCue  = removeFromCue;
 

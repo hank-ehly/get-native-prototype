@@ -1,5 +1,13 @@
 // default bg-color
-body { background: $offWhite; }
+body { 
+	background: $offWhite;
+}
+
+// default ul
+ul {
+	padding: 0;
+	list-style-type: none;
+}
 
 // default container bg-color
 div.container { background: #fff; }
