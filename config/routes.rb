@@ -117,6 +117,8 @@
 
 Rails.application.routes.draw do
 
+  get 'hasVideo/:user_id/:video_id' => 'users#hasVideo'
+
   mount_devise_token_auth_for 'User', at: 'auth'
   resources :language_modules
   resources :video_scripts
@@ -131,6 +133,7 @@ Rails.application.routes.draw do
   resources :collocations
 
   post 'add_video_to_cue/:cue_id/:video_id' => 'cues#add_video_to_cue'
+  
 
   # resources :users <- this was generated as a result of 'rails scaffold user'
 

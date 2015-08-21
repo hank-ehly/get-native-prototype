@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var globalNavbar = function(authService, $modal) {
+  var globalNavbar = function(authService) {
     // Runs during compile
     return {
       // name: '',
@@ -22,6 +22,7 @@
         $scope.languages        = ['Japanese', 'English'];
         $scope.selectedLanguage = 'Japanese';
 
+        // this is the click handler for the language module dropdown
         $scope.langClickHandler = function(language) {
 
            // show language in upper-left box
@@ -29,37 +30,8 @@
 
         };
 
-
-
-        $scope.open = function(size) {
-
-          var modalInstance = $modal.open({
-            animation: true,
-            templateUrl: 'shared/globalNavbar/languageModuleModalTemplate.html',
-            controller: 'languageModuleModalCtrl',
-            size: size,
-            resolve: {
-              language: function() { return $scope.selectedLanguage; }
-            }
-          });
-
-          console.log('opened at ' + new Date());
-
-          modalInstance.result.then(function(selectedItem) {
-            $scope.selected = selectedItem;
-          }, function() {
-            console.log('closed at ' + new Date());
-          });
-
-        };
-
-
-
-        
-
-
-
-        // define main bar items
+        // these are the left-navbar buttons
+        // set 'restricted' if you wanna make them invisible to guests
         $scope.barItems = [
           { title: 'Home',    state: 'userHome',    restricted: true },
           { title: 'Library', state: 'libraryTop',  restricted: false },
@@ -81,6 +53,6 @@
     .module('angularApp')
     .directive('globalNavbar', globalNavbar);
 
-  globalNavbar.$inject = ['authService', '$modal'];
+  globalNavbar.$inject = ['authService'];
 
 })();

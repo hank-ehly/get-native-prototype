@@ -1,24 +1,20 @@
 (function() {
   'use strict';
 
-  var Category = function($resource) {
+  var Category = function($resource, apiBaseUrl) {
 
-  	var apiUrl,
+  	var url,
   			paramDefaults,
   			actions;
 
-    apiUrl = 'http://localhost:3000/categories/:id.json';
+    url           = apiBaseUrl + '/categories/:id.json';
+    paramDefaults = { id: '@id' };
+    actions       = {
+              save: { method: 'POST' },
+            update: { method: 'PUT' }
+                    };
 
-    paramDefaults = {
-      id: '@id'
-    };
-
-    actions = {
-      save: { method: 'POST' },
-      update: { method: 'PUT' }
-    };
-
-    return $resource(apiUrl, paramDefaults, actions);
+    return $resource(url, paramDefaults, actions);
 
   };
 
@@ -26,6 +22,6 @@
     .module('angularApp')
     .factory('Category', Category);
 
-  Category.$inject = ['$resource'];
+  Category.$inject = ['$resource', 'apiBaseUrl'];
 
 })();
