@@ -1,10 +1,10 @@
 <h1>User home</h1>
 
-
+<!-- left side -->
 <div class="col-sm-6">
-	<input type="text">
+	<input type="text" ng-model="search">
 	<ul>
-		<li ng-repeat="cv in cueVideos">
+		<li ng-repeat="cv in cueVideos | filter:search">
 			<div style="width:50px;height:40px;background:grey;" ng-click="selectCueVideo(cv)"></div>
 			<h4>Topic: {{ cv.topic.name }}</h4>
 			<h4>Category: {{ cv.category.name }}</h4>

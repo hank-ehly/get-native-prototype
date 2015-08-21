@@ -3,11 +3,11 @@
 
   angular
     .module('angularApp')
-    .config(['$authProvider', function($authProvider) {
+    .config(['$authProvider', 'apiBaseUrl', function ($authProvider, apiBaseUrl) {
 
       $authProvider.configure({
 
-        apiUrl:                 'http://localhost:3000',
+                        apiUrl: apiBaseUrl,
         confirmationSuccessUrl: 'http://localhost:9000/#/userHome'
 
       });
@@ -15,6 +15,20 @@
 
     }])
     .run(['$rootScope', '$state', 'Flash', 'Announce', function($rootScope, $state, Flash, Announce) {
+
+      /*
+       *  Broadcast when a user's token is successfully 
+       *  verified using the $auth.validateUser method.
+       */
+      
+      $rootScope.$on('auth:validation-success', function(e, user) { // jshint ignore:line
+        
+      });
+
+      // Fired when the transition begins.
+      $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) { // jshint ignore:line
+
+      });
 
       /*
        *  Broadcast when users arrive from links contained in password-reset emails. 

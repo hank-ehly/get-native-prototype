@@ -1,39 +1,35 @@
 (function() {
   'use strict';
 
-  var Collocation = function($resource) {
+  var Collocation = function($resource, apiBaseUrl) {
 
-    // resource related
-  	var apiUrl,
+  	var url,
   			paramDefaults,
   			actions;
 
-    apiUrl        = 'http://localhost:3000/collocations/:id.json';
+    url           = apiBaseUrl + '/collocations/:id.json';
     paramDefaults = { id: '@id' };
-    actions       = { save: { method: 'POST' },
-                      update: { method: 'PUT' }
+    actions       = {   
+              save: { method: 'POST' },
+            update: { method: 'PUT' }
                     };
 
-    function wrapCollocations(script, collocations, tag, className) {
+    // ------------------------
 
+    function wrapCollocations(script, collocations, tag, className) {
       var result = script;
 
         angular.forEach(collocations, function(c) {
-
-          var quote,
-            start,
-            end,
-            substr,
-            newSub;
+          var quote, start, end, substr, newSub;
 
           // initialize variables
-          quote = c.quote;
-          start = result.indexOf(quote);
-          end = start + quote.length;
-          substr = result.substring(start, end);
+          quote   = c.quote;
+          start   = result.indexOf(quote);
+          end     = start + quote.length;
+          substr  = result.substring(start, end);
 
           // assemble replacement element
-          newSub = '<' + tag;
+          newSub  = '<' + tag;
           newSub += ' class="' + className + '"';
           newSub += '>';
           newSub += substr;
@@ -47,17 +43,19 @@
         return result;
     }
 
+    // ------------------------
+
     return {
-      resource: $resource(apiUrl, paramDefaults, actions),
-      wrap: function(s, c, t, cl) { return wrapCollocations(s, c, t, cl); },
+      resource: $resource(url, paramDefaults, actions),
+          wrap: function(a,b,c,d) { return wrapCollocations(a,b,c,d); },
     };
 
-  }; // Collocation
+  };
 
   angular
     .module('angularApp')
     .factory('Collocation', Collocation);
 
-  Collocation.$inject = ['$resource'];
+  Collocation.$inject = ['$resource', 'apiBaseUrl'];
 
 })();

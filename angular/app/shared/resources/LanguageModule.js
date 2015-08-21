@@ -1,28 +1,27 @@
 (function() {
   'use strict';
 
-  var LanguageModule = function($resource) {
+  var LanguageModule = function($resource, apiBaseUrl) {
 
     var url,
         paramDefaults,
         actions;
         
-  	url        = 'http://localhost:3000/language_modules/:id.json';
+  	url           = apiBaseUrl + '/language_modules/:id.json';
     paramDefaults = { id: '@id' };
-    actions       = { save: { method: 'POST' },
-                      update: { method: 'PUT' }
+    actions       = { 
+              save: { method: 'POST' },
+            update: { method: 'PUT' }
                     };
 
-  	return {
-  		resource: $resource(url, paramDefaults, actions)
-  	};
+  	return { resource: $resource(url, paramDefaults, actions) };
 
-  }
+  };
 
   angular
   	.module('angularApp')
   	.factory('LanguageModule', LanguageModule);
 
-  LanguageModule.$inject = ['$resource'];
+  LanguageModule.$inject = ['$resource', 'apiBaseUrl'];
 
 })();

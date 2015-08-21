@@ -1,24 +1,20 @@
 (function() {
   'use strict';
 
-  var Video = function($resource) {
+  var Video = function($resource, apiBaseUrl) {
 
-  	var apiUrl,
+  	var url,
   			paramDefaults,
   			actions;
 
-    apiUrl = 'http://localhost:3000/videos/:id.json';
+    url           = apiBaseUrl + '/videos/:id.json';
+    paramDefaults = { id: '@id' };
+    actions       = {
+              save: { method: 'POST' },
+            update: { method: 'PUT' }
+                    };
 
-    paramDefaults = {
-      id: '@id'
-    };
-
-    actions = {
-      save: { method: 'POST' },
-      update: { method: 'PUT' }
-    };
-
-    return $resource(apiUrl, paramDefaults, actions);
+    return { resource: $resource(url, paramDefaults, actions) };
 
   };
 
@@ -26,6 +22,6 @@
     .module('angularApp')
     .factory('Video', Video);
 
-  Video.$inject = ['$resource'];
+  Video.$inject = ['$resource', 'apiBaseUrl'];
 
 })();

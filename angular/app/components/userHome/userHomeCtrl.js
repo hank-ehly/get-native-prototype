@@ -6,23 +6,20 @@
     
 
 
-    Cue.resource.get({user_id: 41, language_module_id: 21}, function(res) {
+    Cue.resource.get({user_id: 41, language_module_id: 21}, function(res) { // jshint ignore:line
       console.log('success', res);
       $scope.cueVideos = angular.fromJson(res.videos);
       console.log($scope.cueVideos);
 
       $scope.selectedCueVideo = $scope.cueVideos[0].id;
 
-      Video.get({ id: parseInt($scope.selectedCueVideo) }, getVideoSuccess, getVideoError);
+      Video.resource.get({ id: parseInt($scope.selectedCueVideo) }, getVideoSuccess, getVideoError);
 
-      // angular.forEach($scope.cueVideos, function(cv) {
-      //   cv.topic = Topic.
-      // });
 
     }, function(res) {
       console.log('fail', res);
     });
-    // $scope.cueVideos;
+    
 
 
 
@@ -32,9 +29,9 @@ $scope.selectCueVideo = function(cv) {
 
   $scope.selectedCueVideo = cv.id;
 
-  Video.get({ id: parseInt($scope.selectedCueVideo) }, getVideoSuccess, getVideoError);
+  Video.resource.get({ id: parseInt($scope.selectedCueVideo) }, getVideoSuccess, getVideoError);
 
-}
+};
 
 
 

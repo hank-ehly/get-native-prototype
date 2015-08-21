@@ -5,7 +5,7 @@
 
     // query DB for videos and categories
     Category.get(function(res) { $scope.categories = angular.fromJson(res.categories); });
-    Video.get(function(res) { 
+    Video.resource.get(function(res) { 
       $scope.searchResults = angular.fromJson(res.videos); 
     });
 

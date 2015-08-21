@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var libraryDetailCtrl = function($scope, $http, $stateParams, Video, Collocation, Cue) {
+  var libraryDetailCtrl = function($scope, $rootScope, $http, $stateParams, Video, Collocation, Cue, User) {
 
     /*
     *
@@ -17,7 +17,7 @@
     * 5 / Push the new videoScript object into the tabs array
     *
     */
-    
+
     function getVideoSuccess(res) {
 
       // initialization
@@ -25,15 +25,27 @@
       var videoScripts  = angular.fromJson(res.video_scripts); // jshint ignore:line
       $scope.tabs       = [];
 
+
+      // see if video is already in one of user's cues
+      User.resource.hasVideo({user_id: $rootScope.user.id, video_id: $scope.video.id}, function(res) {
+
+        $scope.alreadyInCue = res.result;
+
+      }, function(res) {
+
+        console.log('Error', res);
+
+      });
+
+
       // iterate over videoScripts
       angular.forEach(videoScripts, function(vs) {
 
         // create videoScript object for bootstrap tab directive
         var videoScript = {
-          title: vs.language.name,
+            title: vs.language.name,
           content: vs.content
         };
-
 
         if (vs.original) {
 
@@ -67,26 +79,25 @@
       console.log(res);
     }
 
-    Video.get({ id: parseInt($stateParams.videoId) }, getVideoSuccess, getVideoError);
+    Video.resource.get({ id: parseInt($stateParams.videoId) }, getVideoSuccess, getVideoError);
 
     // video player settings
     $scope.playerVars = {
-      controls: 1,
+            controls: 1,
       modestbranding: 1,
-      showinfo: 0
+            showinfo: 0
     };
-
 
     // add to cue
     $scope.addToCue = function(user, video) {
 
-      Cue.resource.get({user_id: user.id}, function(res) {
+      Cue.resource.get({user_id: user.id}, function(res) { // jshint ignore:line
         console.log('success', res);
 
         var c = angular.fromJson(res.cues);
         var cue = c[0];
         // console.log(video);
-        Cue.resource.addVideoToCue({cue_id: cue.id, video_id: video.id}, function(res) {
+        Cue.resource.addVideoToCue({cue_id: cue.id, video_id: video.id}, function(res) { // jshint ignore:line
           console.log('success', res);
         }, function(res) {
           console.log('error', res);
@@ -97,12 +108,12 @@
       });
 
       
-    }
+    };
 
 
   }; // end of libraryDetailCtrl
 
-  libraryDetailCtrl.$inject = ['$scope', '$http', '$stateParams', 'Video', 'Collocation', 'Cue'];
+  libraryDetailCtrl.$inject = ['$scope', '$rootScope', '$http', '$stateParams', 'Video', 'Collocation', 'Cue', 'User'];
 
   angular
     .module('angularApp')
