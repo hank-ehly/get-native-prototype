@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var collocationPanel = function() {
+  var collocationPanel = function(Helper) {
     // Runs during compile
     return {
       // name: '',
@@ -18,51 +18,48 @@
       // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
       link: function($scope) {
 
-
-
-        // click handler for when you click inside the video-script box
-        $scope.videoScriptClickHandler = function(e) {
-
-          // you deduce whether or not you clicked a collocation by looking for
-          // the class 'collocation' on the clicked element
-          var its_a_collocation   = e.target.className === 'collocation' ? true : false;
-
-          if (its_a_collocation) {
-
-            // get the clicked collocation's text
-            var collocationText = e.target.textContent;
-
-            // this will set the heading of the collocation
-            // panel to the text of the clicked collocation element
-            $scope.selectedCollocationQuote = collocationText;
-
-            // within the list of collocations for the selected video script (see libraryDetailCtrl),
-            // find a collocation whose text matches the text of the clicked collocation element.
-            // If you find a match, echo that collocation's description in the panel
-            angular.forEach($scope.collocations, function(c) {
-
-              if (c.quote === collocationText) {
-                $scope.selectedCollocationDescription = c.description;
-              }
-
-            }); // forEach
-
-          } // its_a_collocation
-
-        }; // videoScriptClickHandler
-
-
+        /*
+         *
+         * this function is here because it is used in both libraryDetailCtrl & userHome
+         *
+         */
         
+          // click handler for when you click inside the video-script box
+          function videoScriptClickHandler(e) { 
 
-      } // end link
-    }; // end return
-  }; // end collocationPanel
+            if (Helper.hasClass(e.target, 'collocation')) {
+
+              // get the clicked collocation's text
+              var collocationText = e.target.textContent;
+
+              // this will set the heading of the collocation
+              // panel to the text of the clicked collocation element
+              $scope.selectedCollocationQuote = collocationText;
+
+              // within the list of collocations for the selected video script (see libraryDetailCtrl),
+              // find a collocation whose text matches the text of the clicked collocation element.
+              // If you find a match, echo that collocation's description in the panel
+              angular.forEach($scope.collocations, function(c) {
+
+                if (c.quote === collocationText) {
+                  $scope.selectedCollocationDescription = c.description;
+                }
+
+              });
+            } // if
+          } // click
+
+          $scope.videoScriptClickHandler = videoScriptClickHandler;
+
+        } // link
+    }; // return
+  };
 
   angular
     .module('angularApp')
     .directive('collocationPanel', collocationPanel);
 
-  collocationPanel.$inject = [];
+  collocationPanel.$inject = ['Helper'];
 
 })();
 

@@ -50,10 +50,11 @@
         if (vs.original) {
 
           // set initially active tab
-          videoScript.active = true;
+          videoScript.active    = true;
+          videoScript.original  = true;
 
           // get collocations for this videoScript
-          Collocation.resource.get({ video_script_id: vs.id }, function(res) { // jshint ignore:line
+          Collocation.resource.get({ video_script_id: vs.id }, function(res) {
 
             // group the collocations so that you can wrap them
             $scope.collocations = angular.fromJson(res.collocations);
@@ -89,7 +90,7 @@
     };
 
     // add to cue
-    $scope.addToCue = function(user, video) {
+    function addToCue(user, video) {
 
       Cue.resource.get({user_id: user.id}, function(res) {
 
@@ -110,9 +111,9 @@
         console.log('error', res);
       });
       
-    };
+    }
 
-    $scope.removeFromCue = function(user, video) {
+    function removeFromCue(user, video) {
 
       Cue.resource.removeFromCue({user_id: user.id, video_id: video.id}, function(res) {
         Flash.create('success', res.notice);
@@ -121,7 +122,11 @@
         console.log('error not removed', res);
       });
 
-    };
+    }
+
+
+    $scope.removeFromCue = removeFromCue;
+    $scope.addToCue      = addToCue;
 
 
   }; // end of libraryDetailCtrl

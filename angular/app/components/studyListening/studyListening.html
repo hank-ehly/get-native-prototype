@@ -1,1 +1,61 @@
-{{ test }}
+<div class="container">
+
+<h1>listening</h1>
+	
+	<div class="row">
+
+		<div class="col-sm-6">
+	
+		<!-- youtube video player -->
+		<youtube-video 	video-id="video.code" 
+										player="studyListeningPlayer"
+										player-vars="playerVars"
+										player-width="'100%'" 
+										player-height="'300px'"
+										class="avoid-clicks"
+										></youtube-video>
+	
+		</div> <!-- column -->
+
+		<div class="col-sm-6">
+			
+			<!-- video script tabs -->
+			<tabset>
+
+		    <tab 	ng-repeat="tab in tabs" 
+		    			heading="{{ tab.title }}" 
+		    			active="tab.active">
+		    			<span ng-bind-html="tab.content" 
+		    						class="videoScriptContent"
+		    						ng-click="videoScriptClickHandler($event)"
+		    						></span>
+		    			</tab>
+
+		    <tab heading="N/A"></tab>
+
+		  </tabset>
+
+		</div>
+
+	</div> <!-- row -->
+
+	<div class="row">
+
+		<button ng-click="studyListeningPlayer.playVideo(); resumeTimer()">play</button>
+		<button ng-click="studyListeningPlayer.pauseVideo(); stopTimer()">stop</button>
+		
+
+		<div class="col-sm-12"><progressbar value="40"></progressbar></div>
+
+		<timer 	countdown="studyTime" 
+						interval="1000"
+						autostart="false"
+						finish-callback="finished()"
+						ng-model="foo">
+						{{mminutes}}:{{sseconds}}
+						</timer>
+
+	</div>
+
+
+</div> <!-- container -->

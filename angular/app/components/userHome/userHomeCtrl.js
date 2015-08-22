@@ -3,7 +3,6 @@
 
   var userHomeCtrl = function($scope, $rootScope, Video, Collocation, Cue, Flash) {
 
-    // fix this 
     function getCueSuccess(res) {
 
       // unpack cue.videos object
@@ -104,7 +103,7 @@
     
     function removeFromCue(video, user, index) {
 
-      if (!confirm('Delete this video from your playlist?')) {
+      if (!confirm('Delete this video from your playlist?')) { // jshint ignore:line
         return false;
       }
 

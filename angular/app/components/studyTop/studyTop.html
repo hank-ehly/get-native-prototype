@@ -1,1 +1,86 @@
-{{ test }}
+<div class="container">
+
+<h1>Ready..</h1>
+
+<div class="row">
+	
+	<div class="col-sm-6">
+
+		<h3>Choose a video</h3>
+
+		<input 	type="text" 
+						ng-model="search"
+						class="form-control"
+						placeholder="Search"
+						id="userHomeSearch" 
+						>
+
+		<table 	class="table"
+						id="cueVideosTable">
+
+			<tr ng-repeat="cv in cueVideos | filter:search"
+					class="cueVideo"
+					ng-click="selectCueVideo(cv)">
+
+				<td class="col-sm-2"><img src="http://placehold.it/90x70" alt=""></td>
+
+				<td>
+					<ul>
+						<!-- <li>{{ cv.category.name }}</li> -->
+						<li>{{ cv.topic.name }}</li>
+						<li>{{ cv.speaker.name }}</li>
+						<li>{{ cv.length | inMinutes }}</li>
+					</ul>
+				</td>
+
+
+			</tr>
+		</table>
+
+
+	</div> <!-- col-sm-6 -->
+
+	<div class="col-sm-6">
+
+		<h3>Study..</h3>
+		<ul>
+			<li>{{ selectedCueVideo.category.name }}</li>
+			<li>{{ selectedCueVideo.topic.name }}</li>
+			<li>{{ selectedCueVideo.speaker.name }}</li>
+			<li>{{ selectedCueVideo.length | inMinutes }}</li>
+		</ul>
+
+	
+		<div>
+			<button ng-click="increase()">up</button>
+			<button ng-click="decrease()">down</button>
+			
+			<input 	type="text" 
+							readonly
+							value="{{ time }}"
+							size="2"
+							>
+			
+			<span>minutes</span>
+		</div>
+
+		
+	<br>
+
+		<a ui-sref="studyListening({ videoId: selectedCueVideo.id, time: time })" class="btn btn-success">Begin</a>
+
+	</div>
+
+</div> <!-- row -->
+
+
+<div class="col-sm-12"><progressbar value="20"></progressbar></div>
+
+
+
+
+
+
+
+
+</div>

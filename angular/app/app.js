@@ -13,7 +13,8 @@
       'ng-token-auth',
       'flash',
       'ui.bootstrap',
-      'youtube-embed'
+      'youtube-embed',
+      'timer'
     ]);
 
 })();
