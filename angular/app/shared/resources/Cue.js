@@ -29,9 +29,8 @@
       }
     };
 
-    function getVideoError (res) { console.log('Error', res); }
     function getCueError   (res) { console.log('Error', res); }
-    function getColError   (res) { console.log('Error', res); }
+    function setVideoError (res) { console.log('Error', res); }
 
     function initializeContents(userId, langModId, selectedVideo) {
 
@@ -48,47 +47,21 @@
 
           data.selectedVideo = selectedVideo ? selectedVideo : data.cueVideos[0];
 
-          Video.resource.get({ id: data.selectedVideo.id }, function (res) {
 
-            data.video   = angular.fromJson(res.video);
+          Video.setVideo(data).then(function (res) {
 
-            data.scripts = angular.fromJson(res.video_scripts);
-            data.tabs    = [];
+            data.video                = res.video;
+            data.scripts              = res.scripts;
+            data.tabs                 = res.tabs;
+            data.collocations         = res.collocations;
+            data.selectedQuote        = res.selectedQuote;
+            data.selectedDescription  = res.selectedDescription;
 
-            angular.forEach(data.scripts, function(s) {
+            deferred.resolve(data);
 
-              var vs     = {};
-              vs.id      = s.id;
-              vs.title   = s.language.name;
-              vs.content = s.content;
-
-              if (s.original) {
-
-                vs.active = true;
-
-                Collocation.resource.get({ video_script_id: vs.id }, function (res) {
-
-                  data.collocations = angular.fromJson(res.collocations);
-
-                  // wraps in <span> tags and give 'collocation' class
-                  vs.content = Collocation.wrap(vs.content, data.collocations, 'span', 'collocation');
-
-                  // initialize values for collocation panel
-                  data.selectedQuote       = '...';
-                  data.selectedDescription = 'Select a collocation from the above script!';
-
-                  deferred.resolve(data);
-
-                }, getColError);
-              } // if s.original
-
-              data.tabs.push(vs);
-
-            }); // each
-          }, getVideoError);
-
+          }, setVideoError);
         } // if data.cueVideos.length
-      }, getCueError); // jshint ignore:line
+      }, getCueError);
       
       return deferred.promise;
       

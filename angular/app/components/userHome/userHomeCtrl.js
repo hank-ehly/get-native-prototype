@@ -13,8 +13,6 @@
     
     function initSuccess(data) {
 
-      console.log(data);
-
       $scope.cueVideos            = data.cueVideos;
       $scope.selectedCueVideo     = data.selectedVideo;
       $scope.tabs                 = data.tabs;
@@ -35,15 +33,7 @@
      * also serves to set the next video in the panel
      */
 
-    $scope.selectCueVideo = function(cv) {
-
-      if (cv === null) {
-        // do something
-      }
-
-      Cue.initializeContents(currentUser, 21, cv).then(initSuccess, initError);
-
-    };
+    $scope.selectCueVideo = function(cv) { Cue.initializeContents(currentUser, 21, cv).then(initSuccess, initError); };
     
 
   }; // end userHomeCtrl
