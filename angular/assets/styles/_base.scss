@@ -20,3 +20,6 @@ div.container { background: #fff; }
 
 // remove border-radius on globalNavbar
 nav.navbar { border-radius: 0; }
+
+// disable click events
+.avoid-clicks { pointer-events: none; }

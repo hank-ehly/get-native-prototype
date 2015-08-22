@@ -1,1 +1,41 @@
-{{ test }}
+<div class="container">
+	
+	<h1>shadowing</h1>
+
+<div class="row">
+	<div class="col-sm-6">
+		
+			<!-- youtube video player -->
+			<youtube-video 	video-id="video.code" 
+								player="studyShadowingPlayer"
+								player-vars="playerVars"
+								player-width="'100%'" 
+								player-height="'300px'"
+								class="avoid-clicks"
+								></youtube-video>
+		
+			</div> <!-- column -->
+		</div>
+
+
+		<div class="row">
+
+		<button ng-click="studyShadowingPlayer.playVideo(); resumeTimer()">play</button>
+		<button ng-click="studyShadowingPlayer.pauseVideo(); stopTimer()">stop</button>
+		
+
+		<div class="col-sm-12"><progressbar value="60"></progressbar></div>
+
+		<timer 	countdown="studyTime" 
+						interval="1000"
+						autostart="false"
+						finish-callback="finished()"
+						ng-model="foo">
+						{{mminutes}}:{{sseconds}}
+						</timer>
+
+	</div>
+
+
+
+</div>

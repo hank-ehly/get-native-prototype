@@ -47,7 +47,7 @@
 
     return {
       resource: $resource(url, paramDefaults, actions),
-          wrap: function(a,b,c,d) { return wrapCollocations(a,b,c,d); },
+          wrap: wrapCollocations
     };
 
   };
