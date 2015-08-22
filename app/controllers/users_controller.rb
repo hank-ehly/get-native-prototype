@@ -3,9 +3,10 @@ class UsersController < ApplicationController
 
   	result = false
 
-  	u = User.find(params[:user_id])
-  	v = Video.find(params[:video_id])
-  	cvs = u.language_modules.find_by(language_id: v.language_id).cue.videos
+  	u   = User.find(params[:user_id])
+  	v   = Video.find(params[:video_id])
+    uc  = u.language_modules.find_by(language_id: v.language_id).cue;
+  	cvs = uc.videos
 
   	cvs.each do |c|
 			if c.id === v.id
@@ -15,7 +16,8 @@ class UsersController < ApplicationController
  		end
 
  		render json: {
-      result: result
+      result: result,
+      cue: uc
     }
 
   end

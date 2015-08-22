@@ -24,17 +24,21 @@
 		</ul>
 
 	
-		<div>
-			<button ng-click="increase()">up</button>
-			<button ng-click="decrease()">down</button>
+		<div class="studyTop" id="minutesFormWrapper">
+
+			<div class="studyTop" id="buttonWrapper">
+				<a href="" ng-click="increase()" class="glyphicon glyphicon-menu-up btn btn-default"></a>
+				<a href="" ng-click="decrease()" class="glyphicon glyphicon-menu-down btn btn-default"></a>
+			</div>
 			
 			<input 	type="text" 
 							readonly
+							class="studyTop" 
+							id="minutesInput" 
 							value="{{ time }}"
-							size="2"
 							>
 			
-			<span>minutes</span>
+			<span class="studyTop" id="minutesLabel">minutes</span>
 		</div>
 
 		

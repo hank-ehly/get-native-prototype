@@ -19,7 +19,6 @@
 	<tr 	
 				ng-repeat="cv in cueVideos | filter:search"
 				class="cueVideo"
-				ng-click="selectCueVideo(cv)"
 				>
 
 
@@ -31,6 +30,7 @@
 				<img 
 							src="http://placehold.it/120x90" 
 							alt=""
+							ng-click="selectCueVideo(cv)"
 							>
 		</td>
 
@@ -56,7 +56,7 @@
 			<a 	
 					href="" 
 					class="glyphicon glyphicon-remove-circle" 
-					ng-click="removeFromCue(cv, user, $index)"
+					ng-click="removeFromCue(cv, $index)"
 					>
 
 			</a>
