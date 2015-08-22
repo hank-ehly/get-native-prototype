@@ -34,7 +34,7 @@
 
               // this will set the heading of the collocation
               // panel to the text of the clicked collocation element
-              $scope.selectedCollocationQuote = collocationText;
+              $scope.selectedQuote = collocationText;
 
               // within the list of collocations for the selected video script (see libraryDetailCtrl),
               // find a collocation whose text matches the text of the clicked collocation element.
@@ -42,7 +42,7 @@
               angular.forEach($scope.collocations, function(c) {
 
                 if (c.quote === collocationText) {
-                  $scope.selectedCollocationDescription = c.description;
+                  $scope.selectedDescription = c.description;
                 }
 
               });

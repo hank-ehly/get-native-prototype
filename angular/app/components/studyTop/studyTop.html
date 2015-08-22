@@ -8,34 +8,7 @@
 
 		<h3>Choose a video</h3>
 
-		<input 	type="text" 
-						ng-model="search"
-						class="form-control"
-						placeholder="Search"
-						id="userHomeSearch" 
-						>
-
-		<table 	class="table"
-						id="cueVideosTable">
-
-			<tr ng-repeat="cv in cueVideos | filter:search"
-					class="cueVideo"
-					ng-click="selectCueVideo(cv)">
-
-				<td class="col-sm-2"><img src="http://placehold.it/90x70" alt=""></td>
-
-				<td>
-					<ul>
-						<!-- <li>{{ cv.category.name }}</li> -->
-						<li>{{ cv.topic.name }}</li>
-						<li>{{ cv.speaker.name }}</li>
-						<li>{{ cv.length | inMinutes }}</li>
-					</ul>
-				</td>
-
-
-			</tr>
-		</table>
+		<cue-videos-table uneditable></cue-videos-table>
 
 
 	</div> <!-- col-sm-6 -->
