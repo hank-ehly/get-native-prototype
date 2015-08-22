@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var cueVideosTable = function(Cue, Flash) {
+  var cueVideosTable = function(Cue, Flash, $auth) {
     
     return {
 
@@ -14,7 +14,7 @@
 
         // ----------------------------------
         
-        function removeFromCue(video, user, index) {
+        function removeFromCue(video, index) {
 
           if (!confirm('Delete this video from your playlist?')) { // jshint ignore:line
             return false;
@@ -25,7 +25,7 @@
            * is the same one that is currently selected
            */
 
-          if ($scope.selectedCueVideo === video) {
+          if ($scope.selectedCueVideo.code === video.code) {
 
           /*
            * Because we're deleting the currently selected video,
@@ -52,13 +52,12 @@
             
           } // if
 
-
           /*
            * Remove the actual video from the Cue, 
            * and splice it from the view
            */
           
-          Cue.resource.removeFromCue({user_id: user.id, video_id: video.id}, function(res) {
+          Cue.resource.removeFromCue({user_id: $auth.user.id, video_id: video.id}, function(res) {
 
             $scope.cueVideos.splice(index, 1);
             Flash.create('success', res.notice);
@@ -80,6 +79,6 @@
     .module('angularApp')
     .directive('cueVideosTable', cueVideosTable);
 
-  cueVideosTable.$inject = ['Cue', 'Flash'];
+  cueVideosTable.$inject = ['Cue', 'Flash', '$auth'];
 
 })();

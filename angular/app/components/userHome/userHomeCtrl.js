@@ -26,7 +26,6 @@
     function initError(res) { console.log('Error', res); }
     Cue.initializeContents(currentUser.id, 21).then(initSuccess, initError);
 
-
     /*
      * This function is called when a user clicks on a new video.
      * Its' main purpose is to execute 'getVideoSuccess,' but it

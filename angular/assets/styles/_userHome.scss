@@ -1,9 +1,8 @@
 .cueVideo {
   background: lighten($darkBlue, 3);
   color: $offWhite;
-  cursor: pointer;
-  &:hover {
-    background: $darkBlue;
+  img {
+    cursor: pointer;
   }
 }
 
