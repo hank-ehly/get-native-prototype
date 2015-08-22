@@ -17,10 +17,14 @@
       // transclude: true,
       // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
       link: function($scope) {
-      	$scope.subjects = [	'subject 1', 
+
+      	$scope.subjects = [	
+                            'subject 1', 
       											'subject 2', 
       											'subject 3', 
-      											'subject 4'];
+      											'subject 4'
+                          ];
+
       }
     };
   };
