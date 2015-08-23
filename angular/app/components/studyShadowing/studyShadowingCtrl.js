@@ -12,7 +12,7 @@
     }
 
     function setVideoError(res) { console.log('Error', res); }
-    Video.setVideo($stateParams.videoId).then(setVideoSuccess, setVideoError);
+    Video.setVideo($stateParams.v).then(setVideoSuccess, setVideoError);
 
     $scope.playerVars = PlayerVars.shadowing;
 
@@ -21,8 +21,8 @@
     $scope.$on('youtube.player.ended', function (e, player) { player.playVideo(); });
     $scope.$on('youtube.player.ready', function () { $scope.$broadcast('timer-start'); });
 
-    // $scope.studyTime = (($stateParams.time / 4) * 60);
-    $scope.studyTime = 5;
+    $scope.studyTime = (($stateParams.t / 4) * 60);
+    // $scope.studyTime = 5;
 
     $scope.timerRunning = true; 
     $scope.resumeTimer = function (){
@@ -49,8 +49,9 @@
   		setTimeout(function(){
   			console.log('redirecting now');
   			$state.go('studySpeaking', {
-  				videoId: $stateParams.videoId,
-  				time: $stateParams.time
+  				v: $stateParams.v,
+          lm: $stateParams.lm,
+  				t: $stateParams.t
   			});
   		}, 3000);
   	};

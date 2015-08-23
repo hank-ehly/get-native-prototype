@@ -1,5 +1,20 @@
 <div class="container">
 
+<div class="row libraryTop firstRow">
+	<div class="col-sm-5 libraryDetail videoColumn">
+
+		<h1 class="libraryDetail" id="heading">
+		{{ video.topic.name }} 
+		<small>{{ video.speaker.name }}</small>
+		</h1>
+	
+		<!-- youtube video player -->
+		<youtube-video 	video-id="video.code" 
+										player-vars="playerVars"
+										player-width="'100%'" 
+										player-height="'300px'"
+										></youtube-video>
+
 <button ng-click="addToCue(video)" 
 				ng-show="!alreadyInCue" 
 				class="btn btn-primary">
@@ -11,42 +26,30 @@
 				class="btn btn-primary">
 				Remove from cue
 				</button>
-
-<h1>{{ video.speaker.name }} <small>{{ video.topic.name }}</small></h1>
-
-<div class="col-sm-6">
-
-	<!-- youtube video player -->
-	<youtube-video 	video-id="video.code" 
-									player-vars="playerVars"
-									player-width="'100%'" 
-									player-height="'300px'"
-									></youtube-video>
-
-</div>
-
-<div class="col-sm-6">
-
-	<!-- video script tabs -->
-	<tabset>
-
-    <tab 	ng-repeat="tab in tabs" 
-    			heading="{{ tab.title }}" 
-    			active="tab.active">
-    			<span ng-bind-html="tab.content" 
-    						class="videoScriptContent"
-    						ng-click="videoScriptClickHandler($event)"
-    						></span>
-    			</tab>
-
-    <tab heading="N/A"></tab>
-
-  </tabset>
 	
-</div>
-
-<div class="col-sm-6">
-	<collocation-panel></collocation-panel>
+	</div>
+	
+	<div class="col-sm-7 libraryDetail tabsetColumn">
+	
+		<!-- video script tabs -->
+		<tabset id="libraryDetailTabset">
+	
+	    <tab 	ng-repeat="tab in tabs" 
+	    			heading="{{ tab.title }}" 
+	    			active="tab.active">
+	    			<span ng-bind-html="tab.content" 
+	    						class="videoScriptContent"
+	    						ng-click="videoScriptClickHandler($event)"
+	    						></span>
+	    			</tab>
+	
+	    <tab heading="N/A"></tab>
+	
+	  </tabset>
+	
+	  <collocation-panel class="libraryDetail"></collocation-panel>
+		
+	</div>
 </div>
 
 <!-- embed-responsive embed-responsive-16by9 -->

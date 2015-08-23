@@ -33,4 +33,54 @@ span#libraryTopSearchGlass {
 
 #libraryTopSearchResultsTableContainer {
   border-radius: 7px;
+
+  div > p {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0 0 30px;
+  }
+
+}
+
+#libraryTopSearchResultsTable > thead > tr > th {
+
+  font-size: 1.4em;
+  cursor: pointer;
+
+  &.noPointer {
+    cursor: default;
+  }
+
+  span {
+    position: relative;
+    font-size: .6em;
+    top: 0px;
+  }
+
+}
+
+#libraryTopSearchResultsTable > tbody > tr {
+  background: #fff;
+
+  td {
+    width: 20%;
+    vertical-align: middle;
+  }
+
+  td.previewImage {
+    width: 16%;
+  }
+
+  td.topicName {
+    width: 30%;
+  }
+
+}
+
+// show more button
+#libraryTopSearchResultsTableContainer > div > button {
+  margin: 0 auto;
+  display: block;
+  font-size: 2em;
+  height: 2em;
 }

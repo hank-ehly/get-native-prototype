@@ -1,12 +1,9 @@
 (function() {
   'use strict';
 
-  var studyWritingCtrl = function($scope, $state, $stateParams, $modal) {
+  var studyWritingCtrl = function($scope, $rootScope, $state, $stateParams, $modal, Video, WritingAnswer) {
 
-  	$scope.test = 'foostudyWriting';
-
-  	$scope.prompt = 'This is the prompt question';
-
+    var topic;
   	$scope.wordCount = 0;
 
   	$scope.countWords = function(e){
@@ -19,7 +16,27 @@
 
     // window.onbeforeunload = function(e) { return 'By refreshing the page you will reset the clock!'; }
 
-    $scope.example = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut id maiores, architecto velit! Illo pariatur neque nam ab fugit, voluptas. Eligendi doloribus cupiditate dolore maxime vitae minus placeat vel aperiam!';
+    Video.fetch('writing_prompts', $stateParams.v).then(function(res) {
+
+      var arr = res.resource;
+
+      topic = res.topic;
+
+      if (!arr[0]) {
+        $scope.prompt = 'none';
+        $scope.example = 'none';
+      } else {
+
+        // you should do randomization here
+        $scope.prompt = arr[0].prompt;
+        $scope.example = arr[0].example;
+
+      }
+
+    }, function(res) {
+      console.log('Error', res);
+
+    });
 
 
     // --------------- MODAL
@@ -38,15 +55,27 @@
       });
 
       modalInstance.result.then(function(){
-        
-        console.log('you want to save');
 
+        var wa = {
+          'writing_answer': {
+            'language_module_id': $stateParams.lm,
+            'writing_answer': document.getElementById('writingAnswer').value,
+            'topic_id': topic.id
+          }
+        };
+
+        // save
+        WritingAnswer.resource.save(wa, function(res) {
+          console.log('success', res);
+        }, function(res) {
+          console.log('Error', res);
+        });
+        
         $state.go('userHome');
 
       }, function() {
-        
-        console.log('you dont want to save');
 
+        // dont save
         $state.go('userHome');
 
       });
@@ -55,8 +84,8 @@
 
   	// ------------------- TIMER
 
-  	// $scope.studyTime = (($stateParams.time / 4) * 60);
-    $scope.studyTime = 5;
+  	// $scope.studyTime = (($stateParams.t / 4) * 60);
+    $scope.studyTime = 3;
 
     $scope.timerRunning = true; 
     $scope.resumeTimer = function (){
@@ -88,7 +117,7 @@
 
   };
 
-  studyWritingCtrl.$inject = ['$scope', '$state', '$stateParams', '$modal'];
+  studyWritingCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$modal', 'Video', 'WritingAnswer'];
 
   angular
     .module('angularApp')

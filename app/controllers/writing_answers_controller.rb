@@ -4,7 +4,10 @@ class WritingAnswersController < ApplicationController
   # GET /writing_answers
   # GET /writing_answers.json
   def index
-    @writing_answers = WritingAnswer.all
+    @writing_answers = WritingAnswer.where(language_module_id: params[:language_module_id])
+    render json: {
+      writing_answers: @writing_answers.to_json(include: :topic)
+    }
   end
 
   # GET /writing_answers/1
@@ -26,14 +29,17 @@ class WritingAnswersController < ApplicationController
   def create
     @writing_answer = WritingAnswer.new(writing_answer_params)
 
-    respond_to do |format|
-      if @writing_answer.save
-        format.html { redirect_to @writing_answer, notice: 'Writing answer was successfully created.' }
-        format.json { render :show, status: :created, location: @writing_answer }
-      else
-        format.html { render :new }
-        format.json { render json: @writing_answer.errors, status: :unprocessable_entity }
-      end
+    if @writing_answer.save
+      render json: {
+        status: :created,
+        notes: 'Writing answer was successfully created.',
+        writing_answer: @writing_answer
+      }
+    else
+      render json: {
+        errors: @writing_answer.errors, 
+        status: :unprocessable_entity 
+      }
     end
   end
 
@@ -69,6 +75,6 @@ class WritingAnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def writing_answer_params
-      params.require(:writing_answer).permit(:writing_answer, :language_module_id)
+      params.require(:writing_answer).permit(:writing_answer, :language_module_id, :topic_id)
     end
 end

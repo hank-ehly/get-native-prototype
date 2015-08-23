@@ -4,16 +4,25 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
 
     if params[:language]
       l = Language.find_by(name: params[:language])
       @videos = Video.where(language_id: l.id)
+      render json: { videos: @videos.to_json(include: [:category, :topic, :speaker]) }  
     end
 
-    render json: {
-      videos: @videos.to_json(include: [:category, :topic, :speaker])
-    }
+    if params[:resource]
+      # this is an arbitrary call to fetch a video's associated resource
+      v = Video.find(params[:videoId])
+      resource = Hash.new()
+      case params[:resource]
+      when 'writing_prompts'
+        resource = v.writing_prompts
+      end
+      render json: { resource: resource.to_json, resourceType: params[:resource], topic: v.topic }
+    end
+
+    
 
   end
 

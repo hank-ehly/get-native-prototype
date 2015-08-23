@@ -82,7 +82,7 @@
           controller: routes.registration[1]
         })
         .state('studyListening', {
-          url: '/studyListening/:videoId/:time',
+          url: '/studyListening?v&lm&t',
           templateUrl: routes.studyListening[0],
           controller: routes.studyListening[1],
           resolve: {
@@ -92,7 +92,7 @@
           }
         })
         .state('studyShadowing', {
-          url: '/studyShadowing/:videoId/:time',
+          url: '/studyShadowing?v&lm&t',
           templateUrl: routes.studyShadowing[0],
           controller: routes.studyShadowing[1],
           resolve: {
@@ -102,7 +102,7 @@
           }
         })
         .state('studySpeaking', {
-          url: '/studySpeaking/:videoId/:time',
+          url: '/studySpeaking?v&lm&t',
           templateUrl: routes.studySpeaking[0],
           controller: routes.studySpeaking[1],
           resolve: {
@@ -122,7 +122,7 @@
           }
         })
         .state('studyWriting', {
-          url: '/studyWriting/:videoId/:time',
+          url: '/studyWriting?v&lm&t',
           templateUrl: routes.studyWriting[0],
           controller: routes.studyWriting[1],
           resolve: {

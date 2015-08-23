@@ -29,13 +29,6 @@
         $scope.$on('changeLanguage', function() {
           $scope.selectedLanguage = $location.search().lang;          
         });
-
-        $window.onbeforeunload = function() {
-          // ...
-          // $location.search('lang', $scope.selectedLanguage);
-        };
-
-        // select current language
       
 
         // this is the click handler for the language module dropdown

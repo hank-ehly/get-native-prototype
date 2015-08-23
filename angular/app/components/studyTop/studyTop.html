@@ -19,7 +19,6 @@
 
 	<div class="col-sm-6">
 
-		<h3>Study..</h3>
 		<ul>
 			<li>{{ selectedCueVideo.category.name }}</li>
 			<li>{{ selectedCueVideo.topic.name }}</li>
@@ -29,6 +28,7 @@
 
 	
 		<div class="studyTop" id="minutesFormWrapper">
+			<h3>I want to study for..</h3>
 
 			<div class="studyTop" id="buttonWrapper">
 				<a href="" ng-click="increase()" class="glyphicon glyphicon-menu-up btn btn-default"></a>
@@ -48,7 +48,7 @@
 		
 	<br>
 
-		<a ui-sref="studyListening({ videoId: selectedCueVideo.id, time: time })" class="btn btn-success">Begin</a>
+		<a ui-sref="studyListening({ v: selectedCueVideo.id, lm: languageModule.id, t: time })" class="btn btn-success">Begin</a>
 
 	</div>
 

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var libraryTopCtrl = function($scope, $rootScope, $http, Video, Category) {
+  var libraryTopCtrl = function($scope, $rootScope, $http, Video, Category, $location) {
 
     // query DB for videos and categories
     Category.get(function(res) { $scope.categories = angular.fromJson(res.categories); });
@@ -10,9 +10,9 @@
     });
 
     
-    $scope.$on('changeLanguage', function(e, data) {
+    $scope.$on('changeLanguage', function() {
 
-      Video.resource.get({ language: data }, function(res) { 
+      Video.resource.get({ language: $location.search().lang }, function(res) { 
         $scope.searchResults = angular.fromJson(res.videos); 
       });
 
@@ -20,7 +20,7 @@
 
 
   	// ordering search results on <th ng-click>
-  	$scope.predicate = 'created';
+  	$scope.predicate = 'created_at';
   	$scope.reverse = true;
     $scope.order = function(predicate) {
         $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
@@ -52,6 +52,6 @@
     .module('angularApp')
     .controller('libraryTopCtrl', libraryTopCtrl);
 
-  libraryTopCtrl.$inject = ['$scope', '$rootScope', '$http', 'Video', 'Category'];
+  libraryTopCtrl.$inject = ['$scope', '$rootScope', '$http', 'Video', 'Category', '$location'];
 
 })();

@@ -1,4 +1,6 @@
 <!-- search bar -->
+
+<div class="form-group has-feedback">
 <input 	
 				type="text" 
 				ng-model="search"
@@ -6,6 +8,9 @@
 				placeholder="Search"
 				id="userHomeSearch" 
 				>
+
+				<span class="glyphicon glyphicon-search form-control-feedback" id="userHomeSearchGlass"></span>
+				</div>
 
 
 <!-- overall cue table -->
@@ -28,7 +33,7 @@
 				class="col-sm-2">
 
 				<img 
-							src="http://placehold.it/120x90" 
+							src="http://placehold.it/90x70" 
 							alt=""
 							ng-click="selectCueVideo(cv)"
 							>
@@ -38,7 +43,7 @@
 		<!-- video information -->
 		<td>
 			<ul>
-				<li>{{ cv.category.name }}</li>
+				<!-- <li>{{ cv.category.name }}</li> -->
 				<li>{{ cv.topic.name }}</li>
 				<li>{{ cv.speaker.name }}</li>
 				<li>{{ cv.length | inMinutes }}</li>
@@ -55,7 +60,7 @@
 
 			<a 	
 					href="" 
-					class="glyphicon glyphicon-remove-circle" 
+					class="glyphicon glyphicon-remove" 
 					ng-click="removeFromCue(cv, $index)"
 					>
 
