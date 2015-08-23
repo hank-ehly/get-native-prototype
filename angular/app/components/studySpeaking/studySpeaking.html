@@ -1,3 +1,53 @@
 <div class="container">
-	<p>{{ test }}</p>
+
+<h1>Speaking</h1>
+
+<div class="row">
+
+	<div class="col-sm-8">
+
+		<collocation-panel class="studySpeaking"></collocation-panel>
+
+		<tabset>
+
+    <tab 	ng-repeat="tab in originalTabs" 
+    			heading="{{ tab.title }}" 
+    			active="tab.active">
+    			<span ng-bind-html="tab.content" 
+    						class="videoScriptContent"
+    						ng-click="videoScriptClickHandler($event)"
+    						></span>
+    			</tab>
+
+  </tabset>
+
+	</div>
+	
+		<div class="col-sm-4">
+
+		<!-- video script tabs -->
+		<tabset>
+
+	    <tab 	ng-repeat="tab in translatedTabs" 
+	    			heading="{{ tab.title }}" 
+	    			active="tab.active">
+	    			<span ng-bind-html="tab.content" 
+	    						class="videoScriptContent"
+	    						ng-click="videoScriptClickHandler($event)"
+	    						></span>
+	    			</tab>
+
+	    <tab heading="N/A"></tab>
+
+	  </tabset>
+		
+	</div> <!-- col-sm-4 -->
+
+	<div class="col-sm-12"><progressbar value="60"></progressbar></div>
+
+</div> <!-- row -->
+
+
+
+
 </div>

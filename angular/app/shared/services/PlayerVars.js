@@ -14,6 +14,12 @@
 
     service.shadowing = service.listening;
 
+    service.libraryDetail = {
+      controls: 1,
+      modestbranding: 1,
+      showinfo: 0
+    };
+
     return service;
 
   };

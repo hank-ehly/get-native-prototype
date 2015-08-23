@@ -1,9 +1,10 @@
 (function() {
   'use strict';
 
-  var userHomeCtrl = function($scope, $rootScope, Video, Collocation, Cue) {
+  var userHomeCtrl = function($scope, $rootScope, Video, Collocation, Cue, LanguageModule, $location) {
 
     var currentUser = $rootScope.user;
+    var languageModule;
 
     /*
      * This is the code that sets up the user collocation video,
@@ -24,7 +25,23 @@
     }
 
     function initError(res) { console.log('Error', res); }
-    Cue.initializeContents(currentUser.id, 21).then(initSuccess, initError);
+
+    function getLMSuccess(res) {
+
+      languageModule = res.languageModule[0];
+
+      Cue.initializeContents(currentUser.id, languageModule.id).then(initSuccess, initError);
+
+    }
+
+    function getLMError(res) { console.log('Error', res); }
+
+    LanguageModule.resource.get({ user_id: $rootScope.user.id, language: $scope.selectedLanguage }, getLMSuccess, getLMError);
+
+    $scope.$on('changeLanguage', function() {
+      LanguageModule.resource.get({ user_id: $rootScope.user.id, language: $location.search().lang }, getLMSuccess, getLMError);      
+    });
+    
 
     /*
      * This function is called when a user clicks on a new video.
@@ -32,12 +49,11 @@
      * also serves to set the next video in the panel
      */
 
-    $scope.selectCueVideo = function(cv) { Cue.initializeContents(currentUser, 21, cv).then(initSuccess, initError); };
+    $scope.selectCueVideo = function(cv) { Cue.initializeContents(currentUser, languageModule.id, cv).then(initSuccess, initError); };
     
-
   }; // end userHomeCtrl
 
-  userHomeCtrl.$inject = ['$scope', '$rootScope', 'Video', 'Collocation', 'Cue'];
+  userHomeCtrl.$inject = ['$scope', '$rootScope', 'Video', 'Collocation', 'Cue', 'LanguageModule', '$location'];
 
   angular
     .module('angularApp')

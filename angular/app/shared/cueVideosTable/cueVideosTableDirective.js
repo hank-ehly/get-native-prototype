@@ -16,6 +16,8 @@
         
         function removeFromCue(video, index) {
 
+          var nextSelection;
+
           if (!confirm('Delete this video from your playlist?')) { // jshint ignore:line
             return false;
           }
@@ -25,14 +27,13 @@
            * is the same one that is currently selected
            */
 
+
           if ($scope.selectedCueVideo.code === video.code) {
 
           /*
            * Because we're deleting the currently selected video,
            * we have to decide what to select after removing it
            */
-
-            var nextSelection;
 
             if ($scope.cueVideos.length > 1) {
 
@@ -43,14 +44,12 @@
              */
 
               nextSelection = (index === 0) ? 1 : index - 1;
-              $scope.selectCueVideo($scope.cueVideos[nextSelection]);
 
-            } else {
-              // **************** FIX
-              $scope.selectedCueVideo = null;
+              // $scope.selectCueVideo($scope.cueVideos[nextSelection]);
+
             }
             
-          } // if
+          }
 
           /*
            * Remove the actual video from the Cue, 
@@ -59,6 +58,10 @@
           
           Cue.resource.removeFromCue({user_id: $auth.user.id, video_id: video.id}, function(res) {
 
+            if (!isNaN(nextSelection)) { 
+              $scope.selectCueVideo($scope.cueVideos[nextSelection]); 
+            }
+          
             $scope.cueVideos.splice(index, 1);
             Flash.create('success', res.notice);
 

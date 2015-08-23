@@ -1,8 +1,12 @@
 <div class="container">
 
-<h1>Ready..</h1>
+<div class="row" ng-hide="cueVideos.length">
+	<p>You have no {{ selectedLanguage }} videos in your Cue! Choose some in the Library.</p>
+</div>
 
-<div class="row">
+<div class="row" ng-show="cueVideos.length">
+
+	<h1>Study {{ selectedLanguage }}</h1>
 	
 	<div class="col-sm-6">
 
@@ -48,16 +52,8 @@
 
 	</div>
 
+	<div class="col-sm-12"><progressbar value="5"></progressbar></div>
+
 </div> <!-- row -->
-
-
-<div class="col-sm-12"><progressbar value="20"></progressbar></div>
-
-
-
-
-
-
-
 
 </div>

@@ -4,7 +4,15 @@ class VideoScriptsController < ApplicationController
   # GET /video_scripts
   # GET /video_scripts.json
   def index
-    @video_scripts = VideoScript.all
+
+    if params[:videoId]
+      vs = VideoScript.where(video_id: params[:videoId])  
+    end
+  
+    render json: {
+      videoScripts: vs.to_json(include: :collocations)
+    }
+
   end
 
   # GET /video_scripts/1

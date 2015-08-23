@@ -1,5 +1,10 @@
 <div class="container">
-	<div class="row">
+
+	<div class="row" ng-hide="cueVideos.length">
+		<p>There are no {{ selectedLanguage }} videos in your Cue!</p>
+	</div>
+
+	<div class="row" ng-show="cueVideos.length">
 
 		<!-- row 1 left -->
 		<div class="col-sm-6">

@@ -1,0 +1,31 @@
+collocation-panel.studySpeaking div.panel {
+
+  padding: 10px 7px 20px 0px;
+  margin-top: 13px;
+
+  div.panel-heading {
+
+		background: transparent;
+		border: none;
+
+    h3,
+    button {
+      display: inline-block;
+    }
+
+    h3 {
+      float: left;
+      font-size: 1.6em;
+    }
+
+    button {
+      float: right;
+      width: 6em;
+      font-size: 1.2em;
+    }
+
+  }
+  div.panel-body {
+  	padding-top: 29px;
+  }
+}

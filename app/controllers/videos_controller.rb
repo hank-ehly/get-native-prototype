@@ -6,6 +6,11 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
 
+    if params[:language]
+      l = Language.find_by(name: params[:language])
+      @videos = Video.where(language_id: l.id)
+    end
+
     render json: {
       videos: @videos.to_json(include: [:category, :topic, :speaker])
     }

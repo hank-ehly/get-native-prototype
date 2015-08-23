@@ -35,10 +35,11 @@
 
         angular.forEach(data.scripts, function(s) {
 
-          var vs     = {};
-          vs.id      = s.id;
-          vs.title   = s.language.name;
-          vs.content = s.content;
+          var vs      = {};
+          vs.id       = s.id;
+          vs.title    = s.language.name;
+          vs.content  = s.content;
+          vs.original = s.original;
 
           if (s.original) {
 

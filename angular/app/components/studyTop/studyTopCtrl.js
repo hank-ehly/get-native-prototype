@@ -1,7 +1,9 @@
 (function() {
   'use strict';
 
-  var studyTopCtrl = function($scope, Cue, $rootScope) {
+  var studyTopCtrl = function($scope, Cue, $rootScope, LanguageModule, $location) {
+
+    var languageModule;
 
     function getCueSuccess(res) {
 
@@ -22,7 +24,25 @@
 
     function getCueFailure (res) { console.log('Error', res); }
 
-    Cue.resource.get({user_id: $rootScope.user.id, language_module_id: 21}, getCueSuccess, getCueFailure);
+
+
+    function getLMSuccess(res) {
+
+      languageModule = res.languageModule[0];
+
+      Cue.resource.get({user_id: $rootScope.user.id, language_module_id: languageModule.id}, getCueSuccess, getCueFailure);
+
+    }
+
+    function getLMError(res) { console.log('Error', res); }
+
+    LanguageModule.resource.get({ user_id: $rootScope.user.id, language: $scope.selectedLanguage }, getLMSuccess, getLMError);
+
+    $scope.$on('changeLanguage', function() {
+      LanguageModule.resource.get({ user_id: $rootScope.user.id, language: $location.search().lang }, getLMSuccess, getLMError);      
+    });
+
+
 
     function selectCueVideo(cv) {
     	$scope.selectedCueVideo = cv;
@@ -38,7 +58,7 @@
 
   };
 
-  studyTopCtrl.$inject = ['$scope', 'Cue', '$rootScope'];
+  studyTopCtrl.$inject = ['$scope', 'Cue', '$rootScope', 'LanguageModule', '$location'];
 
   angular
     .module('angularApp')
