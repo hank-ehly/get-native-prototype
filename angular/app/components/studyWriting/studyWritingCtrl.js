@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var studyWritingCtrl = function($scope, $state, $stateParams) {
+  var studyWritingCtrl = function($scope, $state, $stateParams, $modal) {
 
   	$scope.test = 'foostudyWriting';
 
@@ -11,16 +11,47 @@
 
   	$scope.countWords = function(e){
 			var s = e.target.value;
-			s = s.replace(/(^\s*)|(\s*$)/gi,"");
-			s = s.replace(/[ ]{2,}/gi," ");
-			s = s.replace(/\n /,"\n");
+			s = s.replace(/(^\s*)|(\s*$)/gi,'');
+			s = s.replace(/[ ]{2,}/gi,' ');
+			s = s.replace(/\n /,'\n');
 			$scope.wordCount = s.split(' ').length;
-		}
+		};
 
     // window.onbeforeunload = function(e) { return 'By refreshing the page you will reset the clock!'; }
 
     $scope.example = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut id maiores, architecto velit! Illo pariatur neque nam ab fugit, voluptas. Eligendi doloribus cupiditate dolore maxime vitae minus placeat vel aperiam!';
 
+
+    // --------------- MODAL
+
+    function open() {
+
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'components/studyWriting/modalTemplate.html',
+        controller: 'modalCtrl',
+        resolve: {
+          answer: function() {
+            return document.getElementById('writingAnswer').value;
+          }
+        }
+      });
+
+      modalInstance.result.then(function(){
+        
+        console.log('you want to save');
+
+        $state.go('userHome');
+
+      }, function() {
+        
+        console.log('you dont want to save');
+
+        $state.go('userHome');
+
+      });
+
+    }
 
   	// ------------------- TIMER
 
@@ -39,15 +70,14 @@
 
     $scope.finished = function() {
 
-  		console.log('redirecting in 3 seconds');
+      open();
 
-  		setTimeout(function(){
-  			console.log('redirecting to writing');
-  			$state.go('studyWriting', {
-  				videoId: $stateParams.videoId,
-  				time: $stateParams.time
-  			});
-  		}, 3000);
+  		// console.log('redirecting in 3 seconds');
+
+  		// setTimeout(function(){
+  		// 	console.log('redirecting to userHome');
+  		// 	$state.go('userHome');
+  		// }, 3000);
 
   	}; 
 
@@ -58,7 +88,7 @@
 
   };
 
-  studyWritingCtrl.$inject = ['$scope', '$state', '$stateParams'];
+  studyWritingCtrl.$inject = ['$scope', '$state', '$stateParams', '$modal'];
 
   angular
     .module('angularApp')
