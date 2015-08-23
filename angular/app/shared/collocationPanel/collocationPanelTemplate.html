@@ -2,9 +2,16 @@
 
   <div class="panel-heading">
     <h3 class="panel-title">{{ selectedQuote }}</h3>
-    <button ng-show="ss" ng-click="rotate()" class="btn btn-success">next</button>
+    <div class="buttons">
+    	<button ng-show="ss" ng-click="next(true)" class="btn btn-success">I did it!</button>
+    	<button ng-show="ss" ng-click="next(false)" class="btn btn-danger">skip</button>
+    </div>
   </div>
 
-  <div class="panel-body">{{ selectedDescription }}</div>
+  <div class="panel-body">
+	  <p>{{ selectedDescription }}</p>
+
+	  <p ng-class="{ completedStyle : overachiever }" id="completed">completed ( {{ colcount }}/{{ collocations.length }} )</p>
+  </div>
 
 </div>

@@ -1,6 +1,6 @@
 collocation-panel.studySpeaking div.panel {
 
-  padding: 10px 7px 20px 0px;
+  padding: 10px 7px 0px 0px;
   margin-top: 13px;
 
   div.panel-heading {
@@ -9,7 +9,7 @@ collocation-panel.studySpeaking div.panel {
 		border: none;
 
     h3,
-    button {
+    div.buttons {
       display: inline-block;
     }
 
@@ -18,14 +18,30 @@ collocation-panel.studySpeaking div.panel {
       font-size: 1.6em;
     }
 
-    button {
+    div.buttons {
       float: right;
-      width: 6em;
-      font-size: 1.2em;
+      
+      button {
+        // float: right;
+        width: 6em;
+        font-size: 1.2em;
+      }
     }
+
 
   }
   div.panel-body {
   	padding-top: 29px;
+
+    p#completed {
+      display: inline-block;
+      float: right;
+      margin-top: 39px;
+    }
+
   }
+}
+
+.completedStyle {
+  box-shadow: 0px 0px 29px yellow;
 }
