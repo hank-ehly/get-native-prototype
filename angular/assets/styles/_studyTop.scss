@@ -25,10 +25,41 @@
 }
 
 #buttonWrapper > a.glyphicon-menu-up {
-	margin-top: 2px;
-	margin-bottom: 8px;
+  margin-top: 2px;
+  margin-bottom: 8px;
 }
 
 .studyTop#minutesFormWrapper {
-	height: 7em;
+  height: 7em;
+  margin-top: 59px;
+}
+
+#studyTopCuesVideoTableWrapper {
+  padding: 0 82px 0 28px;
+  cue-videos-table > div {
+    margin-bottom: 0;
+  }
+}
+
+#studyHeader {
+  padding-left: 28px;
+}
+
+#beginButton {
+  margin-top: 50px;
+  a {
+    font-size: 2.3em;
+    height: 2.5em;
+    padding-top: .8em;
+    width: 33%;
+    margin: 0 auto;
+  }
+}
+
+#videoInfoPanel {
+  font-size: 1.5em;
+}
+
+#studyTopProgressBar {
+  margin-top: 50px;
 }

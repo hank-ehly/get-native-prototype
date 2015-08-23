@@ -6,9 +6,9 @@
 
 <div class="row" ng-show="cueVideos.length">
 
-	<h1>Study {{ selectedLanguage }}</h1>
+	<h1 id="studyHeader">Study {{ selectedLanguage }}</h1>
 	
-	<div class="col-sm-6">
+	<div class="col-sm-5" id="studyTopCuesVideoTableWrapper">
 
 		<h3>Choose a video</h3>
 
@@ -17,14 +17,21 @@
 
 	</div> <!-- col-sm-6 -->
 
-	<div class="col-sm-6">
+	<div class="col-sm-7">
 
-		<ul>
-			<li>{{ selectedCueVideo.category.name }}</li>
-			<li>{{ selectedCueVideo.topic.name }}</li>
-			<li>{{ selectedCueVideo.speaker.name }}</li>
-			<li>{{ selectedCueVideo.length | inMinutes }}</li>
-		</ul>
+		<dl class="dl-horizontal" id="videoInfoPanel">
+		  <dt>Category:</dt>
+		  <dd>{{ selectedCueVideo.category.name }}</dd>
+
+		  <dt>Topic:</dt>
+		  <dd>{{ selectedCueVideo.topic.name }}</dd>
+
+		  <dt>Speaker:</dt>
+		  <dd>{{ selectedCueVideo.speaker.name }}</dd>
+
+		  <dt>Video Length:</dt>
+		  <dd>{{ selectedCueVideo.length | inMinutes }}</dd>
+		</dl>
 
 	
 		<div class="studyTop" id="minutesFormWrapper">
@@ -45,15 +52,29 @@
 			<span class="studyTop" id="minutesLabel">minutes</span>
 		</div>
 
-		
-	<br>
-
-		<a ui-sref="studyListening({ v: selectedCueVideo.id, lm: languageModule.id, t: time })" class="btn btn-success">Begin</a>
 
 	</div>
 
-	<div class="col-sm-12"><progressbar value="5"></progressbar></div>
+	
 
 </div> <!-- row -->
+
+<div class="row" id="beginButton">
+	
+	<a 	ui-sref="studyListening({ v: selectedCueVideo.id, lm: languageModule.id, t: time })" 
+			class="btn btn-success btn-block"
+			>
+			Begin
+	</a>
+
+</div>
+
+<div class="row" id="studyTopProgressBar">
+	
+	<div class="col-sm-12">
+		<progressbar value="5"></progressbar>
+	</div>
+
+</div>
 
 </div>
