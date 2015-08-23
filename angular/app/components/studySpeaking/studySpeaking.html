@@ -45,6 +45,15 @@
 
 	<div class="col-sm-12"><progressbar value="60"></progressbar></div>
 
+	<timer 	countdown="studyTime" 
+					interval="1000"
+					finish-callback="finished()">
+					{{mminutes}}:{{sseconds}}
+					</timer>
+
+	<button ng-click="resumeTimer()">play</button>
+	<button ng-click="stopTimer()">stop</button>
+
 </div> <!-- row -->
 
 

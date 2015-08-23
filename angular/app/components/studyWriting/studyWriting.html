@@ -1,1 +1,49 @@
-{{ test }}
+<div class="container">
+	
+<div class="row">
+
+		<label 		for="writingAnswer">{{ prompt }}</label>
+		<textarea name="" 
+							ng-keyup="countWords($event)"
+							id="writingAnswer"
+							class="form-control" 
+							cols="30" 
+							ng-readonly="!timerRunning"
+							rows="10"
+							placeholder="Write here.."
+							></textarea>
+			
+		<p>Word count: {{ wordCount }}</p>
+</div>
+
+
+
+<div class="row">
+	
+<label 		for="writingExample">Example</label>
+<textarea name="" 
+					id="writingExample"
+					class="form-control" 
+					readonly 
+					cols="20" 
+					rows="5"
+					>{{ example }}</textarea>
+
+</div>
+
+
+<div class="row">
+	
+		<div class="col-sm-12"><progressbar value="80"></progressbar></div>
+	
+		<timer 	countdown="studyTime" 
+							interval="1000"
+							finish-callback="finished()">
+							{{mminutes}}:{{sseconds}}
+							</timer>
+	
+		<button ng-click="resumeTimer()">play</button>
+		<button ng-click="stopTimer()">stop</button>
+</div>
+
+</div>

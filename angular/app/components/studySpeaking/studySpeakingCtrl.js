@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var studySpeakingCtrl = function($scope, $stateParams, Video) {
+  var studySpeakingCtrl = function($scope, $stateParams, Video, $state) {
 
   	Video.setVideo($stateParams.videoId).then(function(res){
 
@@ -30,7 +30,9 @@
   			console.log('Error', res);
   		});
 
-  	$scope.rotate = function() {
+  	$scope.colcount = 0;
+
+  	$scope.next = function(shouldIncrement) {
   		
   		var len = $scope.collocations.length;
   		var next;
@@ -50,11 +52,47 @@
   		$scope.selectedQuote 				= $scope.collocations[next].quote;
   		$scope.selectedDescription 	= $scope.collocations[next].description;
 
+  		if (shouldIncrement) {
+				$scope.colcount++;
+
+	  		if ($scope.colcount >= $scope.collocations.length) {
+	  			$scope.overachiever = true;
+	  		}
+  		}
+
+  		
+  	};
+
+  	// $scope.studyTime = (($stateParams.time / 4) * 60);
+    $scope.studyTime = 5;
+
+    $scope.timerRunning = true; 
+    $scope.resumeTimer = function (){
+        $scope.$broadcast('timer-resume');
+        $scope.timerRunning = true;
+    };
+    $scope.stopTimer = function (){
+        $scope.$broadcast('timer-stop');
+        $scope.timerRunning = false;
+    };
+
+    $scope.finished = function() {
+
+  		console.log('redirecting in 3 seconds');
+
+  		setTimeout(function(){
+  			console.log('redirecting to writing');
+  			$state.go('studyWriting', {
+  				videoId: $stateParams.videoId,
+  				time: $stateParams.time
+  			});
+  		}, 3000);
+
   	};
 
   };
 
-  studySpeakingCtrl.$inject = ['$scope', '$stateParams', 'Video'];
+  studySpeakingCtrl.$inject = ['$scope', '$stateParams', 'Video', '$state'];
 
   angular
     .module('angularApp')
