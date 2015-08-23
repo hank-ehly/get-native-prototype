@@ -7,7 +7,7 @@
 	<div class="row" ng-show="cueVideos.length">
 
 		<!-- row 1 left -->
-		<div class="col-sm-6">
+		<div class="col-sm-5" id="cueVideosTableWrapper">
 
 			<cue-videos-table></cue-videos-table>
 
@@ -15,7 +15,7 @@
 		
 		
 		<!-- row 1 col right -->
-		<div class="col-sm-6">
+		<div class="col-sm-7">
 
 
 
@@ -34,7 +34,7 @@
 
 
 			<!-- video script tabs -->
-			<tabset>
+			<tabset id="userHomeTabset">
 		
 		    <tab 	
 		    			ng-repeat="tab in tabs" 
@@ -60,7 +60,7 @@
 
 
 
-			<collocation-panel></collocation-panel>
+			<collocation-panel class="userHome"></collocation-panel>
 		
 
 
@@ -68,5 +68,27 @@
 		</div> <!-- row 1 col right -->
 
 	</div> <!-- .row -->
+
+	
+
+	<!-- progress report -->
+	<div class="row">
+
+	<hr>
+
+	<h1>Your progress in {{ selectedLanguage }}</h1>
+
+		<p ng-show="noWritingAnswers">You have not written any answers yet!</p>		
+
+		<ol class="col-sm-6" ng-hide="noWritingAnswers">
+			<li ng-repeat="answer in writingAnswers">
+				<p>Date: {{ answer.created_at | date }}</p>
+				<p>Topic: {{ answer.topic.name }}</p>
+				<p>Answer: {{ answer.writing_answer }}</p>
+			</li>
+		</ol>
+	
+
+	</div> <!-- row -->
 
 </div>

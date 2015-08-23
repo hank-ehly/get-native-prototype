@@ -3,8 +3,6 @@
 
   var studyTopCtrl = function($scope, Cue, $rootScope, LanguageModule, $location) {
 
-    var languageModule;
-
     function getCueSuccess(res) {
 
       // unpack cue.videos object
@@ -23,19 +21,16 @@
     }
 
     function getCueFailure (res) { console.log('Error', res); }
-
-
+    function getLMError(res) { console.log('Error', res); }
 
     function getLMSuccess(res) {
 
-      languageModule = res.languageModule[0];
-
-      Cue.resource.get({user_id: $rootScope.user.id, language_module_id: languageModule.id}, getCueSuccess, getCueFailure);
+      $scope.languageModule = res.languageModule[0];
+      Cue.resource.get({user_id: $rootScope.user.id, language_module_id: $scope.languageModule.id}, getCueSuccess, getCueFailure);
 
     }
 
-    function getLMError(res) { console.log('Error', res); }
-
+    // start
     LanguageModule.resource.get({ user_id: $rootScope.user.id, language: $scope.selectedLanguage }, getLMSuccess, getLMError);
 
     $scope.$on('changeLanguage', function() {

@@ -1,6 +1,8 @@
 // default bg-color
 body { 
 	background: $offWhite;
+	padding-bottom: 200px;
+	background-image: url('/assets/styles/sos.png');
 }
 
 // default ul
@@ -10,7 +12,7 @@ ul {
 }
 
 // default container bg-color
-div.container { background: #fff; }
+// div.container { background: #fff; }
 
 // angular-bootstrap required styles
 .nav,
@@ -23,3 +25,5 @@ nav.navbar { border-radius: 0; }
 
 // disable click events
 .avoid-clicks { pointer-events: none; }
+
+#flashContainer { height: 72px; }

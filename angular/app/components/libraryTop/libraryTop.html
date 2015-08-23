@@ -59,7 +59,7 @@
 			-->
 			<thead>
 
-				<th>Preview</th>
+				<th class="noPointer">Preview</th>
 
 				<th ng-click="order('topic.name')">
 					Topic
@@ -106,8 +106,8 @@
 
 				<div ng-show="!filteredResults.length">no results</div>
 
-				<td><img ng-src="components/libraryTop/previewImage.png" alt="{{ video.preview }}"></td>
-				<td>{{ video.topic.name }}</td>
+				<td class="previewImage"><img ng-src="components/libraryTop/previewImage.png" alt="{{ video.preview }}"></td>
+				<td class="topicName">{{ video.topic.name }}</td>
 				<td>{{ video.created_at | date }}</td>
 				<td>{{ video.speaker.name }}</td>
 				<td>{{ video.length | inMinutes }}</td>

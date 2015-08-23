@@ -32,7 +32,7 @@
     function getCueError   (res) { console.log('Error', res); }
     function setVideoError (res) { console.log('Error', res); }
 
-    function initializeContents(userId, langModId, selectedVideo) {
+    function initializeContents(userId, langModId, selectedVideo, shouldWrapCollocations) {
 
       var deferred = $q.defer();
 
@@ -48,7 +48,7 @@
           data.selectedVideo = selectedVideo ? selectedVideo : data.cueVideos[0];
 
 
-          Video.setVideo(data).then(function (res) {
+          Video.setVideo(data, shouldWrapCollocations).then(function (res) {
 
             data.video                = res.video;
             data.scripts              = res.scripts;

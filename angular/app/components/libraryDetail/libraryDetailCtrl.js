@@ -25,7 +25,7 @@
     }
 
     function setVideoError(res) { console.log('Error', res); }
-    Video.setVideo($stateParams.videoId).then(setVideoSuccess, setVideoError);
+    Video.setVideo($stateParams.videoId, true).then(setVideoSuccess, setVideoError);
 
 
     // video player settings

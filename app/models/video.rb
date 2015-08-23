@@ -19,4 +19,5 @@ class Video < ActiveRecord::Base
   belongs_to :language
   belongs_to :category
   has_and_belongs_to_many :cues
+  has_many :writing_prompts
 end

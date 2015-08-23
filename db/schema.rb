@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817115007) do
+ActiveRecord::Schema.define(version: 20150823080347) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -149,9 +149,11 @@ ActiveRecord::Schema.define(version: 20150817115007) do
     t.integer  "language_module_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "topic_id"
   end
 
   add_index "writing_answers", ["language_module_id"], name: "index_writing_answers_on_language_module_id"
+  add_index "writing_answers", ["topic_id"], name: "index_writing_answers_on_topic_id"
 
   create_table "writing_prompts", force: :cascade do |t|
     t.integer  "video_id"

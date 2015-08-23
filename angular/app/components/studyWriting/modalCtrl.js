@@ -6,7 +6,7 @@
   	$scope.answer = answer;
 
   	$scope.ok = function () {
-	    $modalInstance.close(answer);
+	    $modalInstance.close();
 	  };
 
 	  $scope.cancel = function () {

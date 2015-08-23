@@ -3,7 +3,7 @@
 
   var studySpeakingCtrl = function($scope, $stateParams, Video, $state) {
 
-  	Video.setVideo($stateParams.videoId).then(function(res){
+  	Video.setVideo($stateParams.v, true).then(function(res){
 
 				$scope.video                = res.video;
 	      $scope.collocations         = res.collocations;
@@ -63,8 +63,8 @@
   		
   	};
 
-  	// $scope.studyTime = (($stateParams.time / 4) * 60);
-    $scope.studyTime = 5;
+  	$scope.studyTime = (($stateParams.t / 4) * 60);
+    // $scope.studyTime = 5;
 
     $scope.timerRunning = true; 
     $scope.resumeTimer = function (){
@@ -83,8 +83,9 @@
   		setTimeout(function(){
   			console.log('redirecting to writing');
   			$state.go('studyWriting', {
-  				videoId: $stateParams.videoId,
-  				time: $stateParams.time
+  				v: $stateParams.v,
+          lm: $stateParams.lm,
+  				t: $stateParams.t
   			});
   		}, 3000);
 

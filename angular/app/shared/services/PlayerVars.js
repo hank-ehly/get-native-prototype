@@ -20,6 +20,8 @@
       showinfo: 0
     };
 
+    service.userHome = service.libraryDetail;
+
     return service;
 
   };

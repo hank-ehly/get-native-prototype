@@ -16,10 +16,27 @@
 
     // ------------------------
 
+    function fetch(resource, videoId) {
+      var deferred = $q.defer();
+
+      this.resource.get({ resource: resource, videoId: videoId }, function(res) { // jshint ignore:line        
+
+        // unpack JSON object
+        res.resource = angular.fromJson(res.resource);
+
+        deferred.resolve(res);
+
+      }, function(res) {
+        console.log('Error', res);
+      });
+
+      return deferred.promise;
+    }
+
     function getVideoError (res) { console.log('Error', res); }
     function getColError   (res) { console.log('Error', res); }
 
-    function setVideo(_data) {
+    function setVideo(_data, shouldWrapCollocations) {
 
       var deferred = $q.defer();
 
@@ -49,12 +66,16 @@
 
               data.collocations = angular.fromJson(res.collocations);
 
-              // wraps in <span> tags and give 'collocation' class
-              vs.content = Collocation.wrap(vs.content, data.collocations, 'span', 'collocation');
+              if (shouldWrapCollocations) {
 
-              // initialize values for collocation panel
-              data.selectedQuote       = '...';
-              data.selectedDescription = 'Select a collocation from the above script!';
+                // wraps in <span> tags and give 'collocation' class
+                vs.content = Collocation.wrap(vs.content, data.collocations, 'span', 'collocation');
+
+                // initialize values for collocation panel
+                data.selectedQuote       = '...';
+                data.selectedDescription = 'Select a collocation from the above script!';
+                
+              }
 
               deferred.resolve(data);
 
@@ -74,7 +95,8 @@
 
     return { 
       resource: $resource(url, paramDefaults, actions),
-      setVideo: setVideo
+      setVideo: setVideo,
+         fetch: fetch
     };
 
   };
