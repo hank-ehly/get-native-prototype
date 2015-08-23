@@ -12,11 +12,13 @@
       // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
       restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
       // template: '',
-      templateUrl: 'components/libraryDetail/collocationPanelTemplate.html',
+      templateUrl: 'shared/collocationPanel/collocationPanelTemplate.html',
       // replace: true,
       // transclude: true,
       // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-      link: function($scope) {
+      link: function($scope, iElm, iAttrs, controller) { // jshint ignore:line
+
+        $scope.ss = iAttrs.class === 'studySpeaking' ? true : false;
 
         /*
          *
@@ -62,5 +64,3 @@
   collocationPanel.$inject = ['Helper'];
 
 })();
-
-// iElm, iAttrs, controller << include in link: function(...) if needed

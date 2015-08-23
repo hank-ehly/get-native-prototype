@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var globalNavbar = function(authService) {
+  var globalNavbar = function(authService, $window, $location) {
     // Runs during compile
     return {
       // name: '',
@@ -18,16 +18,30 @@
       // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
       link: function($scope) {
 
+
+        $scope.languages = ['Japanese', 'English'];
+        if ($location.search().lang === undefined) {
+          $location.search('lang', $scope.languages[0]);  
+        }
+
+        $scope.selectedLanguage = $location.search().lang;
+
+        $scope.$on('changeLanguage', function() {
+          $scope.selectedLanguage = $location.search().lang;          
+        });
+
+        $window.onbeforeunload = function() {
+          // ...
+          // $location.search('lang', $scope.selectedLanguage);
+        };
+
         // select current language
-        $scope.languages        = ['Japanese', 'English'];
-        $scope.selectedLanguage = 'Japanese';
+      
 
         // this is the click handler for the language module dropdown
         $scope.langClickHandler = function(language) {
-
-           // show language in upper-left box
-          $scope.selectedLanguage = language;
-
+          $location.search('lang', language);
+          $scope.$broadcast('changeLanguage'); // jshint ignore:line
         };
 
         // these are the left-navbar buttons
@@ -53,6 +67,6 @@
     .module('angularApp')
     .directive('globalNavbar', globalNavbar);
 
-  globalNavbar.$inject = ['authService'];
+  globalNavbar.$inject = ['authService', '$window', '$location'];
 
 })();

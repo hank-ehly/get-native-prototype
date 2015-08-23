@@ -60,7 +60,11 @@
             deferred.resolve(data);
 
           }, setVideoError);
-        } // if data.cueVideos.length
+        } else {
+          // redirects to lang mod even if it doesn't have videos
+          deferred.resolve(data);
+        }
+
       }, getCueError);
       
       return deferred.promise;

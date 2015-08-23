@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var libraryDetailCtrl = function($scope, $auth, $http, $stateParams, Video, Collocation, Cue, User, Flash, Announce) {
+  var libraryDetailCtrl = function($scope, $auth, $http, $stateParams, Video, Collocation, Cue, User, Flash, Announce, PlayerVars) {
 
     var cue;
 
@@ -29,11 +29,7 @@
 
 
     // video player settings
-    $scope.playerVars = {
-            controls: 1,
-      modestbranding: 1,
-            showinfo: 0
-    };
+    $scope.playerVars = PlayerVars.libraryDetail;
 
 
     function addToCue(video) {
@@ -57,7 +53,7 @@
 
   }; // end of libraryDetailCtrl
 
-  libraryDetailCtrl.$inject = ['$scope', '$rootScope', '$http', '$stateParams', 'Video', 'Collocation', 'Cue', 'User', 'Flash', 'Announce'];
+  libraryDetailCtrl.$inject = ['$scope', '$rootScope', '$http', '$stateParams', 'Video', 'Collocation', 'Cue', 'User', 'Flash', 'Announce', 'PlayerVars'];
 
   angular
     .module('angularApp')

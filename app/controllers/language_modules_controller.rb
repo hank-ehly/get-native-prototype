@@ -4,7 +4,18 @@ class LanguageModulesController < ApplicationController
   # GET /language_modules
   # GET /language_modules.json
   def index
-    @language_modules = LanguageModule.all
+
+    if params[:language] && params[:user_id]
+      ## calling from userHome
+      u = User.find(params[:user_id])
+      l = Language.find_by(name: params[:language])
+      @language_module = LanguageModule.where(user_id: u.id, language_id: l.id)
+    end
+
+    render json: {
+      languageModule: @language_module
+    }
+
   end
 
   # GET /language_modules/1
