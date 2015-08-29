@@ -106,7 +106,7 @@
 
 				<div ng-show="!filteredResults.length">no results</div>
 
-				<td class="previewImage"><img ng-src="components/libraryTop/previewImage.png" alt="{{ video.preview }}"></td>
+				<td class="previewImage"><img ng-src="{{ video.thumbnail_url }}"></td>
 				<td class="topicName">{{ video.topic.name }}</td>
 				<td>{{ video.created_at | date }}</td>
 				<td>{{ video.speaker.name }}</td>

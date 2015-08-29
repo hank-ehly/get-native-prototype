@@ -5,7 +5,6 @@
 
     function getCueSuccess(res) {
 
-      // unpack cue.videos object
       $scope.cueVideos = angular.fromJson(res.videos);
 
       // We don't wanna try loading videos

@@ -1,6 +1,17 @@
 <div class="container">
 
-<h1>Speaking</h1>
+<div class="studySpeakingHeaderDiv">
+	<h1>Speaking</h1>
+	
+	<button ng-click="resumeTimer()"><span class="glyphicon glyphicon-play"></span></button>
+	<button ng-click="stopTimer()"><span class="glyphicon glyphicon-pause"></span></button>
+	
+		<timer 	countdown="studyTime" 
+						interval="1000"
+						finish-callback="finished()">
+						{{mminutes}}:{{sseconds}}
+						</timer>
+</div>
 
 <div class="row">
 
@@ -8,7 +19,7 @@
 
 		<collocation-panel class="studySpeaking"></collocation-panel>
 
-		<tabset>
+		<tabset id="studySpeakingOriginalTabset">
 
     <tab 	ng-repeat="tab in originalTabs" 
     			heading="{{ tab.title }}" 
@@ -26,7 +37,7 @@
 		<div class="col-sm-4">
 
 		<!-- video script tabs -->
-		<tabset>
+		<tabset id="studySpeakingTranslatedTabset">
 
 	    <tab 	ng-repeat="tab in translatedTabs" 
 	    			heading="{{ tab.title }}" 
@@ -42,19 +53,16 @@
 	  </tabset>
 		
 	</div> <!-- col-sm-4 -->
-
-	<div class="col-sm-12"><progressbar value="60"></progressbar></div>
-
-	<timer 	countdown="studyTime" 
-					interval="1000"
-					finish-callback="finished()">
-					{{mminutes}}:{{sseconds}}
-					</timer>
-
-	<button ng-click="resumeTimer()">play</button>
-	<button ng-click="stopTimer()">stop</button>
-
+	
 </div> <!-- row -->
+
+<div class="row progressBarRow">
+
+	<div class="col-sm-12">
+		<progressbar value="60"></progressbar>
+	</div>
+
+</div>
 
 
 

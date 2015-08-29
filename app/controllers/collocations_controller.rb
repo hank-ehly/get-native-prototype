@@ -4,11 +4,16 @@ class CollocationsController < ApplicationController
   # GET /collocations
   # GET /collocations.json
   def index
-    @collocations = Collocation.where(video_script_id: params[:video_script_id])
 
-    render json: {
-      collocations: @collocations.to_json
-    }
+    if params[:video_id]
+      ## being called from studyWriting
+      v = Video.find(params[:video_id])
+      c = v.video_scripts.find_by(original: true).collocations
+      render json: { collocations:  c }
+    elsif params[:video_script_id]
+      @collocations = Collocation.where(video_script_id: params[:video_script_id])
+      render json: { collocations: @collocations.to_json }
+    end
 
   end
 

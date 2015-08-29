@@ -29,3 +29,7 @@ nav.navbar { border-radius: 0; }
 .avoid-clicks { pointer-events: none; }
 
 #flashContainer { height: 72px; }
+
+textarea {
+	resize: none;
+}

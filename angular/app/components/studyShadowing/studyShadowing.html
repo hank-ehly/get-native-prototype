@@ -1,9 +1,11 @@
 <div class="container">
 	
-	<h1>shadowing</h1>
+	
 
 <div class="row">
-	<div class="col-sm-6">
+	<div class="col-sm-6 col-sm-offset-3">
+
+			<h1>shadowing</h1>
 		
 			<!-- youtube video player -->
 			<youtube-video 	video-id="video.code" 
@@ -11,30 +13,34 @@
 								player-vars="playerVars"
 								player-width="'100%'" 
 								player-height="'300px'"
-								class="avoid-clicks"
+								class="avoid-clicks studyPlayer"
 								></youtube-video>
-		
-			</div> <!-- column -->
+
+		<div class="buttonDiv">
+			<button ng-click="studyShadowingPlayer.playVideo();resumeTimer()"><span class="glyphicon glyphicon-play"></span></button>
+			<button ng-click="studyShadowingPlayer.pauseVideo();stopTimer()"><span class="glyphicon glyphicon-pause"></span></button>
+			<timer 	countdown="studyTime" 
+							interval="1000"
+							autostart="false"
+							finish-callback="finished()"
+							ng-model="foo">
+							{{mminutes}}:{{sseconds}}
+							</timer>
 		</div>
 
-
-		<div class="row">
-
-		<button ng-click="studyShadowingPlayer.playVideo(); resumeTimer()">play</button>
-		<button ng-click="studyShadowingPlayer.pauseVideo(); stopTimer()">stop</button>
+			
 		
+	</div> <!-- column -->
+</div> <!-- row -->
 
-		<div class="col-sm-12"><progressbar value="40"></progressbar></div>
 
-		<timer 	countdown="studyTime" 
-						interval="1000"
-						autostart="false"
-						finish-callback="finished()"
-						ng-model="foo">
-						{{mminutes}}:{{sseconds}}
-						</timer>
+<div class="row progressBarRow">
 
+	<div class="col-sm-12">
+		<progressbar value="40"></progressbar>
 	</div>
+
+</div> <!-- crow -->
 
 
 

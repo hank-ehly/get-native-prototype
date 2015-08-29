@@ -21,8 +21,8 @@
     $scope.$on('youtube.player.ended', function (e, player) { player.playVideo(); });
     $scope.$on('youtube.player.ready', function () { $scope.$broadcast('timer-start'); });
 
-  	// $scope.studyTime = (($stateParams.t / 4) * 60);
-  	$scope.studyTime = 3;
+  	$scope.studyTime = (($stateParams.t / 4) * 60);
+  	// $scope.studyTime = 3;
 
     $scope.timerRunning = true; 
     $scope.resumeTimer = function (){

@@ -1,10 +1,18 @@
 (function() {
   'use strict';
 
-  var studyWritingCtrl = function($scope, $rootScope, $state, $stateParams, $modal, Video, WritingAnswer) {
+  var studyWritingCtrl = function($scope, $rootScope, $state, $stateParams, $modal, Video, WritingAnswer, Collocation) {
 
     var topic;
   	$scope.wordCount = 0;
+
+    function getCSuccess(res) {
+      $scope.collocations = res.collocations;
+    }
+
+    Collocation.resource.get({video_id: $stateParams.v, original: true}, getCSuccess, function(r){console.log(r);});
+
+
 
   	$scope.countWords = function(e){
 			var s = e.target.value;
@@ -84,8 +92,8 @@
 
   	// ------------------- TIMER
 
-  	// $scope.studyTime = (($stateParams.t / 4) * 60);
-    $scope.studyTime = 3;
+  	$scope.studyTime = (($stateParams.t / 4) * 60);
+    // $scope.studyTime = 3;
 
     $scope.timerRunning = true; 
     $scope.resumeTimer = function (){
@@ -117,7 +125,7 @@
 
   };
 
-  studyWritingCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$modal', 'Video', 'WritingAnswer'];
+  studyWritingCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', '$modal', 'Video', 'WritingAnswer', 'Collocation'];
 
   angular
     .module('angularApp')
