@@ -14,7 +14,7 @@
 
 
     }])
-    .run(['$rootScope', '$state', 'Flash', 'Announce', function($rootScope, $state, Flash, Announce) {
+    .run(['$rootScope', '$state', 'Flash', 'Announce', '$auth', function($rootScope, $state, Flash, Announce, $auth) { // jshint ignore:line
 
       /*
        *  Broadcast when a user's token is successfully 

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container studyListening">
 
-<h1>listening</h1>
+<h1>Listening warm-up</h1>
 	
 	<div class="row">
 
@@ -12,15 +12,27 @@
 										player-vars="playerVars"
 										player-width="'100%'" 
 										player-height="'300px'"
-										class="avoid-clicks"
+										class="avoid-clicks studyPlayer"
 										></youtube-video>
+
+		<div class="buttonDiv">
+			<button ng-click="studyListeningPlayer.playVideo();resumeTimer()"><span class="glyphicon glyphicon-play"></span></button>
+			<button ng-click="studyListeningPlayer.pauseVideo();stopTimer()"><span class="glyphicon glyphicon-pause"></span></button>
+			<timer 	countdown="studyTime" 
+							interval="1000"
+							autostart="false"
+							finish-callback="finished()"
+							ng-model="foo">
+							{{mminutes}}:{{sseconds}}
+							</timer>
+		</div>
 	
 		</div> <!-- column -->
 
-		<div class="col-sm-6">
+		<div class="col-sm-6 studyListening tabsetColumn">
 			
 			<!-- video script tabs -->
-			<tabset>
+			<tabset id="studyListeningTabset">
 
 		    <tab 	ng-repeat="tab in tabs" 
 		    			heading="{{ tab.title }}" 
@@ -38,21 +50,12 @@
 
 	</div> <!-- row -->
 
-	<div class="row">
+	<div class="row progressBarRow">
 
-		<button ng-click="studyListeningPlayer.playVideo(); resumeTimer()">play</button>
-		<button ng-click="studyListeningPlayer.pauseVideo(); stopTimer()">stop</button>
+		
 		
 
 		<div class="col-sm-12"><progressbar value="20"></progressbar></div>
-
-		<timer 	countdown="studyTime" 
-						interval="1000"
-						autostart="false"
-						finish-callback="finished()"
-						ng-model="foo">
-						{{mminutes}}:{{sseconds}}
-						</timer>
 
 	</div>
 

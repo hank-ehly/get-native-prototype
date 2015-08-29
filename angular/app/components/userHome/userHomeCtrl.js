@@ -15,6 +15,10 @@
     
     function initSuccess(data) {
 
+      angular.forEach(data.cueVideos, function(cv) {
+        cv.thumbnailUrl = 'http://i1.ytimg.com/vi/' + cv.code + '/default.jpg';
+      });
+
       $scope.cueVideos            = data.cueVideos;
       $scope.selectedCueVideo     = data.selectedVideo;
       $scope.tabs                 = data.tabs;

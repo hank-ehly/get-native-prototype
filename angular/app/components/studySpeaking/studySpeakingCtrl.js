@@ -3,32 +3,31 @@
 
   var studySpeakingCtrl = function($scope, $stateParams, Video, $state) {
 
-  	Video.setVideo($stateParams.v, true).then(function(res){
+  	Video.setVideo($stateParams.v, true).then(function(res) {
 
-				$scope.video                = res.video;
-	      $scope.collocations         = res.collocations;
-	      $scope.selectedQuote        = $scope.collocations[0].quote;
-	      $scope.selectedDescription  = $scope.collocations[0].description;
+			$scope.video                = res.video;
+      $scope.collocations         = res.collocations;
+      $scope.selectedQuote        = $scope.collocations[0].quote;
+      $scope.selectedDescription  = $scope.collocations[0].description;
 
-	      $scope.originalTabs = [];
-	      $scope.translatedTabs = [];
+      $scope.originalTabs = [];
+      $scope.translatedTabs = [];
 
-	      angular.forEach(res.tabs, function(tab) {
+      angular.forEach(res.tabs, function(tab) {
 
-	      	if (tab.original) {
-	      		$scope.originalTabs.push(tab);
-	      	} else {
-	      		$scope.translatedTabs.push(tab);
-	      	}
+      	if (tab.original) {
+      		$scope.originalTabs.push(tab);
+      	} else {
+      		$scope.translatedTabs.push(tab);
+      	}
 
-	      });
+      });
 
-	      $scope.translatedTabs[0].active = true;
+      $scope.translatedTabs[0].active = true;
 
-
-  		}, function(res) {
-  			console.log('Error', res);
-  		});
+		}, function(res) {
+			console.log('Error', res);
+  	});
 
   	$scope.colcount = 0;
 
