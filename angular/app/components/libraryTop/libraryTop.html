@@ -50,7 +50,7 @@
 
 	<!-- search results -->
 	<div class="row">
-		<table class="table table-hover" id="libraryTopSearchResultsTable">
+		<table class="table table-hover example-animate-container" id="libraryTopSearchResultsTable">
 		
 			<!-- 
 			clickable table headers
@@ -96,7 +96,7 @@
 			</thead>
 		
 			<tr ui-sref="libraryDetail({videoId: video.id})"
-					class="libraryTopTableRow" 
+					class="libraryTopTableRow animate-repeat" 
 					ng-repeat="video in filteredResults = (	searchResults | 
 																									filter:search | 
 																									filter:selectedCategory | 
