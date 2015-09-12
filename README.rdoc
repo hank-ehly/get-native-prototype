@@ -1,0 +1,33 @@
+Building instructions
+---------------------
+
+$ cd /getNativePrototype
+$ bundle install [--path vendor/bundle]
+$ rake db:migrate
+
+set secret variables
+$ echo "export SECRET_KEY_BASE_DEVELOPMENT=$(rake secret)" >> ~/.bash_profile [or ~/.bashrc]
+$ echo "export SECRET_KEY_BASE_TEST=$(rake secret)" >> ~/.bash_profile [or ~/.bashrc]
+$ echo "export SECRET_KEY_BASE_PRODUCTION=$(rake secret)" >> ~/.bash_profile [or ~/.bashrc]
+
+devise configuration
+$ rails g devise:install
+* uncomment "config.secret_key" in /getNativePrototype/config/initializers/devise.rb
+
+$ cd /getNativePrototype/angular
+$ npm install
+$ bower install
+
+INSTALL MAILCATCHER (required for registration)
+$ gem install mailcatcher
+$ mailcatcher start
+--> visit http://127.0.0.1:1080/
+
+BOOT
+$ cd /getNativePrototype
+$ rails s
+* leave [rails s] running and open new terminal window
+$ cd /getNativePrototype/angular
+$ grunt serve
+* this will open a new tab in your default browser
+* you can now use the app
