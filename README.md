@@ -14,7 +14,7 @@ Unofficial release date sometime in mid-2016
 ```
 $ git clone git@github.com:hehly/getNativePrototype.git
 $ cd /getNativePrototype
-$ bundle install *--path vendor/bundle*
+$ bundle install --path vendor/bundle
 $ rake db:migrate
 ```
 
