@@ -98,11 +98,11 @@
 			<tr ui-sref="libraryDetail({videoId: video.id})"
 					class="libraryTopTableRow animate-repeat" 
 					ng-repeat="video in filteredResults = (	searchResults | 
-																									filter:search | 
-																									filter:selectedCategory | 
-																									orderBy:predicate:reverse | 
-																									limitTo: allowedNumberOfResults 
-																								)">
+															filter:search | 
+															filter:selectedCategory | 
+															orderBy:predicate:reverse | 
+															limitTo: allowedNumberOfResults 
+														)">
 
 				<div ng-show="!filteredResults.length">no results</div>
 
