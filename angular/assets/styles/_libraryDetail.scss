@@ -1,0 +1,25 @@
+.libraryTop.firstRow {
+  margin-top: -10px;
+}
+
+#libraryDetailTabset > div {
+  background: #fff;
+  padding: 10px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  height: 300px;
+  overflow: scroll;
+}
+
+.libraryDetail.tabsetColumn {
+  margin-top: 23px;
+}
+
+collocation-panel.libraryDetail > div {
+  margin-top: 20px;
+}
+
+h1.libraryDetail#heading {
+  font-size: 25px;
+}

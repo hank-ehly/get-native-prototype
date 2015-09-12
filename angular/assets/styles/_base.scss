@@ -1,14 +1,35 @@
-body {
-  background: $offWhite;
+// default bg-color
+body { 
+	// background: $offWhite;
+	padding-bottom: 200px;
+	background-image: url('/assets/styles/sos.png');
+	// background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-div.container {
-  background: #ffffff;
+// default ul
+ul {
+	padding: 0;
+	list-style-type: none;
 }
 
+// default container bg-color
+// div.container { background: #fff; }
+
+// angular-bootstrap required styles
 .nav,
 .pagination,
 .carousel,
-.panel-title a {
-  cursor: pointer;
+.panel-title a { cursor: pointer; }
+
+// remove border-radius on globalNavbar
+nav.navbar { border-radius: 0; }
+
+// disable click events
+.avoid-clicks { pointer-events: none; }
+
+#flashContainer { height: 72px; }
+
+textarea {
+	resize: none;
 }

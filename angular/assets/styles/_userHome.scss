@@ -1,0 +1,78 @@
+.cueVideo {
+  background: lighten($darkBlue, 5);
+  color: $offWhite;
+  &:hover {
+    background: $darkBlue;
+  }
+  img {
+    cursor: pointer;
+  }
+}
+
+#userHomeSearch {
+  border-radius: 7px 7px 0px 0px;
+  border-bottom: 0;
+  height: 3.5em;
+  font-size: 1.3em;
+  padding-bottom: 7px;
+  padding-left: 14px;
+}
+
+td.removeFromCueButton a {
+  font-size: 2em;
+  margin-top: 60%;
+}
+
+td.removeFromCueButton {
+  text-align: center;
+  a {
+    font-size: 1.6em;
+    position: relative;
+    margin-right: 0;
+    margin-top: 0;
+  }
+}
+
+// border-color: #1abc9c;
+.addBottomRightRadius {
+  border-radius: 0 0 7px 0;
+}
+
+#cueVideosTableWrapper {
+  cue-videos-table > div {
+    margin-bottom: 0;
+  }
+}
+
+#cueVideosTable {
+  border: 2px solid #bdc3c7;
+  border-top: transparent;
+  display: block;
+  max-height: 730px;
+  overflow-y: scroll;
+}
+
+#userHomeSearchGlass {
+  font-size: 1.2em;
+  top: 25%;
+  right: 4%;
+}
+
+// spacing between video and collocation box
+#unique-youtube-embed-id-1 {
+  margin-bottom: 40px;
+}
+
+#userHomeTabset > div {
+  background: #fff;
+  padding: 10px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  height: 300px;
+  overflow: scroll;
+}
+
+collocation-panel.userHome > div {
+  margin-top: 20px;
+}

@@ -1,23 +1,25 @@
-<h1>Frequently asked questions</h1>
-<hr>
-
-<ul class="col-sm-8">
-	<li ng-repeat="section in faqData">
-
-		<h3>{{ section.title }}</h3>
-
-		<ul>
-			<li ng-repeat="faq in section.faqs">
-
-				<h5 ng-click="isCollapsed = !isCollapsed">{{ faq.question }}</h5>
-				<p collapse="isCollapsed">{{ faq.answer }}</p>
-
-			</li>
-		</ul>
-
-	</li>
-</ul>
-
-<div class="col-sm-4">
-	<static-content-navigation-panel></static-content-navigation-panel>
+<div class="container">
+	<h1>Frequently asked questions</h1>
+	<hr>
+	
+	<ul class="col-sm-8">
+		<li ng-repeat="section in faqData">
+	
+			<h3>{{ section.title }}</h3>
+	
+			<ul>
+				<li ng-repeat="faq in section.faqs">
+	
+					<h5 ng-click="isCollapsed = !isCollapsed">{{ faq.question }}</h5>
+					<p collapse="isCollapsed">{{ faq.answer }}</p>
+	
+				</li>
+			</ul>
+	
+		</li>
+	</ul>
+	
+	<div class="col-sm-4">
+		<static-content-navigation-panel></static-content-navigation-panel>
+	</div>
 </div>

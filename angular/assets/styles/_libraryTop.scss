@@ -1,0 +1,86 @@
+div#libraryTopSearchBarContainer {
+  background: transparent;
+  margin-bottom: 20px;
+  input {
+    height: 2.5em;
+    font-size: 1.7em;
+    border: none;
+    padding-left: 34px;
+  }
+  button {
+    height: 4em;
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+  #libraryTopSearchGlass {
+    transform: translate(2%, -1.6%);
+    vertical-align: middle;
+    border-radius: 7px 0 0 7px;
+  }
+}
+
+tr.libraryTopTableRow {
+  cursor: pointer;
+}
+
+span#libraryTopSearchGlass {
+  position: absolute;
+  z-index: 11;
+  left: 9px;
+  top: 22px;
+  font-size: 1.4em;
+}
+
+#libraryTopSearchResultsTableContainer {
+  border-radius: 7px;
+
+  div > p {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0 0 30px;
+  }
+
+}
+
+#libraryTopSearchResultsTable > thead > tr > th {
+
+  font-size: 1.4em;
+  cursor: pointer;
+
+  &.noPointer {
+    cursor: default;
+  }
+
+  span {
+    position: relative;
+    font-size: .6em;
+    top: 0px;
+  }
+
+}
+
+#libraryTopSearchResultsTable > tbody > tr {
+  background: #fff;
+
+  td {
+    width: 20%;
+    vertical-align: middle;
+  }
+
+  td.previewImage {
+    width: 16%;
+  }
+
+  td.topicName {
+    width: 30%;
+  }
+
+}
+
+// show more button
+#libraryTopSearchResultsTableContainer > div > button {
+  margin: 0 auto;
+  display: block;
+  font-size: 2em;
+  height: 2em;
+}

@@ -34,10 +34,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/*.js',
-                '<%= yeoman.app %>/components/{,*/}*.js',
-                '<%= yeoman.app %>/shared/{,*/}*.js',
-                '<%= yeoman.app %>/config/*.js'],
+        files: ['<%= yeoman.app %>/**/*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -59,8 +56,7 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-        '<%= yeoman.app %>/shared/{,*/}*.html',
+          '<%= yeoman.app %>/**/*.js',
           '<%= yeoman.app %>/**/*.html',
           '.tmp/styles/{,*/}*.css',
           'assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -129,7 +125,9 @@ module.exports = function (grunt) {
         src: [
           'Gruntfile.js',
           '<%= yeoman.app %>/components/{,*/}*.js',
-          '<%= yeoman.app %>/shared/{,*/}*.js'
+          '<%= yeoman.app %>/shared/{,*/}*.js',
+          '<%= yeoman.app %>/config/{,*/}*.js',
+          '<%= yeoman.app %>/*.js'
         ]
       },
       test: {

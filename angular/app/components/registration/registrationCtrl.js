@@ -1,13 +1,13 @@
 (function() {
   'use strict';
 
-  var registrationCtrl = function($scope) {
+  var registrationCtrl = function($scope, $auth, $state, Flash) { // jshint ignore:line
 
-  	$scope.test = 'fooregistration';
+
 
   };
 
-  registrationCtrl.$inject = ['$scope'];
+  registrationCtrl.$inject = ['$scope', '$auth', '$state', 'Flash'];
 
   angular
     .module('angularApp')

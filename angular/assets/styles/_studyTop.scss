@@ -1,0 +1,65 @@
+.studyTop#minutesInput {
+  width: 100px;
+  font-size: 4em;
+  text-align: center;
+  padding-right: 13px;
+  height: 100%;
+  margin-left: 46px;
+}
+
+.studyTop#minutesLabel {
+  font-size: 3em;
+}
+
+.studyTop#buttonWrapper {
+  display: inline-block;
+  width: 36px;
+  margin-right: 7px;
+  position: absolute;
+}
+
+#buttonWrapper > a.glyphicon {
+  border: 1px solid $darkBlue;
+  background-color: white;
+  color: black;
+}
+
+#buttonWrapper > a.glyphicon-menu-up {
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+
+.studyTop#minutesFormWrapper {
+  height: 7em;
+  margin-top: 59px;
+}
+
+#studyTopCuesVideoTableWrapper {
+  // padding: 0 82px 0 28px;
+  cue-videos-table > div {
+    margin-bottom: 0;
+  }
+}
+
+#studyHeader {
+  padding-left: 28px;
+}
+
+#beginButton {
+  margin-top: 50px;
+  a {
+    font-size: 2.3em;
+    height: 2.5em;
+    padding-top: .8em;
+    width: 33%;
+    margin: 0 auto;
+  }
+}
+
+#videoInfoPanel {
+  font-size: 1.5em;
+}
+
+#studyTopProgressBar {
+  margin-top: 50px;
+}

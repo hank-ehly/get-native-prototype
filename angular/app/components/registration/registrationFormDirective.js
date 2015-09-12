@@ -1,31 +1,35 @@
 (function() {
   'use strict';
 
-  var registrationFormTemplateDir = 'components/registration/registrationFormTemplate.html';
+  var registrationForm = function(authService) {
+
+    // Runs during compile
+    return {
+      // name: '',
+      // priority: 1,
+      // terminal: true,
+      // scope: {}, // {} = isolate, true = child, false/undefined = no change
+      // controller: function($scope, $element, $attrs, $transclude) {},
+      // require: '^registrationCtrl', // Array = multiple requires, ? = optional, ^ = check parent elements
+      restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+      // template: '',
+      templateUrl: 'components/registration/registrationFormTemplate.html',
+      // replace: true,
+      // transclude: true,
+      // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+      link: function($scope) {
+        $scope.submit = function(registrationForm) { authService.submitRegistration(registrationForm); };
+      }
+
+    };
+  };
 
   angular
     .module('angularApp')
-    .directive('registrationForm', function() {
+    .directive('registrationForm', registrationForm);
 
-      // Runs during compile
-      return {
-        // name: '',
-        // priority: 1,
-        // terminal: true,
-        // scope: {}, // {} = isolate, true = child, false/undefined = no change
-        // controller: function($scope, $element, $attrs, $transclude) {},
-        // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-        restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-        // template: '',
-        templateUrl: registrationFormTemplateDir,
-        // replace: true,
-        // transclude: true,
-        // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-        // link: function($scope, iElm, iAttrs, controller) {
-
-        // }
-
-      };
-    });
+  registrationForm.$inject = ['authService'];
 
 })();
+
+// , iElm, iAttrs, controller

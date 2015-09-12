@@ -1,1 +1,80 @@
-{{ test }}
+<div class="container">
+
+<div class="row" ng-hide="cueVideos.length">
+	<p>You have no {{ selectedLanguage }} videos in your Cue! Choose some in the Library.</p>
+</div>
+
+<div class="row" ng-show="cueVideos.length">
+
+	<h1 id="studyHeader">Study {{ selectedLanguage }}</h1>
+	
+	<div class="col-sm-5" id="studyTopCuesVideoTableWrapper">
+
+		<h3>Choose a video</h3>
+
+		<cue-videos-table uneditable></cue-videos-table>
+
+
+	</div> <!-- col-sm-6 -->
+
+	<div class="col-sm-7">
+
+		<dl class="dl-horizontal" id="videoInfoPanel">
+		  <dt>Category:</dt>
+		  <dd>{{ selectedCueVideo.category.name }}</dd>
+
+		  <dt>Topic:</dt>
+		  <dd>{{ selectedCueVideo.topic.name }}</dd>
+
+		  <dt>Speaker:</dt>
+		  <dd>{{ selectedCueVideo.speaker.name }}</dd>
+
+		  <dt>Video Length:</dt>
+		  <dd>{{ selectedCueVideo.length | inMinutes }}</dd>
+		</dl>
+
+	
+		<div class="studyTop" id="minutesFormWrapper">
+			<h3>I want to study for..</h3>
+
+			<div class="studyTop" id="buttonWrapper">
+				<a href="" ng-click="increase()" class="glyphicon glyphicon-menu-up btn btn-default"></a>
+				<a href="" ng-click="decrease()" class="glyphicon glyphicon-menu-down btn btn-default"></a>
+			</div>
+			
+			<input 	type="text" 
+							readonly
+							class="studyTop" 
+							id="minutesInput" 
+							value="{{ time }}"
+							>
+			
+			<span class="studyTop" id="minutesLabel">minutes</span>
+		</div>
+
+
+	</div>
+
+	
+
+</div> <!-- row -->
+
+<div class="row" id="beginButton">
+	
+	<a 	ui-sref="studyListening({ v: selectedCueVideo.id, lm: languageModule.id, t: time })" 
+			class="btn btn-success btn-block"
+			>
+			Begin
+	</a>
+
+</div>
+
+<div class="row" id="studyTopProgressBar">
+	
+	<div class="col-sm-12">
+		<progressbar value="5"></progressbar>
+	</div>
+
+</div>
+
+</div>

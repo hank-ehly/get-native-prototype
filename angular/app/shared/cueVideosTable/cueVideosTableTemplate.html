@@ -1,0 +1,78 @@
+<!-- search bar -->
+
+<div class="form-group has-feedback">
+<input 	
+				type="text" 
+				ng-model="search"
+				class="form-control"
+				placeholder="Search"
+				id="userHomeSearch" 
+				>
+
+				<span class="glyphicon glyphicon-search form-control-feedback" id="userHomeSearchGlass"></span>
+				</div>
+
+
+<!-- overall cue table -->
+<table 	
+				class="table"
+				id="cueVideosTable"
+				>
+
+
+	<!-- repeated cue block -->
+	<tr 	
+				ng-repeat="cv in cueVideos | filter:search"
+				class="cueVideo"
+				>
+
+
+
+		<!-- preview image -->
+		<td 
+				class="col-sm-2">
+
+
+
+				<img 
+							ng-src="{{ cv.thumbnail_url }}"
+							alt=""
+							ng-click="selectCueVideo(cv)"
+							>
+		</td>
+
+
+		<!-- video information -->
+		<td>
+			<ul>
+				<!-- <li>{{ cv.category.name }}</li> -->
+				<li>{{ cv.topic.name }}</li>
+				<li>{{ cv.speaker.name }}</li>
+				<li>{{ cv.length | inMinutes }}</li>
+			</ul>
+		</td>
+
+
+
+		<!-- remove button -->
+		<td 	
+				class="removeFromCueButton"
+				ng-hide="uneditable"
+				>
+
+			<a 	
+					href="" 
+					class="glyphicon glyphicon-remove" 
+					ng-click="removeFromCue(cv, $index)"
+					>
+
+			</a>
+		</td>
+
+
+
+	</tr> <!-- end single cue block -->
+
+
+
+</table>

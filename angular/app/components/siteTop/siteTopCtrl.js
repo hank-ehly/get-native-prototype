@@ -1,13 +1,13 @@
 (function() {
   'use strict';
 
-  var siteTopCtrl = function($scope) {
+  var siteTopCtrl = function($scope, $rootScope, $state, Flash, Announce, authService) {
 
-  	$scope.test = 'foo';
+    $scope.login = function() { authService.login($scope.loginForm); };
 
   };
 
-  siteTopCtrl.$inject = ['$scope'];
+  siteTopCtrl.$inject = ['$scope', '$rootScope', '$state', 'Flash', 'Announce', 'authService'];
 
   angular
     .module('angularApp')

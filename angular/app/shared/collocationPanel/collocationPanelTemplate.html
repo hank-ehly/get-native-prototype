@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h3 class="panel-title">{{ selectedQuote }}</h3>
+    <div class="buttons">
+    	<button ng-show="ss" ng-click="next(true)" class="btn btn-success">I did it!</button>
+    	<button ng-show="ss" ng-click="next(false)" class="btn btn-danger">skip</button>
+    </div>
+  </div>
+
+  <div class="panel-body">
+	  <p>{{ selectedDescription }}</p>
+
+	  <p ng-show="ss" ng-class="{ completedStyle : overachiever }" id="completed">completed ( {{ colcount }}/{{ collocations.length }} )</p>
+  </div>
+
+</div>

@@ -1,1 +1,70 @@
-{{ test }}
+<div class="container">
+
+<div class="studySpeakingHeaderDiv">
+	<h1>Speaking</h1>
+	
+	<button ng-click="resumeTimer()"><span class="glyphicon glyphicon-play"></span></button>
+	<button ng-click="stopTimer()"><span class="glyphicon glyphicon-pause"></span></button>
+	
+		<timer 	countdown="studyTime" 
+						interval="1000"
+						finish-callback="finished()">
+						{{mminutes}}:{{sseconds}}
+						</timer>
+</div>
+
+<div class="row">
+
+	<div class="col-sm-8">
+
+		<collocation-panel class="studySpeaking"></collocation-panel>
+
+		<tabset id="studySpeakingOriginalTabset">
+
+    <tab 	ng-repeat="tab in originalTabs" 
+    			heading="{{ tab.title }}" 
+    			active="tab.active">
+    			<span ng-bind-html="tab.content" 
+    						class="videoScriptContent"
+    						ng-click="videoScriptClickHandler($event)"
+    						></span>
+    			</tab>
+
+  </tabset>
+
+	</div>
+	
+		<div class="col-sm-4">
+
+		<!-- video script tabs -->
+		<tabset id="studySpeakingTranslatedTabset">
+
+	    <tab 	ng-repeat="tab in translatedTabs" 
+	    			heading="{{ tab.title }}" 
+	    			active="tab.active">
+	    			<span ng-bind-html="tab.content" 
+	    						class="videoScriptContent"
+	    						ng-click="videoScriptClickHandler($event)"
+	    						></span>
+	    			</tab>
+
+	    <tab heading="N/A"></tab>
+
+	  </tabset>
+		
+	</div> <!-- col-sm-4 -->
+	
+</div> <!-- row -->
+
+<div class="row progressBarRow">
+
+	<div class="col-sm-12">
+		<progressbar value="60"></progressbar>
+	</div>
+
+</div>
+
+
+
+
+</div>
