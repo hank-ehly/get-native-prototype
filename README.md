@@ -1,5 +1,13 @@
 # Get Native (Prototype)
 
+This is an opensource prototype application of the will-be "Get Native" web app.
+The purpose of this app is for advanced learners of a language to study videos
+of native speakers and continue advancing in their language learning. I find the 
+app useful because I haven't found a lot of resources *designated to advanced learners*
+on the internet, unless you're reading books, watching movies, or talking to people..
+
+Unofficial release date sometime in mid-2016
+
 ### Building instructions
 
 ##### 1. rails basic setup
