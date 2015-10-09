@@ -30,7 +30,7 @@ Language.create!([
 ])
 Speaker.create!([
   {language_id: 1, age_group: nil, name: "Shoji Onishi", description: nil, gender: true, location: "Kyoto, Japan"},
-  {language_id: nil, age_group: nil, name: "Eriko Ishikawa", description: nil, gender: false, location: "Saitama, Japan"},
+  {language_id: 1, age_group: nil, name: "Eriko Ishikawa", description: nil, gender: false, location: "Saitama, Japan"},
   {language_id: 1, age_group: nil, name: "Satoru Kajiura", description: nil, gender: true, location: "Tokyo, Japan"},
   {language_id: 1, age_group: nil, name: "Kentaro Asai", description: nil, gender: true, location: "Tokyo, Japan"},
   {language_id: 1, age_group: nil, name: "Koji Kodama", description: nil, gender: true, location: "Los Angeles, USA"},
