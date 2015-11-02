@@ -1,7 +1,8 @@
 (function() {
   'use strict';
 
-  var userHomeCtrl = function($scope, $rootScope, Video, Collocation, Cue, LanguageModule, $location, WritingAnswer, PlayerVars) {
+  var userHomeCtrl;
+  userHomeCtrl = function ($scope, $rootScope, Video, Collocation, Cue, LanguageModule, $location, WritingAnswer, PlayerVars) {
 
     var currentUser = $rootScope.user;
     var languageModule;
@@ -12,20 +13,20 @@
      * tabs, collocations, and other things. It is very important.
      * The bulk of it can be found in 'Cue'
      */
-    
+
     function initSuccess(data) {
 
-      angular.forEach(data.cueVideos, function(cv) {
+      angular.forEach(data.cueVideos, function (cv) {
         cv.thumbnailUrl = 'http://i1.ytimg.com/vi/' + cv.code + '/default.jpg';
       });
 
-      $scope.cueVideos            = data.cueVideos;
-      $scope.selectedCueVideo     = data.selectedVideo;
-      $scope.tabs                 = data.tabs;
-      $scope.video                = data.video;
-      $scope.selectedQuote        = data.selectedQuote;
-      $scope.selectedDescription  = data.selectedDescription;
-      $scope.collocations         = data.collocations;
+      $scope.cueVideos = data.cueVideos;
+      $scope.selectedCueVideo = data.selectedVideo;
+      $scope.tabs = data.tabs;
+      $scope.video = data.video;
+      $scope.selectedQuote = data.selectedQuote;
+      $scope.selectedDescription = data.selectedDescription;
+      $scope.collocations = data.collocations;
 
     }
 
@@ -46,17 +47,34 @@
 
       languageModule = res.languageModule[0];
 
-      WritingAnswer.resource.get({ language_module_id: languageModule.id }, getWASuccess, function(r){ console.log(r);});
-      Cue.initializeContents(currentUser.id, languageModule.id, null, true).then(initSuccess, function(r){console.log(r);});
+      WritingAnswer.resource.get({language_module_id: languageModule.id}, getWASuccess, function (r) {
+        console.log(r);
+      });
+      Cue.initializeContents(currentUser.id, languageModule.id, null, true).then(initSuccess, function (r) {
+        console.log(r);
+      });
 
     }
 
-    LanguageModule.resource.get({ user_id: $rootScope.user.id, language: $scope.selectedLanguage }, getLMSuccess, function(r){console.log(r);});
-
-    $scope.$on('changeLanguage', function() {
-      LanguageModule.resource.get({ user_id: $rootScope.user.id, language: $location.search().lang }, getLMSuccess, function(r){console.log(r);});      
+    LanguageModule.resource.get({
+      user_id: $rootScope.user.id,
+      language: $scope.selectedLanguage
+    }, getLMSuccess, function (r) {
+      console.log(r);
     });
-    
+
+    $scope.$on('changeLanguage', function () {
+      LanguageModule.resource.get({
+        user_id: $rootScope.user.id,
+        language: $location.search().lang
+      }, getLMSuccess, function (r) {
+        console.log(r);
+      });
+    });
+
+    $scope.time = 15;
+    $scope.increase = function() { $scope.time < 25 ? $scope.time ++ : false; } // jshint ignore:line
+    $scope.decrease = function() { $scope.time > 5  ? $scope.time -- : false; } // jshint ignore:line
 
     /*
      * This function is called when a user clicks on a new video.
@@ -64,11 +82,22 @@
      * also serves to set the next video in the panel
      */
 
-    $scope.selectCueVideo = function(cv) { Cue.initializeContents(currentUser, languageModule.id, cv, true).then(initSuccess, function(r){console.log(r);});};
-    
+    $scope.selectCueVideo = function (cv) {
+      Cue.initializeContents(currentUser, languageModule.id, cv, true).then(initSuccess, function (r) {
+        console.log(r);
+      });
+    };
+
   }; // end userHomeCtrl
 
-  userHomeCtrl.$inject = ['$scope', '$rootScope', 'Video', 'Collocation', 'Cue', 'LanguageModule', '$location', 'WritingAnswer', 'PlayerVars'];
+  userHomeCtrl.$inject = ['$scope',
+                          '$rootScope',
+                          'Video',
+                          'Collocation',
+                          'Cue',
+                          'LanguageModule',
+                          '$location',
+    'WritingAnswer', 'PlayerVars'];
 
   angular
     .module('angularApp')

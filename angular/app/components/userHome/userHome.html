@@ -9,59 +9,81 @@
 		<!-- row 1 left -->
 		<div class="col-sm-5" id="cueVideosTableWrapper">
 
+      <div class="studyTop" id="minutesFormWrapper">
+        <h3>I want to study for..</h3>
+
+        <div class="studyTop" id="buttonWrapper">
+          <a href="" ng-click="increase()" class="glyphicon glyphicon-menu-up btn btn-default"></a>
+          <a href="" ng-click="decrease()" class="glyphicon glyphicon-menu-down btn btn-default"></a>
+        </div>
+
+        <input 	type="text"
+                readonly
+                class="studyTop"
+                id="minutesInput"
+                value="{{ time }}">
+
+        <span class="studyTop" id="minutesLabel">minutes</span>
+
+      </div>
+
+      <div class="row" id="beginButton">
+
+        <a 	ui-sref="studyListening({ v: selectedCueVideo.id, lm: languageModule.id, t: time })"
+            class="btn btn-success btn-block">
+          Begin
+        </a>
+
+      </div>
+
 			<cue-videos-table></cue-videos-table>
 
 		</div>
-		
-		
+
+
 		<!-- row 1 col right -->
 		<div class="col-sm-7">
 
 
 
-		
+
 			<!-- youtube video player -->
-			<youtube-video 	
-											video-id="video.code" 
+			<youtube-video 	video-id="video.code"
 											player-vars="playerVars"
-											player-width="'100%'" 
-											player-height="'300px'"
-											>
-			</youtube-video>
-		
+											player-width="'100%'"
+											player-height="'300px'"></youtube-video>
+
 
 
 
 
 			<!-- video script tabs -->
 			<tabset id="userHomeTabset">
-		
-		    <tab 	
-		    			ng-repeat="tab in tabs" 
-		    			heading="{{ tab.title }}" 
+
+		    <tab 	ng-repeat="tab in tabs"
+		    			heading="{{ tab.title }}"
 		    			active="tab.active"
 		    			>
 
-		    			<span 
-		    						ng-bind-html="tab.content" 
+		    			<span ng-bind-html="tab.content"
 		    						class="videoScriptContent"
 		    						ng-click="videoScriptClickHandler($event)"
 		    						>
 		    			</span>
 		    </tab>
-		
+
 
 				<!-- always N/A tab -->
 		    <tab heading="N/A"></tab>
 
 
 		  </tabset> <!-- end tabset -->
-			
+
 
 
 
 			<collocation-panel class="userHome"></collocation-panel>
-		
+
 
 
 
@@ -69,7 +91,7 @@
 
 	</div> <!-- .row -->
 
-	
+
 
 	<!-- progress report -->
 	<div class="row">
@@ -78,7 +100,7 @@
 
 	<h1>Your progress in {{ selectedLanguage }}</h1>
 
-		<p ng-show="noWritingAnswers">You have not written any answers yet!</p>		
+		<p ng-show="noWritingAnswers">You have not written any answers yet!</p>
 
 		<ol class="col-sm-6" ng-hide="noWritingAnswers">
 			<li ng-repeat="answer in writingAnswers">
@@ -87,7 +109,7 @@
 				<p>Answer: {{ answer.writing_answer }}</p>
 			</li>
 		</ol>
-	
+
 
 	</div> <!-- row -->
 

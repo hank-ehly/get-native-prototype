@@ -70,3 +70,5 @@ angular/node_modules
 angular/test
 angular/.tmp/
 angular/.sass-cache/
+public/
+angular/.idea

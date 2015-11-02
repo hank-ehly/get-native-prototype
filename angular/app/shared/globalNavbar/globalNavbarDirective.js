@@ -21,15 +21,15 @@
 
         $scope.languages = ['Japanese', 'English'];
         if ($location.search().lang === undefined) {
-          $location.search('lang', $scope.languages[0]);  
+          $location.search('lang', $scope.languages[0]);
         }
 
         $scope.selectedLanguage = $location.search().lang;
 
         $scope.$on('changeLanguage', function() {
-          $scope.selectedLanguage = $location.search().lang;          
+          $scope.selectedLanguage = $location.search().lang;
         });
-      
+
 
         // this is the click handler for the language module dropdown
         $scope.langClickHandler = function(language) {
@@ -41,8 +41,8 @@
         // set 'restricted' if you wanna make them invisible to guests
         $scope.barItems = [
           { title: 'Home',    state: 'userHome',    restricted: true },
-          { title: 'Library', state: 'libraryTop',  restricted: false },
-          { title: 'Study',   state: 'studyTop',    restricted: true }
+          { title: 'Library', state: 'libraryTop',  restricted: false }
+          //{ title: 'Study',   state: 'studyTop',    restricted: true }
         ];
 
         // set active bar item on ng-click

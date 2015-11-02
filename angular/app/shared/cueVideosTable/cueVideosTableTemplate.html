@@ -1,12 +1,12 @@
 <!-- search bar -->
 
-<div class="form-group has-feedback">
-<input 	
-				type="text" 
+<div class="form-group has-feedback cues-table-search-bar">
+<input
+				type="text"
 				ng-model="search"
 				class="form-control"
 				placeholder="Search"
-				id="userHomeSearch" 
+				id="userHomeSearch"
 				>
 
 				<span class="glyphicon glyphicon-search form-control-feedback" id="userHomeSearchGlass"></span>
@@ -14,14 +14,14 @@
 
 
 <!-- overall cue table -->
-<table 	
+<table
 				class="table"
 				id="cueVideosTable"
 				>
 
 
 	<!-- repeated cue block -->
-	<tr 	
+	<tr
 				ng-repeat="cv in cueVideos | filter:search"
 				class="cueVideo"
 				>
@@ -29,12 +29,12 @@
 
 
 		<!-- preview image -->
-		<td 
+		<td
 				class="col-sm-2">
 
 
 
-				<img 
+				<img
 							ng-src="{{ cv.thumbnail_url }}"
 							alt=""
 							ng-click="selectCueVideo(cv)"
@@ -55,14 +55,14 @@
 
 
 		<!-- remove button -->
-		<td 	
+		<td
 				class="removeFromCueButton"
 				ng-hide="uneditable"
 				>
 
-			<a 	
-					href="" 
-					class="glyphicon glyphicon-remove" 
+			<a
+					href=""
+					class="glyphicon glyphicon-remove"
 					ng-click="removeFromCue(cv, $index)"
 					>
 
