@@ -9,7 +9,6 @@
       $scope.collocations         = res.collocations;
       $scope.selectedQuote        = $scope.collocations[0].quote;
       $scope.selectedDescription  = $scope.collocations[0].description;
-
       $scope.originalTabs = [];
       $scope.translatedTabs = [];
 
@@ -32,7 +31,7 @@
   	$scope.colcount = 0;
 
   	$scope.next = function(shouldIncrement) {
-  		
+
   		var len = $scope.collocations.length;
   		var next;
 
@@ -47,7 +46,7 @@
   			}
 
   		});
-  		
+
   		$scope.selectedQuote 				= $scope.collocations[next].quote;
   		$scope.selectedDescription 	= $scope.collocations[next].description;
 
@@ -59,13 +58,13 @@
 	  		}
   		}
 
-  		
+
   	};
 
   	$scope.studyTime = (($stateParams.t / 4) * 60);
     // $scope.studyTime = 5;
 
-    $scope.timerRunning = true; 
+    $scope.timerRunning = true;
     $scope.resumeTimer = function (){
         $scope.$broadcast('timer-resume');
         $scope.timerRunning = true;

@@ -48,7 +48,7 @@ td.removeFromCueButton {
   border: 2px solid #bdc3c7;
   border-top: transparent;
   display: block;
-  max-height: 730px;
+  max-height: 523px;
   overflow-y: scroll;
 }
 
@@ -78,5 +78,11 @@ collocation-panel.userHome > div {
 }
 
 .cues-table-search-bar {
-  margin-top: 50px;
+  margin-top: 60px;
+}
+
+#list-of-writing-answers {
+  height: 600px;
+  overflow: scroll;
+  border-radius: 3px;
 }

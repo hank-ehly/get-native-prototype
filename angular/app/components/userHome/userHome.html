@@ -1,116 +1,121 @@
 <div class="container">
 
-	<div class="row" ng-hide="cueVideos.length">
-		<p>There are no {{ selectedLanguage }} videos in your Cue!</p>
-	</div>
+  <div class="row"
+       ng-hide="cueVideos.length">
+    <p>There are no {{ selectedLanguage }} videos in your Cue!</p>
+  </div>
 
-	<div class="row" ng-show="cueVideos.length">
+  <div class="row"
+       ng-show="cueVideos.length">
 
-		<!-- row 1 left -->
-		<div class="col-sm-5" id="cueVideosTableWrapper">
+    <!-- row 1 left -->
+    <div class="col-sm-5"
+         id="cueVideosTableWrapper">
 
-      <div class="studyTop" id="minutesFormWrapper">
-        <h3>I want to study for..</h3>
+      <div class="studyTop"
+           id="minutesFormWrapper">
+        <h3>Study..</h3>
 
-        <div class="studyTop" id="buttonWrapper">
-          <a href="" ng-click="increase()" class="glyphicon glyphicon-menu-up btn btn-default"></a>
-          <a href="" ng-click="decrease()" class="glyphicon glyphicon-menu-down btn btn-default"></a>
+        <div class="studyTop"
+             id="buttonWrapper">
+          <a href=""
+             ng-click="increase()"
+             class="glyphicon glyphicon-menu-up btn btn-default"></a>
+          <a href=""
+             ng-click="decrease()"
+             class="glyphicon glyphicon-menu-down btn btn-default"></a>
         </div>
 
-        <input 	type="text"
-                readonly
-                class="studyTop"
-                id="minutesInput"
-                value="{{ time }}">
+        <input type="text"
+               readonly
+               class="studyTop"
+               id="minutesInput"
+               value="{{ time }}">
 
-        <span class="studyTop" id="minutesLabel">minutes</span>
+        <span class="studyTop"
+              id="minutesLabel">minutes</span>
 
-      </div>
-
-      <div class="row" id="beginButton">
-
-        <a 	ui-sref="studyListening({ v: selectedCueVideo.id, lm: languageModule.id, t: time })"
-            class="btn btn-success btn-block">
-          Begin
-        </a>
+        <a ui-sref="studyListening({ v: selectedCueVideo.id, lm: languageModule.id, t: time })"
+           class="btn btn-success btn-block"
+           id="beginButton">Begin</a>
 
       </div>
 
-			<cue-videos-table></cue-videos-table>
+      <cue-videos-table></cue-videos-table>
 
-		</div>
-
-
-		<!-- row 1 col right -->
-		<div class="col-sm-7">
+    </div>
 
 
+    <!-- row 1 col right -->
+    <div class="col-sm-7">
 
 
-			<!-- youtube video player -->
-			<youtube-video 	video-id="video.code"
-											player-vars="playerVars"
-											player-width="'100%'"
-											player-height="'300px'"></youtube-video>
+      <!-- youtube video player -->
+      <youtube-video video-id="video.code"
+                     player-vars="playerVars"
+                     player-width="'100%'"
+                     player-height="'300px'"></youtube-video>
 
 
+      <!-- video script tabs -->
+      <tabset id="userHomeTabset">
 
-
-
-			<!-- video script tabs -->
-			<tabset id="userHomeTabset">
-
-		    <tab 	ng-repeat="tab in tabs"
-		    			heading="{{ tab.title }}"
-		    			active="tab.active"
-		    			>
+        <tab ng-repeat="tab in tabs"
+             heading="{{ tab.title }}"
+             active="tab.active"
+          >
 
 		    			<span ng-bind-html="tab.content"
-		    						class="videoScriptContent"
-		    						ng-click="videoScriptClickHandler($event)"
-		    						>
+                    class="videoScriptContent"
+                    ng-click="videoScriptClickHandler($event)"
+                >
 		    			</span>
-		    </tab>
+        </tab>
 
 
-				<!-- always N/A tab -->
-		    <tab heading="N/A"></tab>
+        <!-- always N/A tab -->
+        <tab heading="N/A"></tab>
 
 
-		  </tabset> <!-- end tabset -->
+      </tabset>
+      <!-- end tabset -->
 
 
+      <collocation-panel class="userHome"></collocation-panel>
 
 
-			<collocation-panel class="userHome"></collocation-panel>
+    </div>
+    <!-- row 1 col right -->
+
+  </div>
+  <!-- .row -->
 
 
+  <!-- progress report -->
+  <div class="row">
 
+    <hr>
 
-		</div> <!-- row 1 col right -->
+    <h3>Writing in {{ selectedLanguage }}</h3>
 
-	</div> <!-- .row -->
+    <p ng-show="noWritingAnswers">You have not written any answers yet!</p>
 
+    <ul ng-hide="noWritingAnswers"
+        id="list-of-writing-answers">
+      <li ng-repeat="answer in writingAnswers">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">{{ answer.topic.name }}
+              <small>{{ answer.created_at | date }}</small>
+            </h4>
+          </div>
+          <div class="panel-body">
+            {{ answer.writing_answer }}
+          </div>
+        </div>
+      </li>
+    </ul>
 
-
-	<!-- progress report -->
-	<div class="row">
-
-	<hr>
-
-	<h1>Your progress in {{ selectedLanguage }}</h1>
-
-		<p ng-show="noWritingAnswers">You have not written any answers yet!</p>
-
-		<ol class="col-sm-6" ng-hide="noWritingAnswers">
-			<li ng-repeat="answer in writingAnswers">
-				<p>Date: {{ answer.created_at | date }}</p>
-				<p>Topic: {{ answer.topic.name }}</p>
-				<p>Answer: {{ answer.writing_answer }}</p>
-			</li>
-		</ol>
-
-
-	</div> <!-- row -->
+  </div>
 
 </div>

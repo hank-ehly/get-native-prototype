@@ -16,10 +16,18 @@
 
   	$scope.countWords = function(e){
 			var s = e.target.value;
-			s = s.replace(/(^\s*)|(\s*$)/gi,'');
-			s = s.replace(/[ ]{2,}/gi,' ');
-			s = s.replace(/\n /,'\n');
-			$scope.wordCount = s.split(' ').length;
+      //if ($stateParams.lang == 'Japanese')
+      //{
+        $scope.wordCount = s.length;
+      //}
+      //else
+      //{
+      //   //英語の場合以下を使うのregexを使用
+      //   s = s.replace(/(^\s*)|(\s*$)/gi,'');
+      //   s = s.replace(/[ ]{2,}/gi,' ');
+      //   s = s.replace(/\n /,'\n');
+      //   $scope.wordCount = s.split(' ').length;
+      //}
 		};
 
     // window.onbeforeunload = function(e) { return 'By refreshing the page you will reset the clock!'; }
@@ -78,7 +86,7 @@
         }, function(res) {
           console.log('Error', res);
         });
-        
+
         $state.go('userHome');
 
       }, function() {
@@ -95,7 +103,7 @@
   	$scope.studyTime = (($stateParams.t / 4) * 60);
     // $scope.studyTime = 3;
 
-    $scope.timerRunning = true; 
+    $scope.timerRunning = true;
     $scope.resumeTimer = function (){
         $scope.$broadcast('timer-resume');
         $scope.timerRunning = true;
@@ -116,7 +124,7 @@
   		// 	$state.go('userHome');
   		// }, 3000);
 
-  	}; 
+  	};
 
   	// ------------- END TIMER
 

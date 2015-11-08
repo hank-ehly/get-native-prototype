@@ -40,7 +40,7 @@
         // these are the left-navbar buttons
         // set 'restricted' if you wanna make them invisible to guests
         $scope.barItems = [
-          { title: 'Home',    state: 'userHome',    restricted: true },
+          { title: 'Dashboard',    state: 'userHome',    restricted: true },
           { title: 'Library', state: 'libraryTop',  restricted: false }
           //{ title: 'Study',   state: 'studyTop',    restricted: true }
         ];

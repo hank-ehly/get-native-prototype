@@ -1,70 +1,72 @@
+<div class="buttonDiv"
+     id="speaking-button-div">
+  <button ng-click="resumeTimer()"><span class="glyphicon glyphicon-play"></span></button>
+  <button ng-click="stopTimer()"><span class="glyphicon glyphicon-pause"></span></button>
+  <timer countdown="studyTime"
+         interval="1000"
+         finish-callback="finished()">
+    {{mminutes}}:{{sseconds}}
+  </timer>
+</div>
+
 <div class="container">
 
-<div class="studySpeakingHeaderDiv">
-	<h1>Speaking</h1>
-	
-	<button ng-click="resumeTimer()"><span class="glyphicon glyphicon-play"></span></button>
-	<button ng-click="stopTimer()"><span class="glyphicon glyphicon-pause"></span></button>
-	
-		<timer 	countdown="studyTime" 
-						interval="1000"
-						finish-callback="finished()">
-						{{mminutes}}:{{sseconds}}
-						</timer>
-</div>
+  <div class="studySpeakingHeaderDiv">
+    <h6>Speak out loud</h6>
+  </div>
 
-<div class="row">
+  <div class="row">
 
-	<div class="col-sm-8">
+    <div class="col-sm-8">
 
-		<collocation-panel class="studySpeaking"></collocation-panel>
+      <collocation-panel class="studySpeaking"></collocation-panel>
 
-		<tabset id="studySpeakingOriginalTabset">
+      <tabset id="studySpeakingOriginalTabset">
 
-    <tab 	ng-repeat="tab in originalTabs" 
-    			heading="{{ tab.title }}" 
-    			active="tab.active">
-    			<span ng-bind-html="tab.content" 
-    						class="videoScriptContent"
-    						ng-click="videoScriptClickHandler($event)"
-    						></span>
-    			</tab>
+        <tab ng-repeat="tab in originalTabs"
+             heading="{{ tab.title }}"
+             active="tab.active">
+    			<span ng-bind-html="tab.content"
+                class="videoScriptContent"
+                ng-click="videoScriptClickHandler($event)"
+            ></span>
+        </tab>
 
-  </tabset>
+      </tabset>
 
-	</div>
-	
-		<div class="col-sm-4">
+    </div>
 
-		<!-- video script tabs -->
-		<tabset id="studySpeakingTranslatedTabset">
+    <div class="col-sm-4">
 
-	    <tab 	ng-repeat="tab in translatedTabs" 
-	    			heading="{{ tab.title }}" 
-	    			active="tab.active">
-	    			<span ng-bind-html="tab.content" 
-	    						class="videoScriptContent"
-	    						ng-click="videoScriptClickHandler($event)"
-	    						></span>
-	    			</tab>
+      <!-- video script tabs -->
+      <tabset id="studySpeakingTranslatedTabset">
 
-	    <tab heading="N/A"></tab>
+        <tab ng-repeat="tab in translatedTabs"
+             heading="{{ tab.title }}"
+             active="tab.active">
+	    			<span ng-bind-html="tab.content"
+                  class="videoScriptContent"
+                  ng-click="videoScriptClickHandler($event)"
+              ></span>
+        </tab>
 
-	  </tabset>
-		
-	</div> <!-- col-sm-4 -->
-	
-</div> <!-- row -->
+        <tab heading="N/A"></tab>
 
-<div class="row progressBarRow">
+      </tabset>
 
-	<div class="col-sm-12">
-		<progressbar value="60"></progressbar>
-	</div>
+    </div>
+    <!-- col-sm-4 -->
 
-</div>
+  </div>
+  <!-- row -->
 
+  <!--<div class="row progressBarRow">-->
 
+    <!--<div class="col-sm-12">-->
+      <!--<progressbar value="60"></progressbar>-->
+    <!--</div>-->
+
+  <!--</div>-->
 
 
 </div>

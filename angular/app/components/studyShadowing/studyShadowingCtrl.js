@@ -5,7 +5,7 @@
 
     function setVideoSuccess(res) {
       $scope.video                = res.video;
-      $scope.tabs                 = res.tabs;
+      //$scope.tabs                 = res.tabs;
       $scope.collocations         = res.collocations;
       $scope.selectedQuote        = res.selectedQuote;
       $scope.selectedDescription  = res.selectedDescription;
@@ -24,7 +24,7 @@
     $scope.studyTime = (($stateParams.t / 4) * 60);
     // $scope.studyTime = 5;
 
-    $scope.timerRunning = true; 
+    $scope.timerRunning = true;
     $scope.resumeTimer = function (){
         $scope.$broadcast('timer-resume');
         $scope.timerRunning = true;
@@ -39,7 +39,7 @@
   	 * timer up callback
   	 *
   	 */
-  	
+
   	$scope.finished = function() {
 
   		$scope.studyShadowingPlayer.pauseVideo();

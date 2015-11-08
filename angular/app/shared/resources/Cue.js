@@ -99,6 +99,6 @@
   	.module('angularApp')
   	.factory('Cue', Cue);
 
-  Cue.$inject = ["$resource", 'apiBaseUrl', 'Video', 'Collocation', '$q'];
+  Cue.$inject = ['$resource', 'apiBaseUrl', 'Video', 'Collocation', '$q'];
 
 })();

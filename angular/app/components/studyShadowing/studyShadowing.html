@@ -1,47 +1,68 @@
+<div class="buttonDiv"
+     id="shadowing-button-div">
+  <button ng-click="studyShadowingPlayer.playVideo();resumeTimer()"><span class="glyphicon glyphicon-play"></span>
+  </button>
+  <button ng-click="studyShadowingPlayer.pauseVideo();stopTimer()"><span class="glyphicon glyphicon-pause"></span>
+  </button>
+  <timer countdown="studyTime"
+         interval="1000"
+         autostart="false"
+         finish-callback="finished()"
+         ng-model="foo">
+    {{mminutes}}:{{sseconds}}
+  </timer>
+</div>
+
 <div class="container">
-	
-	
+  <div class="row">
+    <div class="col-sm-6">
 
-<div class="row">
-	<div class="col-sm-6 col-sm-offset-3">
+      <h6>Shadow</h6>
 
-			<h1>shadowing</h1>
-		
-			<!-- youtube video player -->
-			<youtube-video 	video-id="video.code" 
-								player="studyShadowingPlayer"
-								player-vars="playerVars"
-								player-width="'100%'" 
-								player-height="'300px'"
-								class="avoid-clicks studyPlayer"
-								></youtube-video>
+      <!-- youtube video player -->
+      <youtube-video video-id="video.code"
+                     player="studyShadowingPlayer"
+                     player-vars="playerVars"
+                     player-width="'100%'"
+                     player-height="'300px'"
+                     class="avoid-clicks studyPlayer">
 
-		<div class="buttonDiv">
-			<button ng-click="studyShadowingPlayer.playVideo();resumeTimer()"><span class="glyphicon glyphicon-play"></span></button>
-			<button ng-click="studyShadowingPlayer.pauseVideo();stopTimer()"><span class="glyphicon glyphicon-pause"></span></button>
-			<timer 	countdown="studyTime" 
-							interval="1000"
-							autostart="false"
-							finish-callback="finished()"
-							ng-model="foo">
-							{{mminutes}}:{{sseconds}}
-							</timer>
-		</div>
+      </youtube-video>
+    </div>
+    <!-- column -->
 
-			
-		
-	</div> <!-- column -->
-</div> <!-- row -->
+    <div class="col-sm-6 study-shadowing tabsetColumn">
+
+      <!-- video script tabs -->
+      <tabset id="studyShadowingTabset">
+
+        <tab ng-repeat="tab in tabs"
+             heading="{{ tab.title }}"
+             active="tab.active">
+		    			<span ng-bind-html="tab.content"
+                    class="videoScriptContent"
+                ></span>
+        </tab>
+
+        <tab heading="N/A"></tab>
+
+      </tabset>
+
+    </div>
 
 
-<div class="row progressBarRow">
+  </div>
+  <!-- row -->
 
-	<div class="col-sm-12">
-		<progressbar value="40"></progressbar>
-	</div>
 
-</div> <!-- crow -->
+  <!--<div class="row progressBarRow">-->
 
+    <!--<div class="col-sm-12">-->
+      <!--<progressbar value="40"></progressbar>-->
+    <!--</div>-->
+
+  <!--</div>-->
+  <!-- crow -->
 
 
 </div>

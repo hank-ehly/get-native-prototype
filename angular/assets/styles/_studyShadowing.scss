@@ -1,0 +1,22 @@
+#shadowing-button-div {
+  position: absolute;
+  right: 25px;
+  top: 65px;
+}
+
+div.study-shadowing.tabsetColumn {
+  margin-top: 0px;
+}
+
+#studyShadowingTabset {
+  margin-top: 10px;
+  div {
+    background: #fff;
+    padding: 10px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    height: 300px;
+    overflow: scroll;
+  }
+}
