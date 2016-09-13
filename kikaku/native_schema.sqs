@@ -4,8 +4,8 @@
         <name><![CDATA[cues]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>439.00</x>
-            <y>600.00</y>
+            <x>403.00</x>
+            <y>599.00</y>
         </location>
         <size>
             <width>235.00</width>
@@ -45,8 +45,8 @@
         <name><![CDATA[users]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>894.00</x>
-            <y>322.00</y>
+            <x>896.00</x>
+            <y>416.00</y>
         </location>
         <size>
             <width>224.00</width>
@@ -122,8 +122,8 @@
         <name><![CDATA[progress_snapshots]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>948.00</x>
-            <y>177.00</y>
+            <x>575.00</x>
+            <y>122.00</y>
         </location>
         <size>
             <width>235.00</width>
@@ -220,8 +220,8 @@
         <name><![CDATA[speakers_users]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>1253.00</x>
-            <y>451.00</y>
+            <x>1172.00</x>
+            <y>1051.00</y>
         </location>
         <size>
             <width>194.00</width>
@@ -272,8 +272,8 @@
         <name><![CDATA[video_scripts]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>809.00</x>
-            <y>731.00</y>
+            <x>720.00</x>
+            <y>713.00</y>
         </location>
         <size>
             <width>202.00</width>
@@ -352,8 +352,8 @@
         <name><![CDATA[topics]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>1207.00</x>
-            <y>902.00</y>
+            <x>705.00</x>
+            <y>858.00</y>
         </location>
         <size>
             <width>197.00</width>
@@ -396,8 +396,8 @@
         <name><![CDATA[videos]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>443.00</x>
-            <y>737.00</y>
+            <x>424.00</x>
+            <y>733.00</y>
         </location>
         <size>
             <width>202.00</width>
@@ -478,7 +478,7 @@
         <name><![CDATA[cues_videos]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>189.00</x>
+            <x>186.00</x>
             <y>599.00</y>
         </location>
         <size>
@@ -619,8 +619,8 @@
         <name><![CDATA[speakers]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>1223.00</x>
-            <y>591.00</y>
+            <x>584.00</x>
+            <y>1090.00</y>
         </location>
         <size>
             <width>202.00</width>
@@ -713,8 +713,8 @@
         <name><![CDATA[languages]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>883.00</x>
-            <y>936.00</y>
+            <x>678.00</x>
+            <y>963.00</y>
         </location>
         <size>
             <width>149.00</width>
@@ -748,8 +748,8 @@
         <name><![CDATA[categories_users]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>1367.00</x>
-            <y>172.00</y>
+            <x>1394.00</x>
+            <y>374.00</y>
         </location>
         <size>
             <width>197.00</width>
@@ -801,7 +801,7 @@
         <name><![CDATA[writing_prompts]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>190.00</x>
+            <x>194.00</x>
             <y>867.00</y>
         </location>
         <size>
@@ -849,8 +849,8 @@
         <name><![CDATA[collocations_progress_snapshots]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>1346.00</x>
-            <y>297.00</y>
+            <x>968.00</x>
+            <y>82.00</y>
         </location>
         <size>
             <width>255.00</width>
@@ -903,8 +903,8 @@
         <name><![CDATA[collocations]]></name>
         <schema><![CDATA[]]></schema>
         <location>
-            <x>1252.00</x>
-            <y>771.00</y>
+            <x>972.00</x>
+            <y>719.00</y>
         </location>
         <size>
             <width>182.00</width>
@@ -1091,17 +1091,17 @@ cmludC5QYWdlRm9ybWF0VGlja2V0PC9zdHJpbmc+CjwvZGljdD4KPC9wbGlzdD4K
 hpKEmZkLTlNQYXBlclNpemWGkoSEhAdOU1ZhbHVlAJSEASqEhAt7Q0dTaXplPWRk
 fZ+BUwKBSgOGkoSZmRZOU0hvcml6b250YWxseUNlbnRlcmVkhpKEhIQITlNOdW1i
 ZXIAn56EhAFjoQGGkoSZmRROU1ZlcnRpY2FsbHlDZW50ZXJlZIaSopKEmZkMTlNM
-ZWZ0TWFyZ2luhpKEo56EhAFkohKGkoSZmQ1OU1JpZ2h0TWFyZ2luhpKEo56oohKG
-koSZmQtOU1RvcE1hcmdpboaShKOeqKIehpKEmZkNTlNPcmllbnRhdGlvboaShKOe
-hIQBcaMAhpKEmZkVTlNIb3Jpem9uYWxQYWdpbmF0aW9uhpKukoSZmRROU1ZlcnRp
-Y2FsUGFnaW5hdGlvboaSrpKEmZkOTlNCb3R0b21NYXJnaW6GkoSjnqiiNYaShJmZ
-D05TU2NhbGluZ0ZhY3RvcoaShKOeqKIBhpKEmZkLTlNQYXBlck5hbWWGkoSZmQZp
-c28tYTSGhoY=
+ZWZ0TWFyZ2luhpKEo56EhAFkohKGkoSZmQ1OU1JpZ2h0TWFyZ2luhpKnkoSZmQtO
+U1RvcE1hcmdpboaShKOeqKIehpKEmZkNTlNPcmllbnRhdGlvboaShKOehIQBcaMA
+hpKEmZkVTlNIb3Jpem9uYWxQYWdpbmF0aW9uhpKtkoSZmRROU1ZlcnRpY2FsUGFn
+aW5hdGlvboaSrZKEmZkOTlNCb3R0b21NYXJnaW6GkoSjnqiiNYaShJmZD05TU2Nh
+bGluZ0ZhY3RvcoaShKOeqKIBhpKEmZkLTlNQYXBlck5hbWWGkoSZmQZpc28tYTSG
+hoY=
 ]]></encodedPrintInfo>
         <autoSizeTablesOption><![CDATA[0]]></autoSizeTablesOption>
         <documentScaleFactor><![CDATA[0.85]]></documentScaleFactor>
         <dropTableOption><![CDATA[0]]></dropTableOption>
-        <exportDialect><![CDATA[Rails]]></exportDialect>
+        <exportDialect><![CDATA[sybase]]></exportDialect>
         <fileversion><![CDATA[3.1]]></fileversion>
         <generator><![CDATA[com.malcolmhardie.sqleditor]]></generator>
         <generatorVersion><![CDATA[2.0]]></generatorVersion>
@@ -1111,13 +1111,13 @@ c28tYTSGhoY=
         <PageGridVisible><![CDATA[0]]></PageGridVisible>
         <sidebarIndex><![CDATA[0]]></sidebarIndex>
         <snapToGrid><![CDATA[0]]></snapToGrid>
-        <SourceSidebarWidth><![CDATA[276.000000]]></SourceSidebarWidth>
+        <SourceSidebarWidth><![CDATA[484.000000]]></SourceSidebarWidth>
         <uid><![CDATA[15424642-3065-473F-ADBE-E110B8DD76D8]]></uid>
-        <windowHeight><![CDATA[877.000000]]></windowHeight>
-        <windowLocationX><![CDATA[1680.000000]]></windowLocationX>
-        <windowLocationY><![CDATA[841.000000]]></windowLocationY>
-        <windowScrollOrigin><![CDATA[{278, 129}]]></windowScrollOrigin>
-        <windowWidth><![CDATA[1440.000000]]></windowWidth>
+        <windowHeight><![CDATA[687.000000]]></windowHeight>
+        <windowLocationX><![CDATA[-1204.000000]]></windowLocationX>
+        <windowLocationY><![CDATA[626.000000]]></windowLocationY>
+        <windowScrollOrigin><![CDATA[{0, 0}]]></windowScrollOrigin>
+        <windowWidth><![CDATA[1049.000000]]></windowWidth>
     </SQLDocumentInfo>
     <AllowsIndexRenamingOnInsert><![CDATA[1]]></AllowsIndexRenamingOnInsert>
     <containerName><![CDATA[model controller orginal container]]></containerName>

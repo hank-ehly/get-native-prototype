@@ -72,3 +72,8 @@ angular/.tmp/
 angular/.sass-cache/
 public/
 angular/.idea
+public/components
+.idea/
+angular/npm-debug.log
+public/scripts
+public/styles
